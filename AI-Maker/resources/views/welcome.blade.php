@@ -31,7 +31,7 @@
                     <p>Unleash your creativity effortlessly. Whether you're a pro or just starting out, our AI tools
                         transform your ideas into reality.</p>
                     <div class="cta-buttons">
-                        <button class="cta-email">Start free with email</button>
+                        <button id="loginButton" class="cta-email">Start free with email</button>
                         <button class="cta-google">Start free with Google</button>
                     </div>
                 </div>
@@ -211,7 +211,6 @@
             </div>
         </footer>
     </body>
-
     <script src="{{ asset('js/home/pricing.js') }}" defer></script>
-
+    <script src="{{ asset('js/loginRedirect.js') }}" defer></script>
 </html>
