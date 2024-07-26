@@ -13,13 +13,14 @@
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/pricing-team.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/pricing-coins.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components/menu.css') }}" rel="stylesheet">
 </head>
 
 <body>
 
     <body>
         <header>
-            @include('components.header')
+            <x-menu />
         </header>
 
         <main>
