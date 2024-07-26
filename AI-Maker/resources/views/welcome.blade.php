@@ -16,6 +16,7 @@
     <link href="{{ asset('css/partials/pricing-coins.css') }}" rel="stylesheet">
     <link href="{{ asset('css/components/menu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/hero.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/ai-tools.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -28,21 +29,7 @@
         <main>
             @include('partials.hero')
 
-            <section id="ai-tools" class="section">
-                <div class="container">
-                    <h2>Where imagination meets innovation.</h2>
-                    <p>Unlock your creative potential and transform your ideas into stunning realities with the power of
-                        AI.</p>
-                    <div class="tools">
-                        <div class="tool">AI image generator</div>
-                        <div class="tool">Background remover</div>
-                        <div class="tool">Image to video</div>
-                        <div class="tool">Text to speech</div>
-                    </div>
-                    <button class="see-all-tools">See all tools</button>
-                    <img class="tool-image" src="https://via.placeholder.com/818x460" alt="">
-                </div>
-            </section>
+            @include('partials.ai-tools')
 
             <section id="recent-creations" class="section">
                 <div class="container">
@@ -203,6 +190,8 @@
         </footer>
     </body>
 
-    <script src="{{ asset('js/home/pricing.js') }}" defer></script>
+    @push('scripts')
+        <script src="{{ asset('js/home/pricing.js') }}" defer></script>
+    @endpush
 
 </html>
