@@ -10,10 +10,13 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/pricing-team.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/pricing-coins.css') }}" rel="stylesheet">
     <link href="{{ asset('css/components/menu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/hero.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/ai-tools.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -24,34 +27,9 @@
         </header>
 
         <main>
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Create stunning images, videos, and podcasts with <span class="highlight">AI</span> in minutes
-                    </h1>
-                    <p>Unleash your creativity effortlessly. Whether you're a pro or just starting out, our AI tools
-                        transform your ideas into reality.</p>
-                    <div class="cta-buttons">
-                        <button id="loginButton" class="cta-email">Start free with email</button>
-                        <button class="cta-google">Start free with Google</button>
-                    </div>
-                </div>
-            </section>
+            @include('partials.hero')
 
-            <section id="ai-tools" class="section">
-                <div class="container">
-                    <h2>Where imagination meets innovation.</h2>
-                    <p>Unlock your creative potential and transform your ideas into stunning realities with the power of
-                        AI.</p>
-                    <div class="tools">
-                        <div class="tool">AI image generator</div>
-                        <div class="tool">Background remover</div>
-                        <div class="tool">Image to video</div>
-                        <div class="tool">Text to speech</div>
-                    </div>
-                    <button class="see-all-tools">See all tools</button>
-                    <img class="tool-image" src="https://via.placeholder.com/818x460" alt="">
-                </div>
-            </section>
+            @include('partials.ai-tools')
 
             <section id="recent-creations" class="section">
                 <div class="container">

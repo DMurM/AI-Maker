@@ -1,0 +1,94 @@
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.shape {
+    border: 1px solid #9393EF;
+    position: absolute;
+}
+
+.shape1 { width: 32px; height: 32px; left: 80%; top: 10%; }
+.shape2 { width: 32px; height: 32px; left: 70%; top: 86%; }
+.shape3 { width: 80.65px; height: 80.65px; left: 69%; top: 35%; transform: rotate(-27.11deg); background: white; }
+.shape4 { width: 45px; height: 45px; left: 73%; top: 72%; transform: rotate(15deg); background: white; }
+.shape5 { width: 86px; height: 86px; left: 28%; top: 6%; background: white; }
+.shape6 { width: 45px; height: 45px; left: 33%; top: 22%; transform: rotate(-35.29deg); background: white; }
+.shape7 { width: 47px; height: 47px; left: 19%; top: 76%; }
+.shape8 { width: 25px; height: 25px; left: 9%; top: 49%; }
+.shape9 { width: 105px; height: 105px; left: 11%; top: 25%; background: white; }
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 72px;
+    color: #29264C;
+}
+
+.hero h1 .highlight {
+    color: #9A9AF0;
+}
+
+.hero p {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #29264C;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.cta-email, .cta-google {
+    display: flex;
+    align-items: center;
+    padding: 12px 18px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    border-radius: 32px;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-email {
+    background-color: #4844A3;
+    color: white;
+    border: 1px solid #4844A3;
+}
+
+.cta-google {
+    background-color: white;
+    color: #29264C;
+    border: 1px solid #E9E9ED;
+    display: flex;
+    gap: 12px;
+}
+
+.cta-google img {
+    width: 24px;
+    height: 24px;
+}

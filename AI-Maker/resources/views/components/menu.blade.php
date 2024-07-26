@@ -71,3 +71,7 @@
         </div>
     </nav>
 </header>
+
+@push('scripts')
+    <script src="{{ asset('js/home/menu.js') }}" defer></script>
+@endpush
