@@ -189,9 +189,6 @@
             </div>
         </footer>
     </body>
-
-    @push('scripts')
-        <script src="{{ asset('js/home/pricing.js') }}" defer></script>
-    @endpush
-
+    <script src="{{ asset('js/home/pricing.js') }}" defer></script>
+    <script src="{{ asset('js/loginRedirect.js') }}" defer></script>
 </html>
