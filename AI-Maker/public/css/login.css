@@ -1,6 +1,6 @@
 /* Fondo de la página */
 .background {
-    background: url('background.jpg') no-repeat center center fixed;
+    background: url('images/background.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     opacity: 0.8; /* Ajusta la opacidad del fondo */
@@ -96,7 +96,7 @@ p, .btn-primary, .form-control, .small {
     width: 460px; /* Ancho fijo */
     height: 686px; /* Altura fija */
     padding: 24px 24px 64px 24px; /* Espaciado interno */
-    background: url('rightimg.jpg') no-repeat center center; /* Imagen de fondo */
+    background: url('images/nightimg.jpg') no-repeat center center; /* Imagen de fondo */
     background-size: cover; /* Asegura que la imagen cubra todo el área del contenedor */
     border-radius: 0 24px 24px 0; /* Radio de borde en las esquinas */
     opacity: 1;
