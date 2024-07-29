@@ -1,6 +1,6 @@
 <header>
     <nav aria-label="Main navigation" class="main-nav">
-        <div class="container">
+        <div class="container-menu">
             <div class="logo">
                 <a href="/" aria-label="Logo">LOGO</a>
             </div>
