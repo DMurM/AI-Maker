@@ -6,8 +6,8 @@
                 <h3>Free</h3>
                 <p>Try AiTools for free</p>
                 <h4>€0</h4>
-                <button>Get started now</button>
-                <p>120 Coins/year</p>
+                <button class="btn primary">Get started now</button>
+                <p class="billing-info">120 Coins/year</p>
                 <ul>
                     <li>Relaxed generations</li>
                     <li>Use history available</li>
@@ -18,10 +18,10 @@
             <div class="plan">
                 <h3>Base</h3>
                 <p>For personal use</p>
-                <h4>€19</h4>
-                <p>per year billed annually</p>
-                <button>Subscribe</button>
-                <p>6000 Coins/year</p>
+                <h4>€16</h4>
+                <p class="billing-info">per month billed annually</p>
+                <button class="btn">Subscribe</button>
+                <p class="billing-info">6000 Coins/year</p>
                 <ul>
                     <li>Everything in Free, plus:</li>
                     <li>Fast generation access</li>
@@ -36,9 +36,9 @@
                 <h3>Standard</h3>
                 <p>Make an impact with your visuals</p>
                 <h4>€29</h4>
-                <p>per year billed annually</p>
-                <button>Subscribe</button>
-                <p>24000 Coins/year</p>
+                <p class="billing-info">per month billed annually</p>
+                <button class="btn">Subscribe</button>
+                <p class="billing-info">24000 Coins/year</p>
                 <ul>
                     <li>Everything in Base, plus:</li>
                     <li>Video generation access</li>
@@ -54,9 +54,9 @@
                 <h3>Pro</h3>
                 <p>Maximize your creative potential</p>
                 <h4>€59</h4>
-                <p>per year billed annually</p>
-                <button>Subscribe</button>
-                <p>72000 Coins/year</p>
+                <p class="billing-info">per month billed annually</p>
+                <button class="btn">Subscribe</button>
+                <p class="billing-info">72000 Coins/year</p>
                 <ul>
                     <li>Everything in Standard, plus:</li>
                     <li>Buy coins at 80% discount ($100 = 12000 coins)</li>
