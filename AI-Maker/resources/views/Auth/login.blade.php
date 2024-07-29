@@ -14,8 +14,8 @@
         <div class="rectangle d-flex">
             <div class="left-side d-flex flex-column justify-content-between align-items-center p-4">
                 <div class="form-container d-flex flex-column align-items-center mt-5">
-                    <h2 class="mb-4 mt-4">Welcome to AiTools</h2>
-                    <p class="mb-4">Don't have an account? <a href="get_started.html">Signup</a></p>
+                    <h2 class="mb-4 mt-4">Welcome to AI-Maker</h2>
+                    <p class="mb-4">Don't have an account? <a href="signup">Signup</a></p>
                     <button class="btn btn-primary mb-2 mt-2">
                         <i class="fab fa-google"></i> Sign in with Google
                     </button>
@@ -36,6 +36,7 @@
                         <button type="submit" class="btn btn-create-account mb-2">Login</button>
                     </form>
                     <p class="small mt-2">Forgot password? <a href="#">Reset here</a></p>
+                    <a href="{{ url('/') }}" class="btn btn-create-account mt-3">Go back</a>
                 </div>
             </div>
             <div class="right-side"></div>
