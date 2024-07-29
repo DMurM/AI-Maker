@@ -20,6 +20,7 @@
     <link href="{{ asset('css/partials/recent-creations.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/feature.css') }}" rel="stylesheet">
     <link href="{{ asset('css/components/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/join.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -40,18 +41,7 @@
 
             @include('partials.feature')
 
-            <section id="join" class="section join-section">
-                <div class="container">
-                    <h2>Join millions in creating AI Art</h2>
-                    <p>Start your own creative journey with AiTools.</p>
-                    <div class="join-steps">
-                        <div class="step">Create</div>
-                        <div class="step">Edit</div>
-                        <div class="step">Download</div>
-                    </div>
-                    <button class="start-creating">Start creating now</button>
-                </div>
-            </section>
+            @include('partials.join')
 
             <section id="pricing" class="section">
                 <div class="container">

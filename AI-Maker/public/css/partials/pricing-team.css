@@ -54,7 +54,7 @@ h2 {
 }
 
 .plan {
-    background: #FFFFFF;
+    background: #F8F8F8;
     border-radius: 16px;
     border: 2px solid transparent;
     padding: 32px;
@@ -104,7 +104,7 @@ button.subscribe {
     border-radius: 32px;
     border: 1px solid #4844A3;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 7.5%;
     display: block;
     margin-left: auto;
     margin-right: auto;

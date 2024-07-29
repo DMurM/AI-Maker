@@ -40,7 +40,7 @@
     margin: 0;
 }
 
-.frame-parent {
+.frame-parent-feature{
     width: 317px;
     display: flex;
     flex-direction: column;
