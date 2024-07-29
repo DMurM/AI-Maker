@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    // Manejar la petición de login
+    // Handle login request
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -22,7 +23,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (User::validateCredentials($credentials)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/user_dashboard');
         }
@@ -37,13 +38,18 @@ class AuthController extends Controller
         return view('auth.signup');
     }
 
+    // Handle signup request
     public function signup(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
+            'lastname' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
         ]);
+
+        // Add a default plan_id value
+        $validatedData['plan_id'] = 1; // or any default value you want to set
 
         $user = User::createUser($validatedData);
 
@@ -52,11 +58,14 @@ class AuthController extends Controller
         return redirect('/user_dashboard');
     }
 
+
+
     public function showPasswordResetForm()
     {
         return view('auth.passwords.email');
     }
 
+    // Handle password reset link request
     public function sendPasswordResetLink(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -70,6 +79,7 @@ class AuthController extends Controller
                     : back()->withErrors(['email' => __($status)]);
     }
 
+    // Handle logout request
     public function logout(Request $request)
     {
         Auth::logout();
