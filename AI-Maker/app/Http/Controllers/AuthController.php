@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
@@ -23,9 +22,9 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        if (User::validateCredentials($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/user_dashboard');
         }
 
         return back()->withErrors([
@@ -46,15 +45,11 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
 
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-        ]);
+        $user = User::createUser($validatedData);
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect('/user_dashboard');
     }
 
     public function showPasswordResetForm()
@@ -74,9 +69,13 @@ class AuthController extends Controller
                     ? back()->with(['status' => __($status)])
                     : back()->withErrors(['email' => __($status)]);
     }
+
     public function logout(Request $request)
     {
-    Auth::logout();
-    return redirect('/');
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

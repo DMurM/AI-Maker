@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('email', 255)->unique();
             $table->string('password', 255);
             $table->string('name', 100);
-            $table->string('lastname', 100);
-            $table->integer('credit')->default(0);
-            $table->unsignedInteger('plan_id');
-            $table->timestamp('created_at')->useCurrent();
+            $table->string('lastname', 100)->nullable();
+            $table->integer('credit')->default(0)->nullable();
+            $table->unsignedInteger('plan_id')->nullable();
+            $table->timestamps();
             $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

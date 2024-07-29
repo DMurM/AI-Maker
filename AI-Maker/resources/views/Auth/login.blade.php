@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="background d-flex justify-content-center align-items-center">
         <div class="rectangle d-flex">
@@ -28,10 +30,13 @@
                     <div class="divider">
                         <span class="divider-text">OR</span>
                     </div>
-                    <form class="w-100">
+                    <form class="w-100" method="POST" action="{{ route('login') }}">
+                        @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control mb-3" placeholder="Enter your email" required>
-                            <input type="password" class="form-control mb-4" placeholder="Enter your password" required>
+                            <input type="email" name="email" class="form-control mb-3"
+                                placeholder="Enter your email" required>
+                            <input type="password" name="password" class="form-control mb-4"
+                                placeholder="Enter your password" required>
                         </div>
                         <button type="submit" class="btn btn-create-account mb-2">Login</button>
                     </form>
@@ -47,4 +52,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

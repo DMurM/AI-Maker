@@ -14,6 +14,8 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     // Dashboard del Usuario
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
+    // Ruta de logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 // Rutas de precios
