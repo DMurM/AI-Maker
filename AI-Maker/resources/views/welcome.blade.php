@@ -18,6 +18,7 @@
     <link href="{{ asset('css/partials/hero.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/ai-tools.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/recent-creations.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/feature.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -27,34 +28,16 @@
             <x-menu />
         </header>
 
-        <main>
-            @include('partials.hero')
+        <main class="content">
+            <div class="no-margin">
+                @include('partials.hero')
+            </div>
 
             @include('partials.ai-tools')
 
             @include('partials.recent-creations')
 
-            <section id="features" class="section">
-                <div class="container">
-                    <div class="feature">
-                        <div class="icon"></div>
-                        <h3>AI-Powered design tools</h3>
-                        <p>Harness the power of AI to create professional-quality images, videos, and podcasts with
-                            ease.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="icon"></div>
-                        <h3>User-friendly interface</h3>
-                        <p>Our intuitive platform is designed for everyone, from beginners to experts.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="icon"></div>
-                        <h3>High-Quality outputs</h3>
-                        <p>Export your projects in high resolution for any use, from social media to professional
-                            presentations.</p>
-                    </div>
-                </div>
-            </section>
+            @include('partials.feature')
 
             <section id="join" class="section join-section">
                 <div class="container">
