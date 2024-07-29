@@ -11,45 +11,6 @@ body {
     padding: 20px 0;
 }
 
-header {
-    background-color: white;
-    padding: 10px 0;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    margin-right: 24px;
-}
-
-.language-login {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.language, .login, .get-started {
-    padding: 8px 12px;
-    border-radius: 32px;
-}
-
-.login {
-    border: 1px solid #4844A3;
-    color: #4844A3;
-    font-weight: 600;
-}
-
-.get-started {
-    background-color: #4844A3;
-    color: white;
-    border: 1px solid #4844A3;
-    font-weight: 600;
-}
-
 .creations-gallery {
     display: flex;
     justify-content: center;

@@ -17,6 +17,7 @@
     <link href="{{ asset('css/components/menu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/hero.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/ai-tools.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/recent-creations.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -31,21 +32,7 @@
 
             @include('partials.ai-tools')
 
-            <section id="recent-creations" class="section">
-                <div class="container">
-                    <h2>Recent Creations</h2>
-                    <div class="creations-gallery">
-                        <img src="https://via.placeholder.com/200x250" alt="Creation 1">
-                        <img src="https://via.placeholder.com/250x313" alt="Creation 2">
-                        <img src="https://via.placeholder.com/360x250" alt="Creation 3">
-                        <img src="https://via.placeholder.com/200x200" alt="Creation 4">
-                        <img src="https://via.placeholder.com/233x235" alt="Creation 5">
-                        <img src="https://via.placeholder.com/250x360" alt="Creation 6">
-                        <img src="https://via.placeholder.com/250x200" alt="Creation 7">
-                        <img src="https://via.placeholder.com/250x313" alt="Creation 8">
-                    </div>
-                </div>
-            </section>
+            @include('partials.recent-creations')
 
             <section id="features" class="section">
                 <div class="container">
@@ -190,8 +177,7 @@
         </footer>
     </body>
 
-    @push('scripts')
-        <script src="{{ asset('js/home/pricing.js') }}" defer></script>
-    @endpush
+    <script src="{{ asset('js/home/pricing.js') }}" defer></script>
+    <script src="{{ asset('js/home/recent-creations-carrusel.js') }}" defer></script>
 
 </html>

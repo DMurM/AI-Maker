@@ -1,0 +1,76 @@
+.gallery-title {
+    width: 100%;
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 60px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    width: 85%;
+    cursor: grab;
+}
+
+.carousel:active {
+    cursor: grabbing;
+}
+
+.carousel figure {
+    margin: 0 10px;
+}
+
+.carousel-image {
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.carousel-image:nth-of-type(2),
+.carousel-image:nth-of-type(7),
+.carousel-image:nth-of-type(8) {
+    width: 250px;
+    height: auto;
+}
+
+.carousel-image:nth-of-type(3) {
+    width: 360px;
+    height: auto;
+}
+
+.carousel-image:nth-of-type(4),
+.carousel-image:nth-of-type(5) {
+    width: 200px;
+    height: auto;
+}
+
+.carousel-image:nth-of-type(5) {
+    width: 233px;
+    height: auto;
+}
+
+.carousel-image:nth-of-type(6) {
+    width: 250px;
+    height: auto;
+}
+
+.gallery {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 64px;
+    text-align: center;
+    font-size: 48px;
+    color: #29264c;
+    font-family: 'Plus Jakarta Sans';
+}
