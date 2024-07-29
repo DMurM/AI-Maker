@@ -57,16 +57,21 @@
     background: white;
     box-shadow: 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
     border-radius: 16px;
-    border: 1px solid #F3EFFE;
     padding: 32px;
     width: 800px;
     left: -4%;
     margin-top: 7%;
-    display: none; /* Oculto por defecto */
+    z-index: 1;
+    display: none;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 32px;
+    border: 1px solid transparent;
+    background-clip: padding-box, border-box;
+    background-origin: border-box;
+    background-image: linear-gradient(white, white), linear-gradient(90deg, #9393EF, #FF556E);
 }
+
 
 .nav-links .has-dropdown:hover .dropdown {
     display: flex;

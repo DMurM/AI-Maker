@@ -16,11 +16,6 @@ header {
     padding: 10px 0;
 }
 
-.logo {
-    font-size: 26px;
-    font-weight: 700;
-}
-
 nav ul {
     display: flex;
     list-style: none;
@@ -53,114 +48,6 @@ nav ul li {
     color: white;
     border: 1px solid #4844A3;
     font-weight: 600;
-}
-
-.hero {
-    background-color: white;
-    text-align: center;
-    padding: 80px 0;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-size: 60px;
-    font-weight: 600;
-    line-height: 72px;
-}
-
-.hero .highlight {
-    color: #9A9AF0;
-}
-
-.hero p {
-    font-size: 18px;
-    line-height: 28px;
-    margin: 20px 0;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.cta-buttons button {
-    padding: 12px 16px;
-    border-radius: 32px;
-    font-weight: 600;
-}
-
-.cta-email {
-    background-color: #4844A3;
-    color: white;
-    border: 1px solid #4844A3;
-}
-
-.cta-google {
-    background-color: white;
-    color: #29264C;
-    border: 1px solid #E9E9ED;
-}
-
-.section {
-    padding: 80px 0;
-}
-
-.section h2 {
-    text-align: center;
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 60px;
-    margin-bottom: 40px;
-}
-
-.section p {
-    text-align: center;
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 40px;
-}
-
-.tools {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-
-.tool {
-    padding: 12px 18px;
-    background-color: #EDECF6;
-    border-radius: 32px;
-    color: #4844A3;
-    font-weight: 600;
-    line-height: 24px;
-}
-
-.see-all-tools {
-    display: block;
-    margin: 0 auto;
-    padding: 12px 18px;
-    background-color: #4844A3;
-    color: white;
-    border: 1px solid #4844A3;
-    border-radius: 32px;
-    font-weight: 600;
-}
-
-.tool-image {
-    width: 818px;
-    height: 460px;
-    border-radius: 16px;
-    border: 3px solid white;
-    display: block;
-    margin: 40px auto;
 }
 
 .creations-gallery {
