@@ -12,12 +12,9 @@
 <body>
     <div class="background d-flex justify-content-center align-items-center">
         <div class="rectangle d-flex">
-            <div class="left-side d-flex flex-column justify-content-between align-items-center p-4">
+            <div class="left-side d-flex flex-column justify-content-center align-items-center p-4">
                 <div class="form-container d-flex flex-column align-items-center mt-5">
-                    <h2 class="mb-4 mt-4">Get started with AiTools</h2>
-                    <div class="divider">
-                        <span class="divider-text">OR</span>
-                    </div>
+                    <h2 class="mb-4 mt-4">Get started with AI-Maker</h2>
                     <form method="POST" action="{{ route('signup') }}" class="w-100">
                         @csrf
                         <div class="form-group">
@@ -29,6 +26,7 @@
                         <button type="submit" class="btn btn-create-account mb-2">Create Account</button>
                     </form>
                     <p class="small mt-2">Already signed up? <a href="{{ route('login') }}">Log in</a></p>
+                    <a href="{{ url('/') }}" class="btn btn-secondary mt-3">Go back</a>
                 </div>
             </div>
             <div class="right-side"></div>
