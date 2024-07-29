@@ -19,6 +19,7 @@
                         @csrf
                         <div class="form-group">
                             <input type="text" class="form-control mb-3" name="name" placeholder="Enter your name" required>
+                            <input type="text" class="form-control mb-3" name="lastname" placeholder="Enter your last name" required>
                             <input type="email" class="form-control mb-3" name="email" placeholder="Enter your email" required>
                             <input type="password" class="form-control mb-4" name="password" placeholder="Enter your password" required>
                             <input type="password" class="form-control mb-4" name="password_confirmation" placeholder="Confirm your password" required>
