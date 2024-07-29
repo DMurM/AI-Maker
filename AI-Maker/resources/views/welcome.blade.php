@@ -179,5 +179,6 @@
 
     <script src="{{ asset('js/home/pricing.js') }}" defer></script>
     <script src="{{ asset('js/home/recent-creations-carrusel.js') }}" defer></script>
+    <script src="{{ asset('js/loginRedirect.js') }}" defer></script>
 
 </html>

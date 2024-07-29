@@ -1,0 +1,133 @@
+/* Establecimiento de Variables de Espaciado */
+:root {
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 40px;
+}
+
+/* Fondo de la página */
+.background {
+    background: url('images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    opacity: 0.8;
+    font-family: 'Plus Jakarta Sans', sans-serif; /* Fuente global */
+}
+
+/* Rectángulo central */
+.rectangle {
+    height: 686px; /* Altura ajustada */
+    display: flex;
+    border-radius: 24px; /* Bordes redondeados */
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+/* Mitad izquierda del rectángulo */
+.left-side {
+    width: 496px; /* Ancho fijo */
+    height: 100%; /* Altura completa */
+    padding: var(--space-lg) var(--space-xl); /* Espaciado interno */
+    background: #ffffff; /* Fondo blanco */
+    border-radius: 24px 0 0 24px; /* Radio de borde en las esquinas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Ajusta el espacio entre los elementos */
+    align-items: center;
+    color: black; /* Color del texto */
+    text-align: center;
+}
+
+/* Estilo del título */
+h2 {
+    font-size: 30px; /* Tamaño del título */
+    font-weight: 700; /* Grosor del título */
+    width: 100%; /* Ancho completo */
+    max-width: 400px; /* Ancho máximo */
+    margin-bottom: var(--space-md);
+}
+
+/* Estilo del texto */
+p, .btn-primary, .btn-secondary, .form-control, .small {
+    font-size: 16px; /* Tamaño del texto */
+    margin-bottom: var(--space-sm);
+}
+
+/* Botones y campos de entrada */
+.btn-primary, .btn-secondary, .form-control {
+    width: 100%; /* Ancho completo */
+    border-radius: 24px; /* Bordes redondeados */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    border: 1px solid #ccc; /* Añade un borde ligero */
+    margin-bottom: var(--space-md);
+}
+
+/* Botón de creación de cuenta */
+.btn-create-account {
+    background-color: #4844A3; /* Color de fondo */
+    color: #ffffff; /* Color del texto */
+    border-radius: 24px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    width: 100%; /* Ancho completo */
+    max-width: 400px; /* Ancho máximo para uniformidad */
+}
+
+/* Botones de inicio de sesión con iconos */
+.btn-primary i, .btn-secondary i {
+    margin-right: var(--space-xs); /* Espacio entre el icono y el texto */
+}
+
+/* Línea divisoria con texto */
+.divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: var(--space-md) 0; /* Espaciado superior e inferior */
+    justify-content: center; /* Alineación centrada */
+}
+
+.divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc; /* Línea divisoria */
+}
+
+.divider-text {
+    padding: 0 var(--space-sm); /* Espaciado alrededor del texto */
+    color: #E9E9ED; /* Color del texto */
+    font-weight: bold;
+}
+
+/* Mitad derecha del rectángulo */
+.right-side {
+    width: 460px; /* Ancho fijo */
+    height: 686px; /* Altura fija */
+    padding: var(--space-sm) var(--space-sm) var(--space-xl) var(--space-sm); /* Espaciado interno */
+    background: url('images/nightimg.jpg') no-repeat center center; /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el área del contenedor */
+    border-radius: 0 24px 24px 0; /* Radio de borde en las esquinas */
+    opacity: 1;
+}
+
+
+
+.small a {
+    color: #29264C; /* Color del enlace */
+    text-decoration: none;
+}
+
+.small a:hover {
+    text-decoration: underline; /* Subrayado en hover */
+}
+
+.back-home {
+    color: #007bff; /* Color azul típico de enlace */
+    text-decoration: none; /* Elimina el subrayado */
+    margin-top: var(--space-md); /* Espaciado superior para separarlo del formulario */
+}
+
+.back-home:hover {
+    text-decoration: underline; /* Añade subrayado al pasar el ratón para indicar clicabilidad */
+}
