@@ -11,11 +11,17 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'lastname', 'email', 'password', 'plan_id',
+        'name',
+        'lastname',
+        'email',
+        'password',
+        'plan_id',
+        'credit'
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     public $timestamps = false; // Disable timestamps if not needed
@@ -29,5 +35,11 @@ class User extends Authenticatable
             'password' => Hash::make($data['password']),
             'plan_id' => $data['plan_id'], // Include the plan_id field
         ]);
+    }
+
+    // Guarda el nombre completo del usuario
+    public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->lastname;
     }
 }
