@@ -74,7 +74,7 @@
                             <p class="mb-1">{{ htmlspecialchars($name) }} {{ htmlspecialchars($lastname) }}</p>
                             <p class="mb-2">{{ htmlspecialchars($email) }}</p>
 
-                            <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+                            <a href="{{ route('logout') }}" class="btn btn-danger">Logout.</a> 
                         </div>
                     </div>
                 </div>
