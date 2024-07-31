@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImageGenerationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,4 +26,7 @@ Route::get('/signup', [AuthController::class, 'showSignupForm'])->name('signup')
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::get('/password/reset', [AuthController::class, 'showPasswordResetForm'])->name('password.request');
 Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])->name('password.email');
+
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
+Route::post('/generate-image', [ImageGenerationController::class, 'generate'])->name('generate_image');
+
