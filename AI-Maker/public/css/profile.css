@@ -87,7 +87,7 @@ body {
 main {
     margin-left: 250px;
     padding: 20px;
-    background-color: #16151A;
+    background-color: #16151a;
     height: 100vh;
     overflow-y: auto;
     transition: margin-left 0.3s;
@@ -138,7 +138,7 @@ section {
     text-align: left;
     font-size: 14px;
     color: #848197;
-    font-family: 'Plus Jakarta Sans';
+    font-family: "Plus Jakarta Sans";
     flex-wrap: nowrap; /* add this line */
 }
 
@@ -163,3 +163,89 @@ section {
     color: #9a9af0; /* change text color on hover */
 }
 
+.p-4 {
+    background-color: #030303;
+}
+
+.text {
+    position: relative;
+    line-height: 20px;
+    font-weight: 600;
+}
+.text-padding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 2px;
+}
+.upload-01-icon {
+    width: 20px;
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.buttons {
+    position: relative;
+    border-radius: 32px;
+    background-color: #16151a;
+    border: 1px solid #16151a;
+    box-sizing: border-box;
+    width: 150%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+    color: #edecf6;
+    font-family: "Plus Jakarta Sans";
+}
+
+.profile-picture {
+    position: relative;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.jd-wrapper {
+    width: 80px;
+    border-radius: 4px;
+    background-color: #41404f;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    box-sizing: border-box;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: left;
+    font-size: 14px;
+    color: #edecf6;
+    font-family: "Plus Jakarta Sans";
+    padding-bottom: 30px;
+}
+
+.frame-parent {
+    width: 319px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 32px;
+    }

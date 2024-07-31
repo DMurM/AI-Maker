@@ -103,41 +103,43 @@
 					<div class="card p-4">
 						<div class="card-body">
 							<form>
-								<div class="form-group">
-									<label for="profilePicture">Profile picture</label>
-									<div class="input-group">
-										<div class="input-group-prepend">
-											<span class="input-group-text" id="profilePictureLabel">ID</span>
+								<div class="input">
+									<label for="profile-picture">Profile picture</label>
+									<div class="frame-parent">
+										<div class="jd-wrapper">
+											<div class="profile-picture">FotoPerfil</div>
 										</div>
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="profilePicture"
-												aria-describedby="profilePictureLabel">
-											<label class="custom-file-label" for="profilePicture">Upload file</label>
+										<div class="buttons">
+											<div class="text-padding">
+												<input type="file" class="text" id="profile-picture"
+													aria-describedby="profilePictureLabel">
+											</div>
+											<img class="upload-01-icon" alt="" src="images\upload-01.svg">
 										</div>
 									</div>
 								</div>
-
 								<div class="form-group">
 									<label for="username">Username</label>
-									<input type="text" class="form-control" id="username" placeholder="Username">
+									<input type="text" class="form-control" id="username" placeholder="User"  
+									value= {{ Auth::user()->user_name }}>
 								</div>
 
 								<div class="form-group">
 									<label for="email">Email</label>
 									<input type="email" class="form-control" id="email" placeholder="Email"
-										value="jane@email.com">
+										value={{ Auth::user()->email }}>
 								</div>
 
 								<div class="form-group">
 									<label for="firstName">First Name</label>
 									<input type="text" class="form-control" id="firstName" placeholder="First Name"
-										value="Jane">
+										value={{ Auth::user()->name }}>
 								</div>
 
 								<div class="form-group">
 									<label for="lastName">Last Name</label>
 									<input type="text" class="form-control" id="lastName" placeholder="Last Name"
-										value="Doe">
+										value={{ Auth::user()->lastname }}>
 								</div>
 
 								<div class="form-group">

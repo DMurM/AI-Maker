@@ -40,6 +40,11 @@ class User extends Authenticatable
     // Guarda el nombre completo del usuario
     public function getFullNameAttribute()
     {
-        return $this->name . ' ' . $this->lastname;
+        return ucwords($this->name . ' ' . $this->lastname);
+    }
+
+    public function getUserNameAttribute()
+    {
+        return ucfirst($this->name) . ucfirst($this->lastname);
     }
 }
