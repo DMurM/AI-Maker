@@ -18,4 +18,9 @@ class DashboardController extends Controller
             'credits' => $user->credits->sum('amount') ?? 0
         ]);
     }
+
+    public function showImageGeneration()
+    {
+        return view('user_dashboard.image_generation');
+    }
 }

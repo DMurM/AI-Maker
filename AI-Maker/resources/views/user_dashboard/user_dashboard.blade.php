@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,23 +10,18 @@
             border-top: 3px solid #41409f;
             box-sizing: border-box;
             height: 0;
-            /* Asegura que solo se vea el borde */
         }
 
         .icon {
             width: 20px;
-            /* Ajusta según sea necesario */
             height: 20px;
-            /* Ajusta según sea necesario */
             margin-right: 8px;
-            /* Espacio entre la imagen y el texto */
         }
     </style>
     <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/user_dashboard.blade.css">
 </head>
-
 <body>
     <div class="container-fluid">
         <div class="row">
@@ -36,8 +30,7 @@
                     <div class="flex-grow-1">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="index.php"
-                                    id="home-link">
+                                <a class="nav-link text-white d-flex align-items-center" href="index.php" id="home-link">
                                     <img src="/images/dashpics/home-05.png" class="icon" alt="Home">Home
                                 </a>
                             </li>
@@ -60,24 +53,24 @@
                         <div class="line-div"></div>
                         <ul class="nav flex-column mt-3">
                             <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/imageneration.svg" class="icon"
-                                        alt="Image Generation">Image Generation</a>
+                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('image_generation.form') }}">
+                                    <img src="/images/dashpics/imageneration.svg" class="icon" alt="Image Generation">Image Generation
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/imagedit.svg" class="icon" alt="Image Editing">Image
-                                    Editing</a>
+                                    <img src="/images/dashpics/imagedit.svg" class="icon" alt="Image Editing">Image Editing
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/videotools.svg" class="icon" alt="Video Tools">Video
-                                    Tools</a>
+                                    <img src="/images/dashpics/videotools.svg" class="icon" alt="Video Tools">Video Tools
+                                </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/audiotool.svg" class="icon" alt="Audio Tools">Audio
-                                    Tools</a>
+                                    <img src="/images/dashpics/audiotool.svg" class="icon" alt="Audio Tools">Audio Tools
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -94,8 +87,7 @@
                 </div>
             </nav>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <header
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">User Dashboard</h1>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary">Credits: {{ $credits }}</button>
@@ -174,5 +166,4 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
