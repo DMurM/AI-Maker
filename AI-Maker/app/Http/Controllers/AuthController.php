@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -15,25 +14,24 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    // Handle login request
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+        if (!Auth::attempt($credentials)) {
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
             ]);
         }
 
+        $user = Auth::user();
         $token = $user->createToken('personal-access-token')->plainTextToken;
 
-        return response()->json(['token' => $token], 200);
+        $request->session()->regenerate();
+        return redirect()->route('user_dashboard');
     }
 
     public function showSignupForm()
@@ -41,7 +39,6 @@ class AuthController extends Controller
         return view('auth.signup');
     }
 
-    // Handle signup request
     public function signup(Request $request)
     {
         $request->validate([
@@ -59,28 +56,10 @@ class AuthController extends Controller
             // 'plan_id' => 1,
         ]);
 
+        $token = $user->createToken('personal-access-token')->plainTextToken;
+
         Auth::login($user);
-
         return redirect('/user_dashboard');
-    }
-    
-    public function showPasswordResetForm()
-    {
-        return view('auth.passwords.email');
-    }
-
-    // Handle password reset link request
-    public function sendPasswordResetLink(Request $request)
-    {
-        $request->validate(['email' => 'required|email']);
-
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-
-        return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
-                    : back()->withErrors(['email' => __($status)]);
     }
 
     public function logout(Request $request)
