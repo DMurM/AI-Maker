@@ -63,7 +63,7 @@ class AuthController extends Controller
 
         return redirect('/user_dashboard');
     }
-
+    
     public function showPasswordResetForm()
     {
         return view('auth.passwords.email');
