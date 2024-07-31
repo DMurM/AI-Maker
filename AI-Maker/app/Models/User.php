@@ -17,7 +17,8 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     protected $casts = [
@@ -49,4 +50,17 @@ class User extends Authenticatable
         $data['password'] = bcrypt($data['password']);
         return self::create($data);
     }
+
+    // Guarda el nombre completo del usuario
+    public function getFullNameAttribute()
+    {
+        return ucwords($this->name . ' ' . $this->lastname);
+    }
+
+    public function getUserNameAttribute()
+    {
+        return ucfirst($this->name) . ucfirst($this->lastname);
+    }
+}
+
 }

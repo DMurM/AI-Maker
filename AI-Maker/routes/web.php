@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,6 +13,10 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // Ruta de perfil
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    // Ruta de editar perfil
+    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update'); //necesita ser revisado (work on process)
 });
 
 Route::get('/pricing/monthly', [PricingController::class, 'showMonthly'])->name('pricing.monthly');
