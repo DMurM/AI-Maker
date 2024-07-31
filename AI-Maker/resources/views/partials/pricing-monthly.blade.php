@@ -6,7 +6,7 @@
                 <h3>Free</h3>
                 <p>Try AiTools for free</p>
                 <h4>€0</h4>
-                <button>Get started now</button>
+                <button class="btn primary">Get started now</button>
                 <p>10 Coins/month</p>
                 <ul>
                     <li>Relaxed generations</li>
@@ -19,8 +19,8 @@
                 <h3>Base</h3>
                 <p>For personal use</p>
                 <h4>€19</h4>
-                <p>per month billed monthly</p>
-                <button>Subscribe</button>
+                <p class="billing-info">per month billed monthly</p>
+                <button class="btn">Subscribe</button>
                 <p>500 Coins/month</p>
                 <ul>
                     <li>Everything in Free, plus:</li>
@@ -36,8 +36,8 @@
                 <h3>Standard</h3>
                 <p>Make an impact with your visuals</p>
                 <h4>€39</h4>
-                <p>per month billed monthly</p>
-                <button>Subscribe</button>
+                <p class="billing-info">per month billed monthly</p>
+                <button class="btn">Subscribe</button>
                 <p>2000 Coins/month</p>
                 <ul>
                     <li>Everything in Base, plus:</li>
@@ -54,8 +54,8 @@
                 <h3>Pro</h3>
                 <p>Maximize your creative potential</p>
                 <h4>€79</h4>
-                <p>per month billed monthly</p>
-                <button>Subscribe</button>
+                <p class="billing-info">per month billed monthly</p>
+                <button class="btn">Subscribe</button>
                 <p>6000 Coins/month</p>
                 <ul>
                     <li>Everything in Standard, plus:</li>

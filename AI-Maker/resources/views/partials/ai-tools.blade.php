@@ -12,6 +12,6 @@
                 <span class="arrow"></span>
             </button>
         </div>
-        <img class="tool-image" src="https://via.placeholder.com/818x460" alt="Example of AI tool output">
+        <img class="tool-image" src="../Images/Dashboard/home-05.png" alt="Example of AI tool output">
     </div>
 </section>

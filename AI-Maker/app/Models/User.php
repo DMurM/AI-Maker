@@ -2,21 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
-        'lastname',
-        'email',
-        'password',
-        'plan_id',
-        'credit'
+        'name', 'lastname', 'email', 'password', 'plan_id'
     ];
 
     protected $hidden = [
@@ -24,17 +21,34 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public $timestamps = false; // Disable timestamps if not needed
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
-    public static function createUser(array $data)
+    public function plan()
     {
-        return self::create([
-            'name' => $data['name'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'plan_id' => $data['plan_id'], // Include the plan_id field
-        ]);
+        return $this->belongsTo(Plan::class);
+    }
+
+    public function credits()
+    {
+        return $this->hasMany(Credit::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
+
+    public static function createUser($data)
+    {
+        $data['password'] = bcrypt($data['password']);
+        return self::create($data);
     }
 
     // Guarda el nombre completo del usuario
@@ -47,4 +61,6 @@ class User extends Authenticatable
     {
         return ucfirst($this->name) . ucfirst($this->lastname);
     }
+}
+
 }
