@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -18,19 +18,22 @@ class AuthController extends Controller
     // Handle login request
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/user_dashboard');
+        $user = User::where('email', $request->email)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        $token = $user->createToken('personal-access-token')->plainTextToken;
+
+        return response()->json(['token' => $token], 200);
     }
 
     public function showSignupForm()
@@ -41,24 +44,25 @@ class AuthController extends Controller
     // Handle signup request
     public function signup(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|max:255',
             'lastname' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:8',
         ]);
 
-        // Add a default plan_id value
-        $validatedData['plan_id'] = 1; // or any default value you want to set
-
-        $user = User::createUser($validatedData);
+        $user = User::create([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            // 'plan_id' => 1,
+        ]);
 
         Auth::login($user);
 
         return redirect('/user_dashboard');
     }
-
-
 
     public function showPasswordResetForm()
     {
@@ -79,7 +83,6 @@ class AuthController extends Controller
                     : back()->withErrors(['email' => __($status)]);
     }
 
-    // Handle logout request
     public function logout(Request $request)
     {
         Auth::logout();

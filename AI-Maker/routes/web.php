@@ -11,7 +11,7 @@ Route::get('/', function () {
 });
 
 // Rutas protegidas por autenticación
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:sanctum'])->group(function () {
     // Dashboard del Usuario
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     // Ruta de logout
