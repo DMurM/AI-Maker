@@ -71,9 +71,10 @@
                     </div>
                     <div class="profile-info p-3 mt-auto bg-dark">
                         <div class="d-flex flex-column align-items-start">
-                            <p class="mb-1"><?php echo htmlspecialchars($userName) . ' ' . htmlspecialchars($userLastName); ?></p>
-                            <p class="mb-2"><?php echo htmlspecialchars($userEmail); ?></p>
-                            <a href="logout.php" class="btn btn-danger">Logout</a>
+                            <p class="mb-1">{{ htmlspecialchars($name) }} {{ htmlspecialchars($lastname) }}</p>
+                            <p class="mb-2">{{ htmlspecialchars($email) }}</p>
+
+                            <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +83,7 @@
                 <header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">User Dashboard</h1>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Credits: <?php echo htmlspecialchars($userCredits); ?></button>
+                        <button type="button" class="btn btn-primary">Credits: {{ htmlspecialchars($credits) }}</button>
                     </div>
                 </header>
 

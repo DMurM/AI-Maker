@@ -25,7 +25,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/user_dashboard');
+            $user=Auth::user();
+            return redirect()->intended('/user_dashboard')->with([
+                'name' => $user->name,
+                'lastname' => $user->lastname,
+                'email' => $user->email,
+                'credits' => $user->credits ?? 0
+            ]);
         }
 
         return back()->withErrors([
@@ -48,17 +54,29 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:8',
         ]);
 
-        // Add a default plan_id value
-        $validatedData['plan_id'] = 1; // or any default value you want to set
-
         $user = User::createUser($validatedData);
 
         Auth::login($user);
 
-        return redirect('/user_dashboard');
+        return redirect()->intended('/user_dashboard')->with([
+            'name' => $user->name,
+            'lastname' => $user->lastname,
+            'email' => $user->email,
+            'credits' => $user->credits ?? 0
+        ]);
     }
 
-
+    public function showDashboard()
+    {
+        // Obtener el usuario autenticado
+        $user = Auth::user();   
+        return view('user_dashboard')->with([   
+            'name' => $user->name,
+            'lastname' => $user->lastname,
+            'email' => $user->email,
+            'credits' => $user->credits ?? 0 // Asegúrate de que tienes esta columna en tu tabla users
+        ]);
+    }
 
     public function showPasswordResetForm()
     {
