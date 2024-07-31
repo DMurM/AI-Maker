@@ -36,9 +36,10 @@ body {
     min-height: 100vh;
     position: relative;
     padding-top: 60px;
-    border-right: 2px solid #ddd;
-	padding-left: 10px;
+    padding-left: 10px;
     padding-right: 10px;
+    display: flex;
+    flex-direction: column;  /* Establece la dirección del flex a columna */
     box-sizing: border-box;
 }
 
@@ -60,7 +61,7 @@ body {
 }
 
 #sidebar .nav-link img {
-    margin-right: 8px; /* Ajusta según sea necesario */
+    margin-right: 0px; /* Ajusta según sea necesario */
 }
 
 #sidebar .profile-info {
@@ -69,6 +70,7 @@ body {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    margin-top: auto;
 }
 
 #sidebar .profile-info p {

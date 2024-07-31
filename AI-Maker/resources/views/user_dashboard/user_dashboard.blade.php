@@ -4,21 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <style>
-        .line-div {
-            width: 100%;
-            border-top: 3px solid #41409f;
-            box-sizing: border-box;
-            height: 0;
-        }
-
-        .icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-        }
-    </style>
     <!-- Include Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/user_dashboard.blade.css">
 </head>
@@ -26,27 +13,29 @@
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebar" class="col-md-3 col-lg-2 bg-dark text-white">
-                <div class="d-flex flex-column h-100">
+                <div class="sidebar-header">
+                    <h3 class="logo">LOGO</h3>
+                </div>
+                <div class="nav flex-column">
                     <div class="flex-grow-1">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="index.php" id="home-link">
-                                    <img src="/images/dashpics/home-05.png" class="icon" alt="Home">Home
+                        <li class="nav-item">
+                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('user_dashboard') }}">
+                                    <i class="fas fa-home"></i> Home
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/user-01.svg" class="icon" alt="Profile">My Profile
+                                    <i class="fas fa-user"></i> My Profile
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/folder.svg" class="icon" alt="Assets">Assets
+                                    <i class="fas fa-briefcase"></i> Assets
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/team.svg" class="icon" alt="Team">Team
+                                    <i class="fas fa-users"></i> Team
                                 </a>
                             </li>
                         </ul>
@@ -54,22 +43,22 @@
                         <ul class="nav flex-column mt-3">
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="{{ route('image_generation.form') }}">
-                                    <img src="/images/dashpics/imageneration.svg" class="icon" alt="Image Generation">Image Generation
+                                    <i class="fas fa-image"></i> Image Generation
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/imagedit.svg" class="icon" alt="Image Editing">Image Editing
+                                    <i class="fas fa-edit"></i> Image Editing
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/videotools.svg" class="icon" alt="Video Tools">Video Tools
+                                    <i class="fas fa-video"></i> Video Tools
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/images/dashpics/audiotool.svg" class="icon" alt="Audio Tools">Audio Tools
+                                    <i class="fas fa-microphone"></i> Audio Tools
                                 </a>
                             </li>
                         </ul>
@@ -128,9 +117,9 @@
 
                 <!-- Video Tools Section -->
                 <div class="section mb-4">
-                    <h2 class="section-title">Video Tools</h2>
+                <h2 class="section-title">Video Tools</h2>
                     <div class="container">
-                        <div class="row">
+                        <div class="row"> <!-- Corregido de "the='row'" a "class='row'" -->
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
@@ -141,7 +130,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Audio Tools Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Audio Tools</h2>
