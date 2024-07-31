@@ -53,7 +53,6 @@ class AuthController extends Controller
             'lastname' => $request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'plan_id' => 1,
         ]);
 
         $token = $user->createToken('personal-access-token')->plainTextToken;
