@@ -1,0 +1,32 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.nav-link {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #adb5bd;
+}
+
+.main {
+    background-color: #fff;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.input-group .form-control {
+    border-right: 0;
+}
+
+.input-group .input-group-append .btn {
+    border-left: 0;
+}
