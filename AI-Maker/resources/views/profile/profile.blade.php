@@ -13,6 +13,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<nav id="sidebar" class="col-md-3 col-lg-2 bg-dark text-white">
+				<div class="sidebar-header">
+                    <h3 class="logo">LOGO</h3>
+                </div>
 				<div class="d-flex flex-column h-100">
 					<div class="flex-grow-1">
 						<ul class="nav flex-column">

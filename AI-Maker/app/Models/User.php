@@ -62,5 +62,3 @@ class User extends Authenticatable
         return ucfirst($this->name) . ucfirst($this->lastname);
     }
 }
-
-}

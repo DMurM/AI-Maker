@@ -18,97 +18,76 @@
                 <div class="sidebar-header">
                     <h3 class="logo">LOGO</h3>
                 </div>
-                <div class="nav flex-column">
-                    <div class="flex-grow-1">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="index.php"
-                                    id="home-link">
-                                    <img src="\images\home-05.png" class="icon" alt="">Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('profile') }}">
-                                    <img src="{{ asset('images/user-01.svg') }}" class="icon" alt="">My Profile
-                        <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('user_dashboard') }}">
-                                    <i class="fas fa-home"></i> Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <i class="fas fa-user"></i> My Profile
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\folder.svg" class="icon" alt="">Assets
-                                    <i class="fas fa-briefcase"></i> Assets
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\team.svg" class="icon" alt="">Team
-                                    <i class="fas fa-users"></i> Team
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="line-div"></div>
-                        <ul class="nav flex-column mt-3">
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/Images/imageneration.svg" class="icon" alt="">Image Generation
-                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('image_generation.form') }}">
-                                    <i class="fas fa-image"></i> Image Generation
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\imagedit.svg" class="icon" alt="">Image Editing
-                                    <i class="fas fa-edit"></i> Image Editing
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\videotools.svg" class="icon" alt="">Video Tools
-                                    <i class="fas fa-video"></i> Video Tools
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\audiotool.svg" class="icon" alt="">Audio Tools
-                                    <i class="fas fa-microphone"></i> Audio Tools
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="profile-info p-3 mt-auto bg-dark">
-                        <div class="d-flex flex-column align-items-start">
-                            <p class="mb-1">{{ Auth::user()->name }}</p>
-                            <p class="mb-2">{{ Auth::user()->email }}</p>
-                            <a href="{{ route('logout') }}" class="btn btn-danger"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            <p class="mb-1">{{ $name }} {{ $lastname }}</p>
-                            <p class="mb-2">{{ $email }}</p>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Logout</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <div class="d-flex flex-column h-100">
+					<div class="flex-grow-1">
+						<ul class="nav flex-column">
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="index.php"
+									id="home-link">
+									<img src="\images\home-05.png" class="icon" alt="">Home
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="{{ route('profile') }}">
+									<img src="{{ asset('images/user-01.svg') }}" class="icon" alt="">My Profile
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="#">
+									<img src="\Images\folder.svg" class="icon" alt="">Assets
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="#">
+									<img src="\Images\team.svg" class="icon" alt="">Team
+								</a>
+							</li>
+						</ul>
+						<div class="line-div"></div>
+						<ul class="nav flex-column mt-3">
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="#">
+									<img src="/Images/imageneration.svg" class="icon" alt="">Image Generation
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="#">
+									<img src="\Images\imagedit.svg" class="icon" alt="">Image Editing
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="#">
+									<img src="\Images\videotools.svg" class="icon" alt="">Video Tools
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white d-flex align-items-center" href="#">
+									<img src="\Images\audiotool.svg" class="icon" alt="">Audio Tools
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="profile-info p-3 mt-auto bg-dark">
+						<div class="d-flex flex-column align-items-start">
+							<p class="mb-1">{{ Auth::user()->name }}</p>
+							<p class="mb-2">{{ Auth::user()->email }}</p>
+							<a href="{{ route('logout') }}" class="btn btn-danger"
+								onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+								Logout
+							</a>
+							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								@csrf
+							</form>
+						</div>
+					</div>
+				</div>
             </nav>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <header
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">User Dashboard</h1>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credits }}</button>
-                        <button type="button" class="btn btn-primary">Credits: {{ $credits }}</button>
+                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credit }}</button>
                     </div>
                 </header>
 
