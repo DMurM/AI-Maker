@@ -35,3 +35,6 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate-image', [ImageGenerationController::class, 'generate'])->name('generate_image');
 
+Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
+
+
