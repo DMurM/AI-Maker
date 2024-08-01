@@ -63,13 +63,17 @@
                         </ul>
                     </div>
                     <div class="profile-info p-3 mt-auto bg-dark">
-                        <div class="d-flex flex-column align-items-start">
-                            <p class="mb-1">{{ $name }} {{ $lastname }}</p>
-                            <p class="mb-2">{{ $email }}</p>
-                            <form method="POST" action="{{ route('logout') }}">
+                    <div class="d-flex flex-column align-items-start">
+                            <p class="mb-1">{{ Auth::user()->name }}</p>
+                            <p class="mb-2">{{ Auth::user()->email }}</p>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Logout</button>
                             </form>
+                            <a href="#" class="btn btn-danger"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -78,7 +82,7 @@
                 <header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">User Dashboard</h1>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Credits: {{ $credits }}</button>
+                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credits }}</button>
                     </div>
                 </header>
 
