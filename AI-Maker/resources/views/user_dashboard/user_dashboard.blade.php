@@ -21,61 +21,42 @@
                     <div class="flex-grow-1">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="index.php"
-                                    id="home-link">
-                                    <img src="\images\home-05.png" class="icon" alt="">Home
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('profile') }}">
-                                    <img src="{{ asset('images/user-01.svg') }}" class="icon" alt="">My Profile
-                        <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="{{ route('user_dashboard') }}">
                                     <i class="fas fa-home"></i> Home
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
+                                <a class="nav-link text-white d-flex align-items-center" href="{{ route('profile') }}">
                                     <i class="fas fa-user"></i> My Profile
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\folder.svg" class="icon" alt="">Assets
                                     <i class="fas fa-briefcase"></i> Assets
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\team.svg" class="icon" alt="">Team
                                     <i class="fas fa-users"></i> Team
                                 </a>
                             </li>
-                        </ul>
-                        <div class="line-div"></div>
-                        <ul class="nav flex-column mt-3">
                             <li class="nav-item">
-                                <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="/Images/imageneration.svg" class="icon" alt="">Image Generation
                                 <a class="nav-link text-white d-flex align-items-center" href="{{ route('image_generation.form') }}">
                                     <i class="fas fa-image"></i> Image Generation
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\imagedit.svg" class="icon" alt="">Image Editing
                                     <i class="fas fa-edit"></i> Image Editing
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\videotools.svg" class="icon" alt="">Video Tools
                                     <i class="fas fa-video"></i> Video Tools
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white d-flex align-items-center" href="#">
-                                    <img src="\Images\audiotool.svg" class="icon" alt="">Audio Tools
                                     <i class="fas fa-microphone"></i> Audio Tools
                                 </a>
                             </li>
@@ -85,18 +66,14 @@
                         <div class="d-flex flex-column align-items-start">
                             <p class="mb-1">{{ Auth::user()->name }}</p>
                             <p class="mb-2">{{ Auth::user()->email }}</p>
-                            <a href="{{ route('logout') }}" class="btn btn-danger"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            <p class="mb-1">{{ $name }} {{ $lastname }}</p>
-                            <p class="mb-2">{{ $email }}</p>
-                            <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Logout</button>
                             </form>
+                            <a href="#" class="btn btn-danger"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +84,6 @@
                     <h1 class="h2">User Dashboard</h1>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credits }}</button>
-                        <button type="button" class="btn btn-primary">Credits: {{ $credits }}</button>
                     </div>
                 </header>
 
@@ -145,10 +121,9 @@
 
                 <!-- Video Tools Section -->
                 <div class="section mb-4">
-                <h2 class="section-title">Video Tools</h2>
+                    <h2 class="section-title">Video Tools</h2>
                     <div class="container">
                         <div class="row">
-                        <div class="row"> <!-- Corregido de "the='row'" a "class='row'" -->
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
@@ -159,11 +134,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Audio Tools Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Audio Tools</h2>
                     <div class="container">
-                        <div class="row">
+                        <div class="row"> <!-- Aseguramos que 'class="row"' esté bien definido -->
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
