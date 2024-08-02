@@ -64,7 +64,7 @@
                     </div>
                     <div class="profile-info p-3 mt-auto bg-dark">
                         <div class="d-flex flex-column align-items-start">
-                            <p class="mb-1">{{ Auth::user()->name }}</p>
+                            <p class="mb-1">{{ Auth::user()->full_name }}</p>
                             <p class="mb-2">{{ Auth::user()->email }}</p>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf

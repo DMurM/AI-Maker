@@ -1,0 +1,408 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: -10px;
+}
+
+.text-white {
+    color: white;
+}
+
+#sidebar {
+    background-color: #333;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    padding-top: 60px;
+    border-right: 2px solid #ddd;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+#sidebar .nav-item {
+    margin-bottom: 15px;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #575757;
+}
+
+#sidebar .nav-link img {
+    margin-right: 8px;
+}
+
+#sidebar .profile-info {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#sidebar .profile-info p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+#sidebar .profile-info .btn {
+    background-color: #41409f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+#sidebar .profile-info .btn:hover {
+    background-color: #0056b3;
+}
+
+main {
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #16151a;
+    height: 100vh;
+    overflow-y: auto;
+    transition: margin-left 0.3s;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #41409f;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+header .btn-group {
+    display: flex;
+    align-items: center;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #41409f;
+}
+
+.tabs {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: left;
+    font-size: 14px;
+    color: #848197;
+    font-family: "Plus Jakarta Sans";
+    flex-wrap: nowrap; /* add this line */
+}
+
+.tab {
+    border-bottom: 2px solid #9a9af0;
+    padding: 8px;
+    cursor: pointer;
+    display: inline-block; /* add this line */
+}
+.tab:hover {
+    border-bottom: 2px solid #41404f; /* change border color on hover */
+}
+
+.label {
+    position: relative;
+    line-height: 20px;
+    font-weight: 500;
+    color: #848197; /* set text color */
+}
+
+.label:hover {
+    color: #9a9af0; /* change text color on hover */
+}
+
+.text {
+    position: relative;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.profile-picture {
+    position: relative;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: left;
+    font-size: 20px;
+    color: #edecf6;
+    font-family: "Plus Jakarta Sans";
+    padding-bottom: 30px;
+}
+
+.current-coins {
+    position: relative;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.buttons {
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 2px;
+    gap: 4px;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    padding: inherit;
+}
+
+.current-coins,
+.recent-transactions {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 48%; /* Ajusta el ancho para que ocupen el espacio horizontal disponible */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.current-coins h2,
+.recent-transactions h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.coin-info {
+    display: flex;
+    align-items: center;
+}
+
+.coin-count {
+    text-align: center;
+}
+
+.coin-count h3 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.coin-count p {
+    margin: 0;
+    color: #bbb;
+}
+
+.coin-divider {
+    font-size: 2em;
+    padding: 0 10px;
+    color: #bbb;
+}
+
+.recent-transactions .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-transactions .header button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.recent-transactions .header button:hover {
+    background-color: #5753d9;
+}
+
+.line-div {
+    border-bottom: 1px solid white; /* Línea fina blanca */
+    margin: 10px 0; /* Espaciado vertical opcional */
+}
+
+.coins {
+    background-color: #1e1e1e; /* Color de fondo similar al de .current-coins y .recent-transactions */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px; /* Añadido espacio entre elementos internos */
+    width: 100%;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.input-parent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos hijos */
+}
+
+.input, .coins-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px; /* Espacio entre los elementos internos */
+}
+
+.subscription, .free {
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 20Wpx;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espacio entre botones e imágenes */
+}
+
+.buttons .text-padding {
+    padding: 10px;
+}
+
+.buttons .text {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons img {
+    max-width: 100%; /* Asegura que la imagen no exceda el contenedor */
+    height: auto;
+}
+
+.coins a {
+    color: #6c63ff; /* Color de los enlaces */
+    text-decoration: none;
+}
+
+.coins a:hover {
+    text-decoration: underline;
+}
+
+.subscription {
+    position: relative;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.free {
+    position: relative;
+    line-height: 24px;
+    font-weight: 500;
+    color: #9a9af0;
+}
+.coins-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 16px;
+}
+.input-parent {
+    width: 306.5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+}
+.text {
+    position: relative;
+    line-height: 20px;
+    font-weight: 600;
+}
+.text-padding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 2px;
+}
+.buttons {
+    border-radius: 32px;
+    background-color: #4844a3;
+    border: 1px solid #4844a3;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #fff;
+}
+.coins {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 18px;
+    color: #edecf6;
+    font-family: 'Plus Jakarta Sans';
+}
+
