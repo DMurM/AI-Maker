@@ -48,7 +48,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">
-                            <i class="fas fa-image"></i> Image Editing
+                            <i class="fas fa-sliders"></i> Image Editing
                         </a>
                     </li>
                     <li class="nav-item">
@@ -100,7 +100,7 @@
                                         <div class="form-group col-md-3">
                                             <label for="aspect-ratio">Aspect ratio</label>
                                             <div class="d-flex justify-content-between">
-                                                <label class="radio-inline"><input type="radio" name="aspect-ratio"
+                                                <label class="radio-inline"><input type="radio" name="aspect-ratio" checked
                                                         value="1:1"> 1:1</label>
                                                 <label class="radio-inline"><input type="radio" name="aspect-ratio"
                                                         value="3:4"> 3:4</label>
@@ -122,7 +122,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <label class="radio-inline"><input type="radio" name="outputs"
                                                         value="1"> 1</label>
-                                                <label class="radio-inline"><input type="radio" name="outputs"
+                                                <label class="radio-inline"><input type="radio" name="outputs"checked
                                                         value="2"> 2</label>
                                                 <label class="radio-inline"><input type="radio" name="outputs"
                                                         value="3"> 3</label>
