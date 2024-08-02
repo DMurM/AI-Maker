@@ -20,9 +20,15 @@ Image Generation:
     5. Prompt
         Hacer desaparecer el prompt cuando la imagen se carga, mostrarlo dentro de la propia imagen en pequeño.
 
-Home:
+Home: Alfred
 
     1. Scroll
         Cambiar el home de scroll a tipo click, cuando seleccioens un sitio que te vaya a buscar,
         tambien simplificar todo, mas visual.
 
+
+RP: Alfred
+
+    1. Hacer todo
+
+    2. Revisar BBDD
