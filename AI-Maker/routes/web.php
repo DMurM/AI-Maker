@@ -41,4 +41,4 @@ Route::post('/generate-image', [ImageGenerationController::class, 'generate'])->
 
 Route::post('/profile/upload', [ProfileController::class, 'upload'])->name('profile.upload');
 
-
+Route::post('/generate_image', [ImageGenerationController::class, 'generate'])->name('generate_image')

@@ -102,8 +102,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Image Editing Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Image Editing</h2>
                     <div class="container">
@@ -111,15 +109,12 @@
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
-                                        <!-- Placeholder content -->
                                     </div>
                                 </div>
                             @endfor
                         </div>
                     </div>
                 </div>
-
-                <!-- Video Tools Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Video Tools</h2>
                     <div class="container">
@@ -127,7 +122,6 @@
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
-                                        <!-- Placeholder content -->
                                     </div>
                                 </div>
                             @endfor
@@ -137,11 +131,10 @@
                 <div class="section mb-4">
                     <h2 class="section-title">Audio Tools</h2>
                     <div class="container">
-                        <div class="row"> <!-- Aseguramos que 'class="row"' esté bien definido -->
+                        <div class="row">
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
-                                        <!-- Placeholder content -->
                                     </div>
                                 </div>
                             @endfor

@@ -74,7 +74,7 @@
 
 
 .nav-links .has-dropdown:hover .dropdown {
-    display: flex;
+    display: none;
 }
 
 .dropdown-content {
