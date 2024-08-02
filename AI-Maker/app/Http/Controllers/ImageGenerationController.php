@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
 use App\Models\Credit;
 
 class ImageGenerationController extends Controller
 {
-    protected $imageGenerationCost = 1;
+    protected $imageGenerationCost = 0; // Costo de generación de imágenes configurado en 0
 
     public function showForm()
     {
@@ -19,31 +20,50 @@ class ImageGenerationController extends Controller
     public function generateImage(Request $request)
     {
         $user = auth()->user();
-        $credit = $user->credit;
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
 
-        if (!$credit->hasEnoughCredits($this->imageGenerationCost)) {
+        $useCredits = config('app.use_credits', false); // Configuración para usar créditos
+        $credit = $user->activeCredit; // Obtener el crédito activo
+        $response = [];
+
+        if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
             return response()->json(['error' => 'Not enough credits'], 403);
         }
 
-        $credit->deductCredits($this->imageGenerationCost);
+        if ($useCredits) {
+            $credit->deductCredits($this->imageGenerationCost);
+        }
 
-        $response = Http::post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request->input('prompt')));
+        try {
+            $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
+                                ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
         
-        $data = $response->json();
-        $imageUrl = $this->getImageUrl($data);
-
-        return response()->json(['image_url' => $imageUrl]);
+            Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
+        
+            if ($apiResponse->successful()) {
+                $data = $apiResponse->json();
+                $imageUrls = $this->getImageUrls($data);
+                return response()->json(['image_urls' => $imageUrls, 'response_data' => $data], 200);
+            } else {
+                return response()->json(['error' => 'Image generation failed', 'response_data' => $apiResponse->json()], $apiResponse->status());
+            }
+        } catch (\Exception $e) {
+            Log::error('Image generation error: ' . $e->getMessage());
+            return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
+        }        
     }
 
-    private function getRequestPayload($prompt)
+    private function getRequestPayload(Request $request)
     {
         return [
-            'prompt' => $prompt,
+            'prompt' => $request->input('prompt'),
             'negative_prompt' => '',
             'style_selections' => ['Fooocus V2', 'Fooocus Enhance', 'Fooocus Sharp'],
             'performance_selection' => 'Speed',
             'aspect_ratios_selection' => '1152*896',
-            'image_number' => 1,
+            'image_number' => $request->input('outputs', 1), // Obtener el número de salidas desde el formulario
             'image_seed' => -1,
             'sharpness' => 2,
             'guidance_scale' => 4,
@@ -110,8 +130,12 @@ class ImageGenerationController extends Controller
         ];
     }
 
-    private function getImageUrl($data)
+    private function getImageUrls($data)
     {
-        return str_replace('127.0.0.1', '192.168.50.101', $data[0]['url'] ?? '');
+        $urls = [];
+        foreach ($data as $image) {
+            $urls[] = str_replace('127.0.0.1', '192.168.50.101', $image['base64'] ?? '');
+        }
+        return $urls;
     }
 }

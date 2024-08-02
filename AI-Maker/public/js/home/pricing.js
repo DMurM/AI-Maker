@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loadPartial = (type) => {
-        let url = '';
+    let isLoading = false;
 
-        if (type === 'monthly') {
-            url = '/pricing/monthly';
-        } else if (type === 'yearly') {
-            url = '/pricing/yearly';
-        } else if (type === 'team') {
-            url = '/pricing/team';
-        } else if (type === 'coins') {
-            url = '/pricing/coins';
-        }
+    const loadPartial = (type) => {
+        if (isLoading) return;
+        isLoading = true;
+
+        const url = {
+            monthly: '/pricing/monthly',
+            yearly: '/pricing/yearly',
+            team: '/pricing/team',
+            coins: '/pricing/coins'
+        }[type];
 
         fetch(url)
             .then(response => response.text())
@@ -18,15 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('pricing-container').innerHTML = data;
                 updateActiveButton(type);
                 addEventListeners();
+            })
+            .finally(() => {
+                isLoading = false;
             });
     };
 
     const updateActiveButton = (type) => {
-        const buttons = document.querySelectorAll('.toggle-button');
-        buttons.forEach(button => {
+        document.querySelectorAll('.toggle-button').forEach(button => {
             button.classList.remove('active');
         });
-
         document.getElementById('btn-' + type).classList.add('active');
     };
 

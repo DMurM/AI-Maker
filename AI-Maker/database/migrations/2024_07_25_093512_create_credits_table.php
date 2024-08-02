@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('fecha_hora')->useCurrent();
             $table->date('caducidad')->default('2030-01-01');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_general_ci';

@@ -15,4 +15,15 @@ class Credit extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function hasEnoughCredits($cost)
+    {
+        return $this->credit >= $cost;
+    }
+
+    public function deductCredits($cost)
+    {
+        $this->credit -= $cost;
+        $this->save();
+    }
 }
