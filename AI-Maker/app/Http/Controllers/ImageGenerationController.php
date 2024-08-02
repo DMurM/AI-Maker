@@ -9,7 +9,6 @@ use App\Models\Credit;
 
 class ImageGenerationController extends Controller
 {
-    // Assuming the cost of generating an image is 1 credit
     protected $imageGenerationCost = 1;
 
     public function showForm()
@@ -20,17 +19,26 @@ class ImageGenerationController extends Controller
     public function generateImage(Request $request)
     {
         $user = auth()->user();
-        $credit = $user->credit; // Assuming each user has one credit record
+        $credit = $user->credit;
 
         if (!$credit->hasEnoughCredits($this->imageGenerationCost)) {
             return response()->json(['error' => 'Not enough credits'], 403);
         }
 
-        // Deduct credits
         $credit->deductCredits($this->imageGenerationCost);
 
-        $response = Http::post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', [
-            'prompt' => $request->input('prompt'),
+        $response = Http::post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request->input('prompt')));
+        
+        $data = $response->json();
+        $imageUrl = $this->getImageUrl($data);
+
+        return response()->json(['image_url' => $imageUrl]);
+    }
+
+    private function getRequestPayload($prompt)
+    {
+        return [
+            'prompt' => $prompt,
             'negative_prompt' => '',
             'style_selections' => ['Fooocus V2', 'Fooocus Enhance', 'Fooocus Sharp'],
             'performance_selection' => 'Speed',
@@ -99,13 +107,11 @@ class ImageGenerationController extends Controller
             'async_process' => false,
             'webhook_url' => '',
             'image_prompts' => []
-        ]);
+        ];
+    }
 
-        $data = $response->json();
-        $imageUrl = str_replace('127.0.0.1', '192.168.50.101', $data[0]['url'] ?? '');
-
-        return response()->json([
-            'image_url' => $imageUrl,
-        ]);
+    private function getImageUrl($data)
+    {
+        return str_replace('127.0.0.1', '192.168.50.101', $data[0]['url'] ?? '');
     }
 }
