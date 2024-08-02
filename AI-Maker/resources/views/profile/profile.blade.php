@@ -88,10 +88,10 @@
 				</header>
 				<div class="tabs">
 					<div class="tab">
-						<a href="#" class="label">My Account</a>
+						<a class="label" href="{{ route('profile') }}">My Account</a>
 					</div>
 					<div class="tab">
-						<a href="#" class="label">Membership & Plans</a>
+						<a class="label" href="{{ route('payment') }}">Membership & Plans</a>
 					</div>
 					<div class="tab">
 						<a href="#" class="label">My Referrals</a>

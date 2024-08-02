@@ -1,0 +1,339 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: -10px;
+}
+
+.text-white {
+    color: white;
+}
+
+#sidebar {
+    background-color: #333;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    padding-top: 60px;
+    border-right: 2px solid #ddd;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+#sidebar .nav-item {
+    margin-bottom: 15px;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #575757;
+}
+
+#sidebar .nav-link img {
+    margin-right: 8px;
+}
+
+#sidebar .profile-info {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#sidebar .profile-info p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+#sidebar .profile-info .btn {
+    background-color: #41409f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+#sidebar .profile-info .btn:hover {
+    background-color: #0056b3;
+}
+
+main {
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #16151a;
+    height: 100vh;
+    overflow-y: auto;
+    transition: margin-left 0.3s;
+    color: #fff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #41409f;
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+header .btn-group {
+    display: flex;
+    align-items: center;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #41409f;
+}
+
+.tabs {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: left;
+    font-size: 14px;
+    color: #848197;
+    font-family: "Plus Jakarta Sans";
+    flex-wrap: nowrap; /* add this line */
+}
+
+.tab {
+    border-bottom: 2px solid #9a9af0;
+    padding: 8px;
+    cursor: pointer;
+    display: inline-block; /* add this line */
+}
+.tab:hover {
+    border-bottom: 2px solid #41404f; /* change border color on hover */
+}
+
+.label {
+    position: relative;
+    line-height: 20px;
+    font-weight: 500;
+    color: #848197; /* set text color */
+}
+
+.label:hover {
+    color: #9a9af0; /* change text color on hover */
+}
+
+.p-4 {
+    background-color: #030303;
+}
+
+.text {
+    position: relative;
+    line-height: 20px;
+    font-weight: 600;
+}
+.text-padding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 2px;
+}
+.upload-01-icon {
+    width: 20px;
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.buttons {
+    position: relative;
+    border-radius: 32px;
+    background-color: #16151a;
+    border: 1px solid #16151a;
+    box-sizing: border-box;
+    width: 150%;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    gap: 4px;
+    text-align: left;
+    font-size: 14px;
+    color: #edecf6;
+    font-family: "Plus Jakarta Sans";
+}
+
+.profile-picture {
+    position: relative;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.jd-wrapper {
+    width: 80px;
+    border-radius: 4px;
+    background-color: #41404f;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    box-sizing: border-box;
+}
+
+.input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 16px;
+    text-align: left;
+    font-size: 14px;
+    color: #edecf6;
+    font-family: "Plus Jakarta Sans";
+    padding-bottom: 30px;
+}
+
+.frame-parent {
+    width: 319px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 32px;
+    }
+
+    .current-coins {
+        position: relative;
+        line-height: 28px;
+        font-weight: 600;
+  }
+  .input {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+  }
+  .coins-03-icon {
+        width: 20px;
+        position: relative;
+        height: 20px;
+        overflow: hidden;
+        flex-shrink: 0;
+  }
+  .text {
+        position: relative;
+        line-height: 24px;
+        font-weight: 600;
+  }
+  .buttons {
+        border-radius: 32px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 2px;
+        gap: 4px;
+  }
+  .monthly-coins {
+        position: relative;
+        font-size: 12px;
+        line-height: 18px;
+        color: #848197;
+  }
+  .coins1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 4px;
+  }
+  .coins2 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 18px;
+        color: #848197;
+  }
+  .coins-parent {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 32px;
+        font-size: 16px;
+  }
+  .coins {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+        text-align: left;
+        font-size: 18px;
+        color: #edecf6;
+        font-family: 'Plus Jakarta Sans';
+  }
+
+  .line-div {
+    width: 100%;
+    position: relative;
+    border-top: 1px solid #41404f;
+    box-sizing: border-box;
+    height: 1px;
+}
+
+
+  
+  

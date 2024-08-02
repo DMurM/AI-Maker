@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
@@ -18,6 +20,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     // Ruta de editar perfil
     Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update'); //necesita ser revisado (work on process)
+    // Ruta de pagos perfil
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 });
 
 Route::get('/pricing/monthly', [PricingController::class, 'showMonthly'])->name('pricing.monthly');
