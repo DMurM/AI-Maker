@@ -33,4 +33,4 @@ Route::get('/password/reset', [AuthController::class, 'showPasswordResetForm'])-
 Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])->name('password.email');
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
-// Route::post('/generate_image', [ImageGenerationController::class, 'generate'])->name('generate_image');
+Route::post('/generate_image', [ImageGenerationController::class, 'generate'])->name('generate_image');

@@ -6,7 +6,7 @@
     <title>AI Image Generator</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/image_generation.css">
+    <link href="{{ asset('css/image_generation.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
@@ -26,11 +26,11 @@
                         <i class="fas fa-user"></i> My Profile
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('credits.index') }}">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('user_dashboard') }}">
                         <i class="fas fa-briefcase"></i> Assets
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('pricing.team') }}">
                         <i class="fas fa-users"></i> Team
@@ -39,11 +39,11 @@
             </ul>
             <hr class="sidebar-divider">
             <ul class="nav flex-column">
-                <!-- <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('image_generation') }}">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('generate_image') }}">
                         <i class="fas fa-image"></i> Image Generation
                     </a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">
                         <i class="fas fa-image"></i> Image Editing
