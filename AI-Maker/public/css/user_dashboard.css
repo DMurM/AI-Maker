@@ -84,7 +84,6 @@ section {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
   
   #sidebar .d-flex.flex-column.h-100 {
