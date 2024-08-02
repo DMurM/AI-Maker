@@ -113,7 +113,7 @@
 									@else
     									<img src="{{ asset('images/homepic.jpg') }}">
 									@endif
-									<form action="{{ route('profile.upload') }}" method="POST" enctype="multipart/form-data">
+									<form action="" method="POST" enctype="multipart/form-data">
 						    			@csrf
     									<div>
         									<label for="profile_picture">Subir Foto de Perfil:</label>
