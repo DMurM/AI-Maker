@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Profile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
 </head>
 
 <body>
@@ -97,32 +97,50 @@
                         <a href="#" class="label">My Referrals</a>
                     </div>
                 </div>
-                <div class="coins">
-                    <div class="input">
-                        <div class="current-coins">Current coins</div>
+                <div class="dashboard-container">
+                    <div class="current-coins">
+                        <h2>Current coins</h2>
+                        <div class="coin-info">
+                            <div class="coin-count">
+                                <h3>{{ Auth::user()->credit }}</h3>
+                                <p>Monthly Coins</p>
+                            </div>
+                            <div class="coin-divider">+</div>
+                            <div class="coin-count">
+                                <h3>0</h3>
+                                <p>Lifetime Coins</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="coins-parent">
-                        <div class="coins1">
-                            <div class="buttons">
-                                <img class="coins-03-icon" alt="" src="coins-03.svg">
-                                <div class="text">10</div>
-                            </div>
-                            <div class="monthly-coins">Monthly Coins</div>
-                        </div>
-                        <div class="coins2">
-                            <div class="current-coins">+</div>
-                        </div>
-                        <div class="coins1">
-                            <div class="buttons">
-                                <img class="coins-03-icon" alt="" src="coins-03.svg">
-                                <div class="text">0</div>
-                            </div>
-                            <div class="monthly-coins">Lifetime Coins</div>
+                    <div class="recent-transactions">
+                        <div class="header">
+                            <h2>Recent Transactions</h2>
+                            <button
+                                onclick="window.open('https://billing.stripe.com/p/login/test_00g9B3eoZ5dNewU5kk', '_blank')">View
+                                More</button>
                         </div>
                     </div>
                 </div>
                 <div class="line-div"></div>
-
+                <div>
+                    <div class="coins">
+                        <div class="input-parent">
+                            <div class="input">
+                                <div class="subscription">Subscription</div>
+                            </div>
+                            <div class="coins-wrapper">
+                                <div class="input">
+                                    <div class="free">Free</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <a href="https://buy.stripe.com/test_cN202JacueJM9OMbII" target="_blank">
+                                <img src="/images/payment/boton.png" alt="Botón de pago">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
