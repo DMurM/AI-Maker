@@ -18,42 +18,46 @@ class ImageGenerationController extends Controller
     }
 
     public function generateImage(Request $request)
-    {
-        $user = auth()->user();
-        if (!$user) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
-        }
+{
+    set_time_limit(80);  // Incrementa el tiempo de ejecución a 120 segundos
 
-        $useCredits = config('app.use_credits', false); // Configuración para usar créditos
-        $credit = $user->activeCredit; // Obtener el crédito activo
-        $response = [];
-
-        if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
-            return response()->json(['error' => 'Not enough credits'], 403);
-        }
-
-        if ($useCredits) {
-            $credit->deductCredits($this->imageGenerationCost);
-        }
-
-        try {
-            $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
-                                ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
-        
-            Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
-        
-            if ($apiResponse->successful()) {
-                $data = $apiResponse->json();
-                $imageUrls = $this->getImageUrls($data);
-                return response()->json(['image_urls' => $imageUrls, 'response_data' => $data], 200);
-            } else {
-                return response()->json(['error' => 'Image generation failed', 'response_data' => $apiResponse->json()], $apiResponse->status());
-            }
-        } catch (\Exception $e) {
-            Log::error('Image generation error: ' . $e->getMessage());
-            return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
-        }        
+    $user = auth()->user();
+    if (!$user) {
+        return response()->json(['error' => 'Unauthenticated'], 401);
     }
+
+    $useCredits = config('app.use_credits', false); // Configuración para usar créditos
+    $credit = $user->activeCredit; // Obtener el crédito activo
+    $response = [];
+
+    if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
+        return response()->json(['error' => 'Not enough credits'], 403);
+    }
+
+    if ($useCredits) {
+        $credit->deductCredits($this->imageGenerationCost);
+    }
+
+    try {
+        $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
+                            ->timeout(120)  // Tiempo de espera total en segundos
+                            ->connectTimeout(60)  // Tiempo de espera para establecer la conexión en segundos
+                            ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
+    
+        Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
+    
+        if ($apiResponse->successful()) {
+            $data = $apiResponse->json();
+            $imageUrls = $this->getImageUrls($data);
+            return response()->json(['image_urls' => $imageUrls, 'response_data' => $data], 200);
+        } else {
+            return response()->json(['error' => 'Image generation failed', 'response_data' => $apiResponse->json()], $apiResponse->status());
+        }
+    } catch (\Exception $e) {
+        Log::error('Image generation error: ' . $e->getMessage());
+        return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
+    }        
+}
 
     private function getRequestPayload(Request $request)
     {
@@ -134,7 +138,8 @@ class ImageGenerationController extends Controller
     {
         $urls = [];
         foreach ($data as $image) {
-            $urls[] = str_replace('127.0.0.1', '192.168.50.101', $image['base64'] ?? '');
+            $imageURL = str_replace('127.0.0.1', '192.168.50.101', $image['url'] ?? '');
+            $urls[] = $imageURL;
         }
         return $urls;
     }

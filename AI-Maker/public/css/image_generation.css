@@ -126,3 +126,10 @@ section {
     padding-bottom: 10px;
     border-bottom: 2px solid #41409f;
 }
+
+.img-thumbnail {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    background-color: #fff;
+}

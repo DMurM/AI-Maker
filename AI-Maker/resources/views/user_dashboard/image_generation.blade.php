@@ -139,10 +139,8 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col-md-12" id="generated-image">
-                                <!-- Generated image will be displayed here -->
-                            </div>
+                        <div class="row mt-4" id="generated-images-container">
+                            <!-- Aquí se insertarán las imágenes generadas -->
                         </div>
                     </div>
                 </div>
@@ -173,19 +171,21 @@
 
                 const result = await response.json();
 
-                const generatedImageDiv = document.getElementById('generated-image');
+                const generatedImagesContainer = document.getElementById('generated-images-container');
                 if (response.ok) {
+                    generatedImagesContainer.innerHTML = ''; 
                     if (result.image_urls) {
-                        generatedImageDiv.innerHTML = '';
                         result.image_urls.forEach(url => {
-                            generatedImageDiv.innerHTML +=
-                                `<img src="${url}" alt="Generated Image" class="img-fluid">`;
+                            const col = document.createElement('div');
+                            col.className = 'col-md-4'; 
+                            col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail">`;
+                            generatedImagesContainer.appendChild(col);
                         });
                     } else {
-                        generatedImageDiv.innerHTML = '<p>No image generated.</p>';
+                        generatedImagesContainer.innerHTML = '<p>No image generated.</p>';
                     }
                 } else {
-                    generatedImageDiv.innerHTML =
+                    generatedImagesContainer.innerHTML =
                         `<p>An error occurred while generating the image: ${result.error}</p>`;
                 }
             });
