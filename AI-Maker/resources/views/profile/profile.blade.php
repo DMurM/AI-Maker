@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Profile</title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
@@ -20,7 +21,7 @@
 					<div class="flex-grow-1">
 						<ul class="nav flex-column">
 							<li class="nav-item">
-								<a class="nav-link text-white d-flex align-items-center" href="index.php"
+								<a class="nav-link text-white d-flex align-items-center" href="{{ route('user_dashboard') }}"
 									id="home-link">
 									<img src="\images\home-05.png" class="icon" alt="">Home
 								</a>
@@ -67,7 +68,7 @@
 					</div>
 					<div class="profile-info p-3 mt-auto bg-dark">
 						<div class="d-flex flex-column align-items-start">
-							<p class="mb-1">{{ Auth::user()->name }}</p>
+							<p class="mb-1">{{ Auth::user()->full_name }}</p>
 							<p class="mb-2">{{ Auth::user()->email }}</p>
 							<a href="{{ route('logout') }}" class="btn btn-danger"
 								onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -90,48 +91,50 @@
 				</header>
 				<div class="tabs">
 					<div class="tab">
-						<a href="#" class="label">My Account</a>
+						<a class="label" href="{{ route('profile') }}">My Account</a>
 					</div>
 					<div class="tab">
-						<a href="#" class="label">Membership & Plans</a>
+						<a class="label" href="{{ route('payment') }}">Membership & Plans</a>
 					</div>
 					<div class="tab">
 						<a href="#" class="label">My Referrals</a>
-					</div>
-					<div class="tab">
-						<a href="#" class="label">Billing</a>
 					</div>
 				</div>
 				<div class="container mt-4">
 					<div class="card p-4">
 						<div class="card-body">
 							<form>
-								<div class="input">
-									<label for="profile-picture">Profile picture</label>
-									<div class="frame-parent">
-										<div class="jd-wrapper">
-											<div class="profile-picture">FotoPerfil</div>
-										</div>
-										<div class="buttons">
-											<div class="text-padding">
-												<input type="file" class="text" id="profile-picture"
-													aria-describedby="profilePictureLabel">
-											</div>
-											<img class="upload-01-icon" alt="" src="images\upload-01.svg">
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="username">Username</label>
-									<input type="text" class="form-control" id="username" placeholder="User"  
-									value= {{ Auth::user()->user_name }}>
-								</div>
-
-								<div class="form-group">
-									<label for="email">Email</label>
-									<input type="email" class="form-control" id="email" placeholder="Email"
-										value={{ Auth::user()->email }}>
-								</div>
+							<div class="input">
+    							<label for="profile-picture">Profile picture</label>
+    							<div class="frame-parent">
+								<div class="jd-wrapper">
+									@if(Auth::user()->profile_picture)
+    									<img src="{{ asset(Auth::user()->profile_picture) }}" alt="Foto de Perfil">
+									@else
+    									<img src="{{ asset('images/homepic.jpg') }}">
+									@endif
+									<form action="{{ route('profile.upload') }}" method="POST" enctype="multipart/form-data">
+						    			@csrf
+    									<div>
+        									<label for="profile_picture">Subir Foto de Perfil:</label>
+        									<input type="file" name="profile_picture" id="profile_picture" accept="image/*" required>
+    									</div>
+    									<button type="submit">Subir</button>
+									</form>
+            							<img class="upload-01-icon" alt="" src="images\upload-01.svg">
+        							</div>
+    							</div>
+							</div>
+							<div class="form-group">
+								<label for="username">Username</label>
+								<input type="text" class="form-control" id="username" placeholder="User"  
+								value= {{ Auth::user()->user_name }}>
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" class="form-control" id="email" placeholder="Email"
+									value={{ Auth::user()->email }}>
+							</div>
 
 								<div class="form-group">
 									<label for="firstName">First Name</label>

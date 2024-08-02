@@ -26,6 +26,7 @@
     <link href="{{ asset('css/components/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/join.css') }}" rel="stylesheet">
     <link href="{{ asset('css/partials/pricing.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials/faqs.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -63,28 +64,8 @@
                 </div>
             </section>
 
-            <section id="faqs" class="section">
-                <div class="container">
-                    <h2>FAQs</h2>
-                    <div class="faqs">
-                        <div class="faq">
-                            <h3>What is an AI art generator?</h3>
-                        </div>
-                        <div class="faq">
-                            <h3>How do I create AI generated art?</h3>
-                        </div>
-                        <div class="faq">
-                            <h3>Is AiTools’s AI art generator free to use?</h3>
-                        </div>
-                        <div class="faq">
-                            <h3>How do I create AI Generated Art?</h3>
-                        </div>
-                        <div class="faq">
-                            <h3>How can I use AI-generated art? Are there any copyright or licensing concerns?</h3>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            @include('partials.faqs')
+
         </main>
 
         <x-footer />

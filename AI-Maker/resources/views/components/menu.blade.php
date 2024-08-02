@@ -21,6 +21,8 @@
                                     <div class="section-item">AI Supermodel</div>
                                     <div class="section-item">AI Headshot Generator</div>
                                 </div>
+                            </div>
+                            <div class="dropdown-section">
                                 <div class="section-items">
                                     <div class="section-item">Sketch Rendering</div>
                                     <div class="section-item">Image Variation</div>

@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'name', 'lastname', 'email', 'password', 'plan_id'
+        'name', 'lastname', 'email', 'password', 'plan_id', 'profile_picture'
     ];
 
     protected $hidden = [
@@ -35,6 +35,11 @@ class User extends Authenticatable
         return $this->hasMany(Credit::class);
     }
 
+    public function activeCredit()
+    {
+        return $this->hasOne(Credit::class)->latest();
+    }
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
@@ -51,7 +56,6 @@ class User extends Authenticatable
         return self::create($data);
     }
 
-    // Guarda el nombre completo del usuario
     public function getFullNameAttribute()
     {
         return ucwords($this->name . ' ' . $this->lastname);

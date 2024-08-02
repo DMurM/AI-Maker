@@ -123,4 +123,11 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'use_credits' => env('USE_CREDITS', false),
+
+    'http' => [
+        'timeout' => 120,  // Tiempo de espera total en segundos
+        'connect_timeout' => 60,  // Tiempo de espera para establecer la conexión en segundos
+    ],
+
 ];
