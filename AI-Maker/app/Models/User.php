@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Team::class);
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+
     public static function createUser($data)
     {
         $data['password'] = bcrypt($data['password']);
@@ -64,5 +69,30 @@ class User extends Authenticatable
     public function getUserNameAttribute()
     {
         return ucfirst($this->name) . ucfirst($this->lastname);
+    }
+    
+    public static function adminCreateUser($data)
+    {
+        $data['password'] = Hash::make($data['password']);
+        $user = self::create($data);
+        $user->roles()->sync($data['roles']);
+        return $user;
+    }
+
+    public function updateUser($data)
+    {
+        if (!empty($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        $this->update($data);
+        $this->roles()->sync($data['roles']);
+    }
+
+    public function deleteUser()
+    {
+        $this->roles()->detach();
+        $this->delete();
     }
 }

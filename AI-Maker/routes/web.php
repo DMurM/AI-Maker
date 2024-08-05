@@ -1,26 +1,28 @@
 <?php
 
 use App\Http\Controllers\PaymentController;
-use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageGenerationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.admin_dashboard');
 });
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    // Ruta de perfil
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    // Ruta de editar perfil
-    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update'); //necesita ser revisado (work on process)
-    // Ruta de pagos perfil
+    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 });
 
@@ -38,3 +40,5 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate_image', [ImageGenerationController::class, 'generateImage'])->name('generate_image');
+
+Route::resource('users', UserController::class);
