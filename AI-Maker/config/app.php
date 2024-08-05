@@ -130,4 +130,8 @@ return [
         'connect_timeout' => 60,  // Tiempo de espera para establecer la conexión en segundos
     ],
 
+    'aliases' => [
+        // ...
+        'Stripe' => \App\Services\StripeService::class,
+    ]
 ];
