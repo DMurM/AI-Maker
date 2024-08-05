@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PaymentController2;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
@@ -22,8 +23,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
-    Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    //Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    //Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payment', [PaymentController2::class, 'showPaymentForm'])->name('payment.form');
+    Route::post('/process-payment', [PaymentController2::class, 'processPayment'])->name('process.payment');
+
+    Route::get('/payment/success', function () {
+        return view('payment.success');
+    })->name('payment.success');
+
+    Route::get('/payment/failure', function () {
+        return view('payment.failure');
+    })->name('payment.failure');
 });
 
 Route::get('/pricing/monthly', [PricingController::class, 'showMonthly'])->name('pricing.monthly');
@@ -40,5 +51,6 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate_image', [ImageGenerationController::class, 'generateImage'])->name('generate_image');
+
 
 Route::resource('users', UserController::class);

@@ -1,29 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans';
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-}
-
-.container-fluid {
-    padding: 0;
-}
-
-.row {
-    margin: 0;
+    background-color: #000;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
     color: #fff;
-    border: none;
-    border-radius: 24px;
     padding: 10px;
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;
-    margin-left: -10px;
 }
 
 .text-white {
@@ -34,12 +23,8 @@ body {
     background-color: #333;
     color: #fff;
     min-height: 100vh;
-    position: relative;
     padding-top: 60px;
     border-right: 2px solid #ddd;
-    padding-left: 10px;
-    padding-right: 10px;
-    box-sizing: border-box;
 }
 
 #sidebar .nav-item {
@@ -50,21 +35,14 @@ body {
     background-color: #575757;
 }
 
-#sidebar .nav-link img {
-    margin-right: 8px;
-}
-
 #sidebar .profile-info {
     background-color: #333;
     color: #fff;
     padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 #sidebar .profile-info p {
     margin: 0;
-    padding: 0;
     font-size: 16px;
 }
 
@@ -72,12 +50,11 @@ body {
     background-color: #41409f;
     color: #fff;
     border: none;
-    border-radius: 8px;
     padding: 10px;
     cursor: pointer;
     font-size: 14px;
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
 
 #sidebar .profile-info .btn:hover {
@@ -87,10 +64,9 @@ body {
 main {
     margin-left: 250px;
     padding: 20px;
-    background-color: #16151A;
+    background-color: #000;
     height: 100vh;
     overflow-y: auto;
-    transition: margin-left 0.3s;
     color: #fff;
 }
 
@@ -99,7 +75,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #41409f;
+    background-color: #000;
     color: #fff;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
@@ -110,21 +86,13 @@ header h1 {
     margin: 0;
 }
 
+header p {
+    font-size: 16px;
+}
+
 header .btn-group {
     display: flex;
     align-items: center;
-}
-
-section {
-    margin-bottom: 30px;
-}
-
-.section-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-    position: relative;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #41409f;
 }
 
 .img-thumbnail {
@@ -134,7 +102,6 @@ section {
     background-color: #fff;
 }
 
-/* Output and Aspect Ratio Styling */
 .form-check-input.output-circle,
 .form-check-input.aspect-circle {
     position: absolute;
@@ -157,26 +124,22 @@ section {
     line-height: 40px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
-    position: relative;
 }
 
 .form-check-input.output-circle:checked + .output-label,
 .form-check-input.aspect-circle:checked + .aspect-label {
     background-color: #888;
     border-color: #888;
-    color: #fff;
 }
 
-/* Specific Styling for Aspect Ratio */
 .form-check-label.aspect-label {
-    width: 60px; /* Adjust width as needed */
-    height: 40px; /* Adjust height as needed */
-    border-radius: 20px; /* Adjust border-radius for oval shape */
-    font-size: 14px; /* Adjust font-size as needed */
-    line-height: 40px; /* Adjust line-height as needed */
+    width: 60px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 40px;
 }
 
-/* Styling for Style and Prompt */
 #style,
 #prompt {
     background-color: #333;
@@ -188,10 +151,45 @@ section {
 #style:focus,
 #prompt:focus {
     background-color: #444;
-    color: #fff;
     border-color: #888;
 }
 
 .form-control::placeholder {
     color: #aaa;
+}
+
+#generated-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.generated-image-container {
+    flex: 1 1 40%; /* Adjust to occupy more space */
+    max-width: 45%; /* Adjust to occupy more space */
+    display: flex;
+    justify-content: center;
+}
+
+.generated-image-container img {
+    width: 100%;
+    height: auto;
+    height: 90%;
+}
+
+/* Flexbox for prompt and config */
+#prompt-container,
+#config-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#spinner {
+    display: none;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto;
 }
