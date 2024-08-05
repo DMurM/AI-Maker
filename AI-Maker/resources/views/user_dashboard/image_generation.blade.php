@@ -130,8 +130,7 @@
                                     <div class="form-group">
                                         <label for="style">Style</label>
                                         <select class="form-control" id="style" name="style">
-                                            <option value="none">None</option>
-                                            <!-- Add more styles as options here -->
+                                            <option value="none">Realistic</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

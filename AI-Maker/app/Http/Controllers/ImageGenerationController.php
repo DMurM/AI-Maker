@@ -10,7 +10,7 @@ use App\Models\Credit;
 
 class ImageGenerationController extends Controller
 {
-    protected $imageGenerationCost = 0; // Costo de generación de imágenes configurado en 0
+    protected $imageGenerationCost = 0;
 
     public function showForm()
     {
@@ -18,56 +18,68 @@ class ImageGenerationController extends Controller
     }
 
     public function generateImage(Request $request)
-{
-    set_time_limit(80);  // Incrementa el tiempo de ejecución a 120 segundos
+    {
+        set_time_limit(90); 
 
-    $user = auth()->user();
-    if (!$user) {
-        return response()->json(['error' => 'Unauthenticated'], 401);
-    }
-
-    $useCredits = config('app.use_credits', false); // Configuración para usar créditos
-    $credit = $user->activeCredit; // Obtener el crédito activo
-    $response = [];
-
-    if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
-        return response()->json(['error' => 'Not enough credits'], 403);
-    }
-
-    if ($useCredits) {
-        $credit->deductCredits($this->imageGenerationCost);
-    }
-
-    try {
-        $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
-                            ->timeout(120)  // Tiempo de espera total en segundos
-                            ->connectTimeout(60)  // Tiempo de espera para establecer la conexión en segundos
-                            ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
-    
-        Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
-    
-        if ($apiResponse->successful()) {
-            $data = $apiResponse->json();
-            $imageUrls = $this->getImageUrls($data);
-            return response()->json(['image_urls' => $imageUrls, 'response_data' => $data], 200);
-        } else {
-            return response()->json(['error' => 'Image generation failed', 'response_data' => $apiResponse->json()], $apiResponse->status());
+        $user = auth()->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
         }
-    } catch (\Exception $e) {
-        Log::error('Image generation error: ' . $e->getMessage());
-        return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
-    }        
-}
+
+        $useCredits = config('app.use_credits', false); // Configuración para usar créditos
+        $credit = $user->activeCredit; // Obtener el crédito activo
+        $response = [];
+
+        if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
+            return response()->json(['error' => 'Not enough credits'], 403);
+        }
+
+        if ($useCredits) {
+            $credit->deductCredits($this->imageGenerationCost);
+        }
+
+        try {
+            $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
+                                ->timeout(120)  // Tiempo de espera total en segundos
+                                ->connectTimeout(60)  // Tiempo de espera para establecer la conexión en segundos
+                                ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
+        
+            Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
+        
+            if ($apiResponse->successful()) {
+                $data = $apiResponse->json();
+                $imageUrls = $this->getImageUrls($data);
+                return response()->json(['image_urls' => $imageUrls, 'response_data' => $data], 200);
+            } else {
+                return response()->json(['error' => 'Image generation failed', 'response_data' => $apiResponse->json()], $apiResponse->status());
+            }
+        } catch (\Exception $e) {
+            Log::error('Image generation error: ' . $e->getMessage());
+            return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
+        }        
+    }
 
     private function getRequestPayload(Request $request)
     {
+        // Mapea las resoluciones a los valores que espera tu API
+        $aspectRatios = [
+            '1:1' => '1152*1152',
+            '3:4' => '1152*1536',
+            '4:3' => '1536*1152',
+            '16:9' => '1920*1080'
+        ];
+
+        // Obtiene la resolución seleccionada desde el formulario
+        $aspectRatio = $request->input('aspect-ratio', '1:1');
+        $resolution = $aspectRatios[$aspectRatio] ?? '1152*896'; // Valor por defecto si la relación no está en el mapa
+
         return [
             'prompt' => $request->input('prompt'),
             'negative_prompt' => '',
             'style_selections' => ['Fooocus V2', 'Fooocus Enhance', 'Fooocus Sharp'],
             'performance_selection' => 'Speed',
-            'aspect_ratios_selection' => '1152*896',
-            'image_number' => $request->input('outputs', 1), // Obtener el número de salidas desde el formulario
+            'aspect_ratios_selection' => $resolution, // Usa la resolución seleccionada
+            'image_number' => $request->input('outputs', 1),
             'image_seed' => -1,
             'sharpness' => 2,
             'guidance_scale' => 4,
