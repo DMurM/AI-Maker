@@ -77,8 +77,7 @@
                 </div>
             </nav>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <header
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">AI Image Generator</h1>
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credits }}</button>
@@ -86,17 +85,18 @@
                 </header>
                 <div class="section mb-4">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-8">
+                        <div class="row d-flex">
+                            <div class="col-md-10" id="prompt-container">
                                 <form id="image-generation-form" method="POST" action="{{ route('generate_image') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="prompt">Describe an image you want to create:</label>
-                                        <textarea class="form-control" id="prompt" name="prompt" rows="6"
-                                            placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees swaying, under a dramatic stormy sky."></textarea>
+                                        <textarea class="form-control" id="prompt" name="prompt" rows="3"
+                                        placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees swaying, under a dramatic stormy sky."
+                                            style="width: 100%; max-width: 100%;"></textarea>
                                     </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-4" id="config-container">
                                 <div class="form-group">
                                     <label for="aspect-ratio">Aspect ratio</label>
                                     <div class="d-flex flex-row align-items-center justify-content-between">
@@ -158,6 +158,13 @@
                     </form>
                     </div>
                     <div class="row mt-4" id="generated-images-container">
+                    </div>
+                    <div class="row mt-4 justify-content-center" id="spinner-container" style="display: none;">
+                        <div class="col-auto">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>

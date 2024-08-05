@@ -137,7 +137,7 @@ section {
 /* Output and Aspect Ratio Styling */
 .form-check-input.output-circle,
 .form-check-input.aspect-circle {
-    position: absolute;
+    position: right;
     opacity: 0;
 }
 
@@ -194,4 +194,44 @@ section {
 
 .form-control::placeholder {
     color: #aaa;
+}
+
+/* Flexbox for generated images */
+#generated-images-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#generated-images-container .col {
+    flex: 1 1 50%; /* Default to 50% width */
+    padding: 10px;
+}
+
+#generated-images-container .col img {
+    width: 100%;
+    height: auto;
+}
+
+/* Flexbox for prompt and config */
+#prompt-container,
+#config-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#prompt-container {
+    margin-right: 20px;
+}
+
+/* Spinner styling */
+#spinner-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#spinner-container .spinner-border {
+    width: 3rem;
+    height: 3rem;
 }
