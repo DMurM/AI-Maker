@@ -85,63 +85,79 @@
                     </div>
                 </header>
                 <div class="section mb-4">
-                    <h2 class="section-title">Generate Images with AI</h2>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-8">
                                 <form id="image-generation-form" method="POST" action="{{ route('generate_image') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="prompt">Describe an image you want to create:</label>
-                                        <textarea class="form-control" id="prompt" name="prompt" rows="4"
+                                        <textarea class="form-control" id="prompt" name="prompt" rows="6"
                                             placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees swaying, under a dramatic stormy sky."></textarea>
                                     </div>
-                                    <div class="form-row align-items-end">
-                                        <div class="form-group col-md-3">
-                                            <label for="aspect-ratio">Aspect ratio</label>
-                                            <div class="d-flex justify-content-between">
-                                                <label class="radio-inline"><input type="radio" name="aspect-ratio" checked
-                                                        value="1:1"> 1:1</label>
-                                                <label class="radio-inline"><input type="radio" name="aspect-ratio"
-                                                        value="3:4"> 3:4</label>
-                                                <label class="radio-inline"><input type="radio" name="aspect-ratio"
-                                                        value="4:3"> 4:3</label>
-                                                <label class="radio-inline"><input type="radio" name="aspect-ratio"
-                                                        value="16:9"> 16:9</label>
-                                            </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="aspect-ratio">Aspect ratio</label>
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                        <div class="form-check">
+                                            <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect1" value="1:1" checked>
+                                            <label class="form-check-label aspect-label" for="aspect1">1:1</label>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="style">Style</label>
-                                            <select class="form-control" id="style" name="style">
-                                                <option value="none">None</option>
-                                                <!-- Add more styles as options here -->
-                                            </select>
+                                        <div class="form-check">
+                                            <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect2" value="3:4">
+                                            <label class="form-check-label aspect-label" for="aspect2">3:4</label>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                            <label for="outputs">Number of outputs</label>
-                                            <div class="d-flex justify-content-between">
-                                                <label class="radio-inline"><input type="radio" name="outputs"
-                                                        value="1"> 1</label>
-                                                <label class="radio-inline"><input type="radio" name="outputs"checked
-                                                        value="2"> 2</label>
-                                                <label class="radio-inline"><input type="radio" name="outputs"
-                                                        value="3"> 3</label>
-                                                <label class="radio-inline"><input type="radio" name="outputs"
-                                                        value="4"> 4</label>
-                                                <label class="radio-inline"><input type="radio" name="outputs"
-                                                        value="5"> 5</label>
-                                            </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect3" value="4:3">
+                                            <label class="form-check-label aspect-label" for="aspect3">4:3</label>
                                         </div>
-                                        <div class="form-group col-md-3">
-                                            <button type="submit" class="btn btn-primary btn-block">Generate</button>
+                                        <div class="form-check">
+                                            <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect4" value="16:9">
+                                            <label class="form-check-label aspect-label" for="aspect4">16:9</label>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+                                <div class="form-group">
+                                    <label for="style">Style</label>
+                                    <select class="form-control" id="style" name="style">
+                                        <option value="none">None</option>
+                                        <!-- Add more styles as options here -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="outputs">Number of outputs</label>
+                                    <div class="d-flex flex-row align-items-center justify-content-between">
+                                        <div class="form-check">
+                                            <input class="form-check-input output-circle" type="radio" name="outputs" id="output1" value="1">
+                                            <label class="form-check-label output-label" for="output1">1</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input output-circle" type="radio" name="outputs" id="output2" value="2" checked>
+                                            <label class="form-check-label output-label" for="output2">2</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input output-circle" type="radio" name="outputs" id="output3" value="3">
+                                            <label class="form-check-label output-label" for="output3">3</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input output-circle" type="radio" name="outputs" id="output4" value="4">
+                                            <label class="form-check-label output-label" for="output4">4</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input output-circle" type="radio" name="outputs" id="output5" value="5">
+                                            <label class="form-check-label output-label" for="output5">5</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Generate</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="row mt-4" id="generated-images-container">
-                            <!-- Aquí se insertarán las imágenes generadas -->
-                        </div>
+                    </form>
+                    </div>
+                    <div class="row mt-4" id="generated-images-container">
                     </div>
                 </div>
             </main>

@@ -30,60 +30,6 @@ body {
     color: white;
 }
 
-#sidebar {
-    background-color: #333;
-    color: #fff;
-    min-height: 100vh;
-    position: relative;
-    padding-top: 60px;
-    border-right: 2px solid #ddd;
-    padding-left: 10px;
-    padding-right: 10px;
-    box-sizing: border-box;
-}
-
-#sidebar .nav-item {
-    margin-bottom: 15px;
-}
-
-#sidebar .nav-link:hover {
-    background-color: #575757;
-}
-
-#sidebar .nav-link img {
-    margin-right: 8px;
-}
-
-#sidebar .profile-info {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#sidebar .profile-info p {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-}
-
-#sidebar .profile-info .btn {
-    background-color: #41409f;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100%;
-    text-align: center;
-}
-
-#sidebar .profile-info .btn:hover {
-    background-color: #0056b3;
-}
-
 main {
     margin-left: 250px;
     padding: 20px;
@@ -126,3 +72,83 @@ section {
     padding-bottom: 10px;
     border-bottom: 2px solid #41409f;
 }
+
+/* sidebar styles */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #sidebar .d-flex.flex-column.h-100 {
+    height: 100%;
+  }
+  
+  #sidebar .flex-grow-1 {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  #sidebar ul.nav.flex-column {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #sidebar ul.nav.flex-column li.nav-item {
+    margin-bottom: 10px;
+  }
+  
+  #sidebar ul.nav.flex-column li.nav-item a.nav-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  #sidebar ul.nav.flex-column li.nav-item a.nav-link:hover {
+    background-color: #444;
+  }
+  
+  #sidebar ul.nav.flex-column li.nav-item a.nav-link img.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  #sidebar .line-div {
+    height: 1px;
+    background-color: #41409f;
+    margin: 20px 0;
+  }
+  
+  #sidebar .profile-info {
+    background-color: #333;
+    padding: 20px;
+    border-top: 1px solid #555;
+  }
+  
+  #sidebar .profile-info p {
+    margin-bottom: 10px;
+  }
+  
+  #sidebar .profile-info a.btn.btn-danger {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #41409f;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  #sidebar .profile-info a.btn.btn-danger:hover {
+    background-color: #c82333;
+  }
