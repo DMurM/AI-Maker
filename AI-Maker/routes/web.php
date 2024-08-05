@@ -9,13 +9,13 @@ use App\Http\Controllers\ImageGenerationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    return view('admin.admin_dashboard');
+    return view('welcome');
 });
+
+// Route::get('/', function () {
+//     return view('admin.admin_dashboard');
+// });
 
 
 Route::middleware(['auth'])->group(function () {
