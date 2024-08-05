@@ -18,8 +18,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     // Ruta de perfil
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    // Ruta de editar perfil
-    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update'); //necesita ser revisado (work on process)
     // Ruta de pagos perfil
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
 });
