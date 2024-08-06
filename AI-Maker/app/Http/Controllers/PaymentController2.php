@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Illuminate\Support\Facades\Config;
-use App\Models\User;
 
 class PaymentController2 extends Controller
 {
@@ -17,16 +16,16 @@ class PaymentController2 extends Controller
 
     public function processPayment(Request $request)
     {
-        $stripeApiKey = Config::get('services.stripe.key');
         $stripeApiSecret = Config::get('services.stripe.secret');
         Stripe::setApiKey($stripeApiSecret);
-        $stripeToken = $request->stripeToken;
+
+        $stripeToken = $request->input('stripeToken');
 
         try {
             Charge::create([
                 'amount' => 1000, // amount in cents
                 'currency' => 'usd',
-                'customer' => $stripeToken,
+                'source' => $stripeToken,
                 'description' => 'Test charge',
             ]);
 
