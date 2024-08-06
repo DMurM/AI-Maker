@@ -103,7 +103,7 @@ header .btn-group {
 }
 
 .form-check-input.output-circle,
-.form-check-input.aspect-circle {
+.form-check-input.aspect-radio {
     position: absolute;
     opacity: 0;
 }
@@ -113,31 +113,54 @@ header .btn-group {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
+    width: 60px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 10px;
     border: 2px solid #333;
     background-color: #444;
     color: #fff;
     font-size: 16px;
     text-align: center;
-    line-height: 40px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
 .form-check-input.output-circle:checked + .output-label,
-.form-check-input.aspect-circle:checked + .aspect-label {
+.form-check-input.aspect-radio:checked + .aspect-label {
     background-color: #888;
     border-color: #888;
 }
 
-.form-check-label.aspect-label {
-    width: 60px;
+.form-check-input.aspect-radio:checked + .aspect-label .aspect-display {
+    background-color: #fff;
+    border-color: #000;
+}
+
+.aspect-display {
+    width: 40px;
     height: 40px;
-    border-radius: 20px;
-    font-size: 14px;
-    line-height: 40px;
+    background-color: #666;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.aspect-1-1 {
+    padding-bottom: 56%;
+}
+
+.aspect-3-4 {
+    padding-bottom: 75%;
+}
+
+.aspect-4-3 {
+    padding-bottom: 25%;
+}
+
+.aspect-16-9 {
+    padding-bottom: 133.33%;
 }
 
 #style,
@@ -167,8 +190,8 @@ header .btn-group {
 }
 
 .generated-image-container {
-    flex: 1 1 40%; /* Adjust to occupy more space */
-    max-width: 45%; /* Adjust to occupy more space */
+    flex: 1 1 40%;
+    max-width: 45%;
     display: flex;
     justify-content: center;
 }
@@ -176,10 +199,8 @@ header .btn-group {
 .generated-image-container img {
     width: 100%;
     height: auto;
-    height: 90%;
 }
 
-/* Flexbox for prompt and config */
 #prompt-container,
 #config-container {
     display: flex;
