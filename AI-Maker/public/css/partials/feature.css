@@ -61,3 +61,29 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     margin-top: 12%;
 }
+
+.feature-background {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.feature-shape {
+    border: 1px solid #9393EF;
+    position: absolute;
+}
+
+.feature-shape.shape1 { width: 32px; height: 32px; left: 90%; top: 5%; }
+.feature-shape.shape2 { width: 32px; height: 32px; left: 65%; top: 80%; }
+.feature-shape.shape3 { width: 80.65px; height: 80.65px; left: 60%; top: 30%; transform: rotate(-27.11deg); background: white; }
+.feature-shape.shape4 { width: 45px; height: 45px; left: 75%; top: 60%; transform: rotate(15deg); background: white; }
+.feature-shape.shape5 { width: 86px; height: 86px; left: 35%; top: 15%; background: white; }
+.feature-shape.shape6 { width: 45px; height: 45px; left: 40%; top: 25%; transform: rotate(-35.29deg); background: white; }
+.feature-shape.shape7 { width: 47px; height: 47px; left: 25%; top: 70%; }
+.feature-shape.shape8 { width: 25px; height: 25px; left: 15%; top: 55%; }
+.feature-shape.shape9 { width: 105px; height: 105px; left: 5%; top: 20%; background: white; }
+.feature-shape.shape10 { width: 60px; height: 60px; left: 50%; top: 25%; transform: rotate(45deg); background: white; }

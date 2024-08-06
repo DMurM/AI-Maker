@@ -107,7 +107,7 @@
     width: 75%;
     position: relative;
     border-radius: 64px;
-    background-color: #f8f8f8;
+    /* background-color: #f8f8f8; */
     display: flex;
     flex-direction: column;
     align-items: center;

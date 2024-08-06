@@ -1,4 +1,16 @@
 <section class="features" aria-labelledby="features-heading">
+    <div class="feature-background">
+        <div class="feature-shape shape1"></div>
+        <div class="feature-shape shape2"></div>
+        <div class="feature-shape shape3"></div>
+        <div class="feature-shape shape4"></div>
+        <div class="feature-shape shape5"></div>
+        <div class="feature-shape shape6"></div>
+        <div class="feature-shape shape7"></div>
+        <div class="feature-shape shape8"></div>
+        <div class="feature-shape shape9"></div>
+        <div class="feature-shape shape10"></div>
+    </div>
     <h2 id="features-heading" class="visually-hidden">Features</h2>
     <div class="frame-parent-feature">
         <div class="icon-wrapper">
