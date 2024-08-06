@@ -66,8 +66,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <p class="mb-1">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
                         <p class="mb-2">{{ Auth::user()->email }}</p>
-                        <a href="#" class="btn btn-danger"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="#" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -94,8 +93,7 @@
                                 <div class="col-md-7 col-lg-8" id="prompt-container">
                                     <div class="form-group">
                                         <label for="prompt">Describe an image you want to create:</label>
-                                        <textarea class="form-control" id="prompt" name="prompt" rows="2"
-                                            placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees swaying, under a dramatic stormy sky."></textarea>
+                                        <textarea class="form-control" id="prompt" name="prompt" rows="2" placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees swaying, under a dramatic stormy sky."></textarea>
                                     </div>
                                     <div class="d-flex justify-content-center mb-2">
                                         <div class="spinner-border" role="status" id="spinner">
@@ -110,20 +108,28 @@
                                         <label for="aspect-ratio">Aspect ratio</label>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
                                             <div class="form-check">
-                                                <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect1" value="1:1" checked>
-                                                <label class="form-check-label aspect-label" for="aspect1">1:1</label>
+                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect1" value="1:1" checked>
+                                                <label class="form-check-label aspect-label" for="aspect1">
+                                                    <div class="aspect-display aspect-1-1"></div>
+                                                </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect2" value="3:4">
-                                                <label class="form-check-label aspect-label" for="aspect2">3:4</label>
+                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect2" value="3:4">
+                                                <label class="form-check-label aspect-label" for="aspect2">
+                                                    <div class="aspect-display aspect-3-4"></div>
+                                                </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect3" value="4:3">
-                                                <label class="form-check-label aspect-label" for="aspect3">4:3</label>
+                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect3" value="4:3">
+                                                <label class="form-check-label aspect-label" for="aspect3">
+                                                    <div class="aspect-display aspect-4-3"></div>
+                                                </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input aspect-circle" type="radio" name="aspect-ratio" id="aspect4" value="16:9">
-                                                <label class="form-check-label aspect-label" for="aspect4">16:9</label>
+                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect4" value="16:9">
+                                                <label class="form-check-label aspect-label" for="aspect4">
+                                                    <div class="aspect-display aspect-16-9"></div>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -187,19 +193,15 @@
             form.addEventListener('submit', async function(event) {
                 event.preventDefault();
 
-                // If the button is disabled, return early
                 if (generateButton.disabled) {
                     return;
                 }
 
-                // Disable the button to prevent multiple submissions
                 generateButton.disabled = true;
 
-                // Remove the error message if it exists
                 errorMessage.style.display = 'none';
                 errorMessage.textContent = '';
 
-                // Show the spinner
                 spinner.style.display = 'block';
 
                 const formData = new FormData(form);
@@ -214,7 +216,6 @@
 
                 const result = await response.json();
 
-                // Hide the spinner
                 spinner.style.display = 'none';
 
                 const generatedImagesContainer = document.getElementById('generated-images-container');
@@ -231,7 +232,6 @@
                     errorMessage.style.display = 'block';
                 }
 
-                // Re-enable the button after processing
                 generateButton.disabled = false;
             });
         });
