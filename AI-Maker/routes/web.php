@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PaymentController2;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AiToolsController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PricingController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PaymentController2;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageGenerationController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,6 +42,11 @@ Route::get('/pricing/monthly', [PricingController::class, 'showMonthly'])->name(
 Route::get('/pricing/yearly', [PricingController::class, 'showYearly'])->name('pricing.yearly');
 Route::get('/pricing/team', [PricingController::class, 'showTeam'])->name('pricing.team');
 Route::get('/pricing/coins', [PricingController::class, 'showCoins'])->name('pricing.coins');
+
+Route::get('/ai-tools/image-generator', [AiToolsController::class, 'showImageGenerator'])->name('ai-tools.image-generator');
+Route::get('/ai-tools/background-remover', [AiToolsController::class, 'showBackgroundRemove'])->name('ai-tools.background-remover');
+Route::get('/ai-tools/image-to-video', [AiToolsController::class, 'showImageToVideo'])->name('ai-tools.image-to-video');
+Route::get('/ai-tools/text-to-speech', [AiToolsController::class, 'showTextToSpeech'])->name('ai-tools.text-to-speech');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

@@ -1,5 +1,17 @@
 <section>
     <div class="container">
+        <div class="faqs-background">
+            <div class="faqs-shape shape1"></div>
+            <div class="faqs-shape shape2"></div>
+            <div class="faqs-shape shape3"></div>
+            <div class="faqs-shape shape4"></div>
+            <div class="faqs-shape shape5"></div>
+            <div class="faqs-shape shape6"></div>
+            <div class="faqs-shape shape7"></div>
+            <div class="faqs-shape shape8"></div>
+            <div class="faqs-shape shape9"></div>
+            <div class="faqs-shape shape10"></div>
+        </div>
         <div class="faqs">
             <div class="frame-parent-faqs">
                 <div class="what-is-an-ai-art-generator-parent">

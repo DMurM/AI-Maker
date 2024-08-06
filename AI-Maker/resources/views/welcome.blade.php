@@ -41,9 +41,41 @@
         <div id="hero" class="section">
             @include('partials.hero')
         </div>
-        <div id="ai-tools" class="section hidden">
-            @include('partials.ai-tools')
+        <div id="ai-tools-background" class="hero-background hidden">
+            <div class="shape shape1"></div>
+            <div class="shape shape2"></div>
+            <div class="shape shape3"></div>
+            <div class="shape shape4"></div>
+            <div class="shape shape5"></div>
+            <div class="shape shape6"></div>
+            <div class="shape shape7"></div>
+            <div class="shape shape8"></div>
+            <div class="shape shape9"></div>
+            <div class="shape shape10"></div>
         </div>
+        <div id="ai-tools" class="section hidden">
+            <div class="container ai-tools-container">
+                <h2 id="ai-tools-heading">Where imagination meets innovation.</h2>
+                <p id="ai-tools-description">Unlock your creative potential and transform your ideas into stunning
+                    realities with the power of AI.</p>
+                <div id="tools" class="tools hidden">
+                    <div class="tool-buttons">
+                        <button id="btn-image-generator" class="tool-button">AI Image Generator</button>
+                        <button id="btn-background-remover" class="tool-button active">Background Remover</button>
+                        <button id="btn-image-to-video" class="tool-button">Image to Video</button>
+                        <button id="btn-text-to-speech" class="tool-button">Text to Speech</button>
+                        <button class="see-all-tools" aria-label="See all tools">
+                            See all tools
+                            <span class="arrow"></span>
+                        </button>
+                    </div>
+                    <div id="tools-container">
+                        @include('partials.ai-tools-background-remover')
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="recent-creations" class="section hidden">
             @include('partials.recent-creations')
         </div>
@@ -54,6 +86,18 @@
             @include('partials.join')
         </div>
         <div id="pricing" class="section hidden">
+            <div class="hero-background">
+                <div class="shape shape1"></div>
+                <div class="shape shape2"></div>
+                <div class="shape shape3"></div>
+                <div class="shape shape4"></div>
+                <div class="shape shape5"></div>
+                <div class="shape shape6"></div>
+                <div class="shape shape7"></div>
+                <div class="shape shape8"></div>
+                <div class="shape shape9"></div>
+                <div class="shape shape10"></div>
+            </div>
             <div class="container">
                 <div class="toggle-buttons">
                     <button id="btn-monthly" class="toggle-button active">Monthly</button>
@@ -77,7 +121,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script src="{{ asset('js/home/changeSection.js') }}" defer></script>
+    <script src="{{ asset('js/home/changeSectionandAnimationTools.js') }}" defer></script>
+    <script src="{{ asset('js/home/aitools.js') }}" defer></script>
     <script src="{{ asset('js/home/pricing.js') }}" defer></script>
     <script src="{{ asset('js/home/menu.js') }}" defer></script>
     <script src="{{ asset('js/home/loginRedirect.js') }}" defer></script>
