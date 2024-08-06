@@ -1,25 +1,40 @@
 <?php
 
 use App\Http\Controllers\PaymentController;
-use Faker\Provider\ar_EG\Payment;
+use App\Http\Controllers\PaymentController2;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageGenerationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/', function () {
+//     return view('admin.admin_dashboard');
+// });
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    // Ruta de perfil
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-    // Ruta de pagos perfil
-    Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    //Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    //Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payment', [PaymentController2::class, 'showPaymentForm'])->name('payment.form');
+    Route::post('/process-payment', [PaymentController2::class, 'processPayment'])->name('process.payment');
+
+    Route::get('/payment/success', function () {
+        return view('payment.success');
+    })->name('payment.success');
+
+    Route::get('/payment/failure', function () {
+        return view('payment.failure');
+    })->name('payment.failure');
 });
 
 Route::get('/pricing/monthly', [PricingController::class, 'showMonthly'])->name('pricing.monthly');
@@ -36,3 +51,6 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate_image', [ImageGenerationController::class, 'generateImage'])->name('generate_image');
+
+
+Route::resource('users', UserController::class);

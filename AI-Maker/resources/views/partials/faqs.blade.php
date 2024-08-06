@@ -1,6 +1,5 @@
-<section id="faqs" class="section">
+<section>
     <div class="container">
-        <h2 class="faqs1">FAQs</h2>
         <div class="faqs">
             <div class="frame-parent-faqs">
                 <div class="what-is-an-ai-art-generator-parent">

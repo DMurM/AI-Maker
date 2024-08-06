@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     gap: 64px;
+    overflow: hidden; /* Evita que aparezca la barra de desplazamiento lateral */
 }
 
 .coin-header {
@@ -54,6 +55,7 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    overflow: hidden; /* Evita que aparezca la barra de desplazamiento lateral */
 }
 
 .coin-plan {
