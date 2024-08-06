@@ -1,4 +1,4 @@
-<section id="ai-tools" class="section" aria-labelledby="ai-tools-heading">
+<section aria-labelledby="ai-tools-heading">
     <div class="container ai-tools-container">
         <h2 id="ai-tools-heading">Where imagination meets innovation.</h2>
         <p>Unlock your creative potential and transform your ideas into stunning realities with the power of AI.</p>
@@ -14,4 +14,7 @@
         </div>
         <img class="tool-image" src="{{ asset('images/home_01.png') }}" alt="Example of AI tool output">
     </div>
+    <script>
+        console.log('Partial ai-tools cargado');
+    </script>
 </section>

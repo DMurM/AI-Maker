@@ -1,4 +1,4 @@
-<section id="pricing" class="section">
+<section class="section">
     <div class="container">
         <div class="pricing-plans">
             <!-- Plan Free -->

@@ -1,11 +1,8 @@
-.section {
-    padding: 40px 0;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    overflow: hidden; /* Evita que aparezca la barra de desplazamiento lateral */
 }
 
 /* Header styles */
@@ -51,6 +48,8 @@ h2 {
     align-items: flex-start;
     gap: 24px;
     margin-top: 40px;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias líneas si es necesario */
+    overflow: hidden; /* Evita que aparezca la barra de desplazamiento lateral */
 }
 
 .plan {
@@ -59,7 +58,7 @@ h2 {
     border: 2px solid transparent;
     padding: 32px;
     text-align: center;
-    flex: 1;
+    flex: 1 1 200px; /* Ajuste para que se adapten al contenedor */
     transition: border-color 0.3s;
 }
 
