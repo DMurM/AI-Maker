@@ -75,9 +75,50 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="style">Style</label>
-                                        <select class="form-control" id="style" name="style">
-                                            <option value="none">Realistic</option>
-                                        </select>
+                                        <div class="d-flex flex-wrap" id="style-options">
+                                            <div class="form-check style-option">
+                                                <input class="form-check-input" type="radio" name="style" id="style-realistic" value="realistic" checked>
+                                                <label class="form-check-label" for="style-realistic">
+                                                    <img src="{{ asset('images/styles/Realistic.png') }}" alt="Realistic" class="img-fluid img-thumbnail">
+                                                    <div>Realistic</div>
+                                                </label>
+                                            </div>
+                                            <div class="form-check style-option">
+                                                <input class="form-check-input" type="radio" name="style" id="style-anime" value="anime">
+                                                <label class="form-check-label" for="style-anime">
+                                                    <img src="{{ asset('images/styles/Anime.png') }}" alt="Anime" class="img-fluid img-thumbnail">
+                                                    <div>Anime</div>
+                                                </label>
+                                            </div>
+                                            <div class="form-check style-option">
+                                                <input class="form-check-input" type="radio" name="style" id="style-urban" value="automotive">
+                                                <label class="form-check-label" for="style-urban">
+                                                    <img src="{{ asset('images/styles/Car.png') }}" alt="Automotive" class="img-fluid img-thumbnail">
+                                                    <div>Automotive</div>
+                                                </label>
+                                            </div>
+                                            <div class="form-check style-option">
+                                                <input class="form-check-input" type="radio" name="style" id="style-pop" value="pop">
+                                                <label class="form-check-label" for="style-pop">
+                                                    <img src="{{ asset('images/styles/Pop.png') }}" alt="Pop" class="img-fluid img-thumbnail">
+                                                    <div>Pop</div>
+                                                </label>
+                                            </div>
+                                            <div class="form-check style-option">
+                                                <input class="form-check-input" type="radio" name="style" id="style-sai" value="sai">
+                                                <label class="form-check-label" for="style-sai">
+                                                    <img src="{{ asset('images/styles/Sai.png') }}" alt="Sai" class="img-fluid img-thumbnail">
+                                                    <div>Sai</div>
+                                                </label>
+                                            </div>
+                                            <div class="form-check style-option">
+                                                <input class="form-check-input" type="radio" name="style" id="style-logo" value="logo">
+                                                <label class="form-check-label" for="style-logo">
+                                                    <img src="{{ asset('images/styles/Logo.png') }}" alt="Logo" class="img-fluid img-thumbnail">
+                                                    <div>Logo</div>
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="outputs">Number of outputs</label>

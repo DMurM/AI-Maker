@@ -214,3 +214,29 @@ header .btn-group {
     height: 3rem;
     margin: 0 auto;
 }
+
+.style-option {
+    flex: 1 0 30%;
+    max-width: 30%;
+    margin: 5px;
+    text-align: center;
+}
+
+.style-option img {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.style-option img:hover {
+    transform: scale(1.05);
+}
+
+.style-option input[type="radio"] {
+    display: none;
+}
+
+.style-option input[type="radio"]:checked + label img {
+    border: 2px solid #007bff;
+}
