@@ -1,34 +1,39 @@
-To do
+# To Do List
 
-REMEMBER
+## REMEMBER
 
-    CSS SIDEBAR 
-    
-    PUSHHH cuando haya un cambio push no esperar a tener 50 cambios que la liamos.
+- **CSS SIDEBAR**: Ensure proper implementation.
+- **PUSHHH**: Push changes frequently. Do not wait until there are too many changes to push.
 
-Image Generation: Oscar
+## Image Generation: Oscar
 
-    5. Estilos
-        Mostrar estilos de cada foto(presets) para ver visualmente como quedaria cada prompt
-    4. Aspect Ratio
-        Mostrar enlugar de Aspect ratio (1:1, 3:4, 4:3, 16:9) mostrar una imagen de como quedaria el resultado,
-        puede ser simplemente el recuadro.
-    1. Opciones lugar
-        Cambiar el lugar de las opciones, pasarlo a la derecha en vertical como en figma
-    3. Mostrar resultados
-        Cambiar el display a flex, si hay una sola imagen que se muestre en grande, si hay 3 que se posicionen correctamente.
-    2. Prompt
-        Hacer desaparecer el prompt cuando la imagen se carga, mostrarlo dentro de la propia imagen en pequeño.
+1. **Opciones lugar (Done)**
+   - Change the location of the options. Move them to the right in a vertical layout, similar to Figma.
+   
+2. **Prompt (Done)**
+   - Ensure the prompt does not disappear but is reduced.
+   - Make the prompt disappear when the image is loaded and display it within the image in a small size.
+   
+3. **Mostrar resultados (Done)**
+   - Limit the display to 4 images.
+   - Change the display to flex. If there is a single image, show it in large size. If there are three images, position them correctly.
+   
+4. **Aspect Ratio (Done)**
+   - Instead of showing aspect ratios (1:1, 3:4, 4:3, 16:9), display an image of how the result would look. It can simply be a frame.
+   
+5. **Estilos**
+   - Show styles for each photo (presets) to visually see how each prompt would look.
 
-Home: Alfred
+## Home: Alfred
 
-    1. Scroll
-        Cambiar el home de scroll a tipo click, cuando seleccioens un sitio que te vaya a buscar,
-        tambien simplificar todo, mas visual.
+1. **Scroll**
+   - Change the home page from scroll to click type. When a site is selected, it should navigate to the search.
+   - Simplify everything for a more visual layout.
 
+## RP: Alfred
 
-RP: Alfred
+1. **Hacer todo**
+   - Complete all tasks.
 
-    1. Hacer todo
-
-    2. Revisar BBDD
+2. **Revisar BBDD**
+   - Review the database.
