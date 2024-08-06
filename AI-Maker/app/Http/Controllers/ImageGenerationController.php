@@ -15,7 +15,8 @@ class ImageGenerationController extends Controller
 
     public function showForm()
     {
-        return view('user_dashboard.image_generation.image_generation');
+        $styles = config('styles');
+        return view('user_dashboard.image_generation.image_generation', compact('styles'));
     }
 
     public function generateImage(Request $request)
@@ -70,26 +71,20 @@ class ImageGenerationController extends Controller
             '16:9' => '1920*1080'
         ];
 
-        // Presets de estilos
-        $styles = [
-            'realistic' => ['Fooocus Semi Realistic', 'Artstyle Hyperrealism'],
-            'anime' => ['Anime Style 1', 'Anime Style 2'],
-            'automotive' => ['Ads Automotive'],
-            'pop' => ['Pop Art 2', ],
-            'sai' => ['Sai Art Style'],
-            'logo' => ['Logo Design Style']
-        ];
-
         // Obtiene la resolución seleccionada desde el formulario
         $aspectRatio = $request->input('aspect-ratio', '1:1');
         $resolution = $aspectRatios[$aspectRatio] ?? '1152*896'; // Valor por defecto si la relación no está en el mapa
-        $styleSelection = $request->input('style', 'realistic');
-        $stylePreset = $styles[$styleSelection] ?? ['Fooocus Semi Realistic'];
+        
+        $styles = config('styles');
+        $styleSelection = $request->input('style', 'Fooocus Masterpiece');
+        $stylePreset = array_reduce($styles, function($carry, $item) use ($styleSelection) {
+            return in_array($styleSelection, $item) ? $item : $carry;
+        }, []);
 
         return [
             'prompt' => $request->input('prompt'),
             'negative_prompt' => '',
-            'style_selections' => $stylePreset,
+            'style_selections' => [$styleSelection],
             'performance_selection' => 'Speed',
             'aspect_ratios_selection' => $resolution, // Usa la resolución seleccionada
             'image_number' => $request->input('outputs', 1),
