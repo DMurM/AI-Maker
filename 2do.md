@@ -37,3 +37,10 @@
 
 2. **Revisar BBDD**
    - Review the database.
+
+## Stripe: Soufian
+
+1. **Payments**
+   - Detect and accept payments.
+   - Buy credits.
+   - Generate invoices and show them.
