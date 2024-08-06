@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth; // Importar Auth
 use App\Models\User;
 use App\Models\Credit;
 
@@ -19,9 +20,9 @@ class ImageGenerationController extends Controller
 
     public function generateImage(Request $request)
     {
-        set_time_limit(90); 
+        set_time_limit(90);
 
-        $user = auth()->user();
+        $user = Auth::user(); // Usar Auth::user() en lugar de auth()->user()
         if (!$user) {
             return response()->json(['error' => 'Unauthenticated'], 401);
         }

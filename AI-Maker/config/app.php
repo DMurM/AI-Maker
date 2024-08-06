@@ -131,7 +131,7 @@ return [
     ],
 
     'aliases' => [
-        // ...
-        'Stripe' => \App\Services\StripeService::class,
-    ]
+        // Other aliases
+        'Auth' => Illuminate\Support\Facades\Auth::class,
+    ],
 ];
