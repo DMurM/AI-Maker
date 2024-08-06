@@ -42,5 +42,5 @@
 
 1. **Payments**
    - Detect and accept payments.
-   - Buy credits.
+   - Buy credits ( do the view and discuss how it should look like)
    - Generate invoices and show them.
