@@ -95,7 +95,6 @@
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
                                     <div class="border border-secondary rounded" style="height: 150px;">
-                                        <!-- Placeholder content -->
                                     </div>
                                 </div>
                             @endfor
