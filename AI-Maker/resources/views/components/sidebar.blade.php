@@ -32,8 +32,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
-                    <i class="fas fa-sliders"></i> <span class="title">Image Editing</span> <span class="badge badge-coming-soon">Coming Soon</span>
+            <a class="nav-link text-white" href="{{ route('remove_background.form') }}" onclick="return navigate(event, 'remove_background.form')">
+                    <i class="fas fa-sliders"></i> <span class="title">Remove Background</span> 
                 </a>
             </li>
             <li class="nav-item">
