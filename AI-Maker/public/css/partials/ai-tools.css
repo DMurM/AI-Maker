@@ -1,12 +1,14 @@
 .ai-tools-container {
     width: 100%;
-    padding: 64px 8px;
-    background: linear-gradient(44deg, rgba(72, 68, 163, 0.10) 0%, rgba(255, 194, 194, 0.10) 100%);
+    padding: 24px 8px;
     border-radius: 64px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; /* Centrar verticalmente */
     gap: 32px;
+    text-align: center; /* Centrar el texto */
+    position: relative;
 }
 
 .ai-tools-container h2, .ai-tools-container p {
@@ -19,6 +21,7 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 500;
     line-height: 44px;
+    margin-top: 10%
 }
 
 .ai-tools-container p {
@@ -31,16 +34,24 @@
 
 .tools {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+}
+
+.tool-buttons {
+    display: flex;
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
 }
 
-.tool {
+.tool-button {
     padding: 12px 18px;
-    background: white;
     border-radius: 32px;
-    border: 1px solid #E9E9ED;
+    background-color: #f8f8f8;
+    border: 1px solid #4844A3;
     color: #4844A3;
     font-size: 16px;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -48,8 +59,9 @@
     line-height: 24px;
 }
 
-.tool:nth-child(2) {
-    background: #EDECF6;
+.tool-button.active {
+    background: #4844A3;
+    color: white;
 }
 
 .see-all-tools {
@@ -81,4 +93,29 @@
     border: 3px solid white;
     display: block;
     margin: 40px auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Estilos para el encabezado y la descripción */
+#ai-tools-heading, #ai-tools-description {
+    opacity: 0;
+    transition: opacity 1s;
+    text-align: center; /* Centrar el texto */
+}
+
+/* Estilos para la sección de herramientas */
+#tools {
+    transition: opacity 1s;
+}
+
+/* Mostrar elementos */
+.show {
+    display: block !important;
+}
+
+.fade-in {
+    opacity: 1;
 }

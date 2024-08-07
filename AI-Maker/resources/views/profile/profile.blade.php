@@ -7,23 +7,22 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Profile</title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 </head>
 
 <body>
 	<div class="container-fluid">
 		<div class="row">
-	
+			<x-sidebar/>	
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-				<header>
-					<x-menu_dashboard/>
-				</header>
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-				<h1 class="h2">{{ Auth::user()->full_name }}</h1>
+				<header
+					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2">{{ Auth::user()->full_name }}</h1>
 					<div class="btn-group">
 						<button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credit }}</button>
 					</div>
-				</div>
+				</header>
 				<div class="tabs">
 					<div class="tab">
 						<a class="label" href="{{ route('profile') }}">My Account</a>

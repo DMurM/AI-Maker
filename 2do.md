@@ -37,3 +37,11 @@
 
 2. **Revisar BBDD**
    - Review the database.
+
+## Stripe: Soufian
+
+1. **Payments**
+   - Detect and accept payments.
+   - Buy credits ( do the view and discuss how it should look like)
+   - Generate invoices and show them.
+   - Payment view should be a pop-up instead of a new tab.

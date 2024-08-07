@@ -1,4 +1,15 @@
-<!-- resources/views/partials/join-us.blade.php -->
+<div class="hero-background">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+    <div class="shape shape4"></div>
+    <div class="shape shape5"></div>
+    <div class="shape shape6"></div>
+    <div class="shape shape7"></div>
+    <div class="shape shape8"></div>
+    <div class="shape shape9"></div>
+    <div class="shape shape10"></div>
+</div>
 <section class="join-us" aria-labelledby="join-us-heading">
     <div class="headline">
         <h2 id="join-us-heading" class="heading-1">Join millions in creating AI Art</h2>
