@@ -5,31 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Credit;
 
 class ImageGenerationController extends Controller
 {
-    protected $imageGenerationCost = 0;
+    protected $imageGenerationCost = 0; // Costo de generación de imágenes configurado en 0
 
     public function showForm()
     {
-        $styles = config('styles');
-        return view('user_dashboard.image_generation.image_generation', compact('styles'));
+        return view('user_dashboard.image_generation.image_generation');
     }
 
     public function generateImage(Request $request)
     {
-        set_time_limit(90);
+        set_time_limit(80);  // Incrementa el tiempo de ejecución a 120 segundos
 
-        $user = Auth::user();
+        $user = auth()->user();
         if (!$user) {
             return response()->json(['error' => 'Unauthenticated'], 401);
         }
 
-        $useCredits = config('app.use_credits', false);
-        $credit = $user->activeCredit;
+        $useCredits = config('app.use_credits', false); // Configuración para usar créditos
+        $credit = $user->activeCredit; // Obtener el crédito activo
         $response = [];
 
         if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
@@ -42,8 +40,8 @@ class ImageGenerationController extends Controller
 
         try {
             $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
-                                ->timeout(120)
-                                ->connectTimeout(60)
+                                ->timeout(120)  // Tiempo de espera total en segundos
+                                ->connectTimeout(60)  // Tiempo de espera para establecer la conexión en segundos
                                 ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
         
             Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
@@ -63,31 +61,24 @@ class ImageGenerationController extends Controller
 
     private function getRequestPayload(Request $request)
     {
-        // Mapea las resoluciones a los valores que espera tu API
-        $aspectRatios = [
+        // Map aspect ratio value to the appropriate API format
+        $aspectRatioMapping = [
             '1:1' => '1152*1152',
             '3:4' => '1152*1536',
             '4:3' => '1536*1152',
-            '16:9' => '1920*1080'
+            '16:9' => '2048*1152'
         ];
 
-        // Obtiene la resolución seleccionada desde el formulario
         $aspectRatio = $request->input('aspect-ratio', '1:1');
-        $resolution = $aspectRatios[$aspectRatio] ?? '1152*896'; // Valor por defecto si la relación no está en el mapa
-        
-        $styles = config('styles');
-        $styleSelection = $request->input('style', 'Fooocus Masterpiece');
-        $stylePreset = array_reduce($styles, function($carry, $item) use ($styleSelection) {
-            return in_array($styleSelection, $item) ? $item : $carry;
-        }, []);
+        $aspectRatioSelection = $aspectRatioMapping[$aspectRatio] ?? '1152*1152';
 
         return [
             'prompt' => $request->input('prompt'),
             'negative_prompt' => '',
-            'style_selections' => [$styleSelection],
+            'style_selections' => ['Fooocus V2', 'Fooocus Enhance', 'Fooocus Sharp'],
             'performance_selection' => 'Speed',
-            'aspect_ratios_selection' => $resolution, // Usa la resolución seleccionada
-            'image_number' => $request->input('outputs', 1),
+            'aspect_ratios_selection' => $aspectRatioSelection,
+            'image_number' => $request->input('outputs', 1), // Obtener el número de salidas desde el formulario
             'image_seed' => -1,
             'sharpness' => 2,
             'guidance_scale' => 4,
