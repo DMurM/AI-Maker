@@ -20,13 +20,15 @@ class PaymentController2 extends Controller
         Stripe::setApiKey($stripeApiSecret);
 
         $stripeToken = $request->input('stripeToken');
+        $credits = $request->input('credits');
+        $amount = $credits * 10; // Calculate amount in cents (1 credit = 10 cents)
 
         try {
             Charge::create([
-                'amount' => 1000, // amount in cents
+                'amount' => $amount, // amount in cents
                 'currency' => 'usd',
                 'source' => $stripeToken,
-                'description' => 'Test charge',
+                'description' => 'Purchase of ' . $credits . ' credits',
             ]);
 
             // Payment successful; store a success message in the session
