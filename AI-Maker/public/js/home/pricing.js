@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let isLoading = false;
 
-    const loadPartial = (type) => {
+    window.loadPartial = (type) => {  // <-- Asegúrate de que esté en el ámbito global
         if (isLoading) return;
         isLoading = true;
 
@@ -38,5 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('btn-coins').addEventListener('click', () => loadPartial('coins'));
     };
 
-    addEventListeners();
+    // Initialize with monthly by default
+    document.querySelectorAll('.toggle-button').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const type = event.target.id.split('-')[1];
+            loadPartial(type);
+        });
+    });
+
+    // Load monthly by default
+    loadPartial('monthly');
 });
