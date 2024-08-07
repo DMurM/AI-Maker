@@ -1,0 +1,41 @@
+#sidebar {
+    background-color: #333;
+    color: #fff;
+    min-height: 100vh;
+    padding-top: 50px;
+    border-right: 2px solid #ddd;
+}
+
+#sidebar .nav-item {
+    margin-bottom: 15px;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #575757;
+}
+
+#sidebar .profile-info {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+#sidebar .profile-info p {
+    margin: 0;
+    font-size: 16px;
+}
+
+#sidebar .profile-info .btn {
+    background-color: #41409f;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+}
+
+#sidebar .profile-info .btn:hover {
+    background-color: #0056b3;
+}

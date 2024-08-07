@@ -1,3 +1,5 @@
+<link href="{{ asset('css/components/sidebar.css') }}" rel="stylesheet">
+
 <nav id="sidebar" class="col-md-2 col-lg-2 bg-dark text-white d-flex flex-column justify-content-between">
     <div>
         <div class="sidebar-header">
