@@ -5,23 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Credit;
 
 class ImageGenerationController extends Controller
 {
-    protected $imageGenerationCost = 0;
+    protected $imageGenerationCost = 0; // Costo de generación de imágenes configurado en 0
 
     public function showForm()
     {
-        $styles = config('styles');
-        return view('user_dashboard.image_generation.image_generation', compact('styles'));
+        return view('user_dashboard.image_generation.image_generation');
     }
 
     public function generateImage(Request $request)
     {
-        set_time_limit(90);
+        set_time_limit(80);  // Incrementa el tiempo de ejecución a 120 segundos
 
         $user = Auth::user();
         $response = [];
@@ -79,7 +77,7 @@ class ImageGenerationController extends Controller
             '1:1' => '1152*1152',
             '3:4' => '1152*1536',
             '4:3' => '1536*1152',
-            '16:9' => '1920*1080'
+            '16:9' => '2048*1152'
         ];
 
         $aspectRatio = $request->input('aspect-ratio', '1:1');
@@ -94,7 +92,7 @@ class ImageGenerationController extends Controller
         return [
             'prompt' => $request->input('prompt'),
             'negative_prompt' => '',
-            'style_selections' => [$styleSelection],
+            'style_selections' => ['Fooocus V2', 'Fooocus Enhance', 'Fooocus Sharp'],
             'performance_selection' => 'Speed',
             'aspect_ratios_selection' => $resolution,
             'image_number' => $request->input('outputs', 1),
