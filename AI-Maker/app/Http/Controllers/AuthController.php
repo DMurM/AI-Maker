@@ -31,7 +31,7 @@ class AuthController extends Controller
         $token = $user->createToken('personal-access-token')->plainTextToken;
 
         $request->session()->regenerate();
-        return redirect()->route('user_dashboard');
+        return redirect()->route('user_dashboard')->with('token', $token);
     }
 
     public function showSignupForm()
@@ -58,7 +58,7 @@ class AuthController extends Controller
         $token = $user->createToken('personal-access-token')->plainTextToken;
 
         Auth::login($user);
-        return redirect('/user_dashboard');
+        return redirect('/user_dashboard')->with('token', $token);
     }
 
     public function logout(Request $request)
