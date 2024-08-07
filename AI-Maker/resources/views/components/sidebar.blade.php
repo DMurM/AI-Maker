@@ -8,42 +8,42 @@
         <ul class="nav flex-column flex-grow-1 mt-3">
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('user_dashboard') }}" onclick="return navigate(event, 'user_dashboard')">
-                    <i class="fas fa-home"></i> Home
+                    <i class="fas fa-home"></i> <span class="title">Home</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('profile') }}" onclick="return navigate(event, 'profile')">
-                    <i class="fas fa-user"></i> My Profile
+                    <i class="fas fa-user"></i> <span class="title">My Profile</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
-                    <i class="fas fa-briefcase"></i> Assets <span class="badge badge-warning">Coming Soon</span>
+                    <i class="fas fa-briefcase"></i> <span class="title">Assets</span> <span class="badge badge-coming-soon">Coming Soon</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('pricing.team') }}" onclick="return navigate(event, 'pricing.team')">
-                    <i class="fas fa-users"></i> Team
+                    <i class="fas fa-users"></i> <span class="title">Team</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="{{ route('image_generation.form') }}" onclick="return navigate(event, 'image_generation.form')">
-                    <i class="fas fa-image"></i> Image Generation
+                    <i class="fas fa-image"></i> <span class="title">Image Generation</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
-                    <i class="fas fa-sliders"></i> Image Editing <span class="badge badge-warning">Coming Soon</span>
+                    <i class="fas fa-sliders"></i> <span class="title">Image Editing</span> <span class="badge badge-coming-soon">Coming Soon</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
-                    <i class="fas fa-video"></i> Video Tools <span class="badge badge-warning">Coming Soon</span>
+                    <i class="fas fa-video"></i> <span class="title">Video Tools</span> <span class="badge badge-coming-soon">Coming Soon</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
-                    <i class="fas fa-microphone"></i> Audio Tools <span class="badge badge-warning">Coming Soon</span>
+                    <i class="fas fa-microphone"></i> <span class="title">Audio Tools</span> <span class="badge badge-coming-soon">Coming Soon</span>
                 </a>
             </li>
         </ul>
