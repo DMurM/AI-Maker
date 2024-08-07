@@ -19,7 +19,6 @@ Route::get('/', function () {
 //     return view('admin.admin_dashboard');
 // });
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -57,6 +56,5 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate_image', [ImageGenerationController::class, 'generateImage'])->name('generate_image');
-
 
 Route::resource('users', UserController::class);
