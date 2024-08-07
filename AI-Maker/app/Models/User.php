@@ -2,27 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory;
 
     protected $fillable = [
-        'name', 'lastname', 'email', 'password', 'plan_id', 'profile_picture'
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email', 'password', 'name', 'lastname', 'credit', 'plan_id'
     ];
 
     public function plan()
@@ -53,6 +42,11 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::class, 'user_images');
     }
 
     public static function createUser($data)
@@ -94,5 +88,12 @@ class User extends Authenticatable
     {
         $this->roles()->detach();
         $this->delete();
+    }
+
+    public function addImage($url)
+    {
+        $image = Image::create(['url' => $url]);
+        $this->images()->attach($image->id);
+        return $image;
     }
 }

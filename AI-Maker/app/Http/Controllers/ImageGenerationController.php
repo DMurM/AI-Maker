@@ -24,13 +24,15 @@ class ImageGenerationController extends Controller
         set_time_limit(90);
 
         $user = Auth::user();
+        $response = [];
+        $statusCode = 200;
+
         if (!$user) {
             return response()->json(['error' => 'Unauthenticated'], 401);
         }
 
         $useCredits = config('app.use_credits', false);
         $credit = $user->activeCredit;
-        $response = [];
 
         if ($useCredits && (!$credit || !$credit->hasEnoughCredits($this->imageGenerationCost))) {
             return response()->json(['error' => 'Not enough credits'], 403);
@@ -42,28 +44,37 @@ class ImageGenerationController extends Controller
 
         try {
             $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
-                                ->timeout(120)
-                                ->connectTimeout(60)
-                                ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
-        
+                ->timeout(120)
+                ->connectTimeout(60)
+                ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
+
             Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
-        
+
             if ($apiResponse->successful()) {
                 $data = $apiResponse->json();
                 $imageUrls = $this->getImageUrls($data);
-                return response()->json(['image_urls' => $imageUrls, 'response_data' => $data], 200);
+
+                foreach ($imageUrls as $url) {
+                    $user->addImage($url);
+                }
+
+                $response = ['image_urls' => $imageUrls, 'response_data' => $data];
             } else {
-                return response()->json(['error' => 'Image generation failed', 'response_data' => $apiResponse->json()], $apiResponse->status());
+                $response = ['error' => 'Image generation failed', 'response_data' => $apiResponse->json()];
+                $statusCode = $apiResponse->status();
             }
         } catch (\Exception $e) {
             Log::error('Image generation error: ' . $e->getMessage());
-            return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
-        }        
+            $response = ['error' => 'Internal Server Error', 'message' => $e->getMessage()];
+            $statusCode = 500;
+        }
+
+        return response()->json($response, $statusCode);
     }
+
 
     private function getRequestPayload(Request $request)
     {
-        // Mapea las resoluciones a los valores que espera tu API
         $aspectRatios = [
             '1:1' => '1152*1152',
             '3:4' => '1152*1536',
@@ -71,9 +82,8 @@ class ImageGenerationController extends Controller
             '16:9' => '1920*1080'
         ];
 
-        // Obtiene la resolución seleccionada desde el formulario
         $aspectRatio = $request->input('aspect-ratio', '1:1');
-        $resolution = $aspectRatios[$aspectRatio] ?? '1152*896'; // Valor por defecto si la relación no está en el mapa
+        $resolution = $aspectRatios[$aspectRatio] ?? '1152*896';
         
         $styles = config('styles');
         $styleSelection = $request->input('style', 'Fooocus Masterpiece');
@@ -86,7 +96,7 @@ class ImageGenerationController extends Controller
             'negative_prompt' => '',
             'style_selections' => [$styleSelection],
             'performance_selection' => 'Speed',
-            'aspect_ratios_selection' => $resolution, // Usa la resolución seleccionada
+            'aspect_ratios_selection' => $resolution,
             'image_number' => $request->input('outputs', 1),
             'image_seed' => -1,
             'sharpness' => 2,

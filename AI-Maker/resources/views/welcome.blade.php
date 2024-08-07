@@ -77,7 +77,7 @@
         </div>
 
         <div id="recent-creations" class="section hidden">
-            @include('partials.recent-creations')
+            @include('partials.recent-creations', ['images' => $images])
         </div>
         <div id="feature" class="section hidden">
             @include('partials.feature')
@@ -125,7 +125,13 @@
     <script src="{{ asset('js/home/pricing.js') }}" defer></script>
     <script src="{{ asset('js/home/menu.js') }}" defer></script>
     <script src="{{ asset('js/home/loginRedirect.js') }}" defer></script>
+    <script src="{{ asset('js/home/refreshGallery.js') }}" defer></script>
     <script src="{{ asset('js/home/changeSectionandAnimationTools.js') }}" defer></script>
+    <script>
+        var recentImagesUrl = "{{ route('recent-images') }}";
+        var initialImagesUrl = "{{ route('initial-images') }}";
+    </script>
+
 </body>
 
 </html>
