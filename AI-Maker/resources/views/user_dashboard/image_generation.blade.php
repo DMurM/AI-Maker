@@ -33,7 +33,7 @@
                                 <div class="col-md-7 col-lg-8" id="prompt-container">
                                     <div class="form-group">
                                         <label for="prompt">Describe an image you want to create:</label>
-                                        <textarea class="form-control" id="prompt" name="prompt" rows="2" placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees swaying, under a dramatic stormy sky."></textarea>
+                                        <textarea class="form-control" id="prompt" name="prompt" rows="2" placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees, under a dramatic stormy sky."></textarea>
                                     </div>
                                     <div class="d-flex justify-content-center mb-2">
                                         <div class="spinner-border" role="status" id="spinner">
@@ -50,41 +50,39 @@
                                             <div class="form-check">
                                                 <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect1" value="1:1" checked>
                                                 <label class="form-check-label aspect-label" for="aspect1">
-                                                    <div class="aspect-display aspect-1-1"></div>
+                                                    <div class="aspect-display aspect-1-1">1:1</div>
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect2" value="3:4">
                                                 <label class="form-check-label aspect-label" for="aspect2">
-                                                    <div class="aspect-display aspect-3-4"></div>
+                                                    <div class="aspect-display aspect-3-4">3:4</div>
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect3" value="4:3">
                                                 <label class="form-check-label aspect-label" for="aspect3">
-                                                    <div class="aspect-display aspect-4-3"></div>
+                                                    <div class="aspect-display aspect-4-3">4:3</div>
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect4" value="16:9">
                                                 <label class="form-check-label aspect-label" for="aspect4">
-                                                    <div class="aspect-display aspect-16-9"></div>
+                                                    <div class="aspect-display aspect-16-9">16:9</div>
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group d-flex justify-content-between align-items-center">
                                         <label for="style">Style</label>
-                                        <div class="d-flex">
-                                            <input type="text" class="form-control" id="style-search" placeholder="Search styles...">
-                                        </div>
-                                        <div class="d-flex flex-wrap mt-2" id="style-options"></div>
-                                        <div class="d-flex justify-content-between mt-2">
-                                            <button type="button" class="btn btn-secondary" id="prev-page">Previous</button>
-                                            <button type="button" class="btn btn-secondary" id="next-page">Next</button>
-                                        </div>
+                                        <input type="text" class="form-control ml-2" id="style-search" placeholder="Search styles..." style="max-width: 400px;">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="d-flex flex-wrap mt-2" id="style-options"></div>
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <button type="button" class="btn btn-secondary arrow-btn" id="prev-page"><i class="fas fa-arrow-left"></i></button>
+                                        <button type="button" class="btn btn-secondary arrow-btn" id="next-page"><i class="fas fa-arrow-right"></i></button>
+                                    </div>
+                                    <div class="form-group mt-3">
                                         <label for="outputs">Number of outputs</label>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
                                             <div class="form-check">
@@ -123,11 +121,9 @@
             </main>
         </div>
     </div>
-    <!-- Include Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Script to handle image generation -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const popularStyles = [
@@ -153,6 +149,7 @@
                 'Harlem Renaissance Art'
             ];
             const styles = @json(config('styles'));
+            const customStyles = @json(config('custom_styles'));
             const styleOptionsContainer = document.getElementById('style-options');
             const styleSearchInput = document.getElementById('style-search');
             const prevPageButton = document.getElementById('prev-page');
@@ -185,13 +182,14 @@
                 const currentStyles = filteredStyles.slice(start, end);
 
                 currentStyles.forEach(({ style }) => {
+                    const customName = customStyles[style.replace(/\s+/g, '_').toLowerCase()] || style;
                     const styleOption = document.createElement('div');
                     styleOption.className = 'form-check style-option';
                     styleOption.innerHTML = `
                         <input class="form-check-input" type="radio" name="style" id="style-${style.replace(/\s+/g, '-').toLowerCase()}" value="${style}" ${start === 0 ? 'checked' : ''}>
                         <label class="form-check-label" for="style-${style.replace(/\s+/g, '-').toLowerCase()}">
                             <img src="{{ asset('images/styles') }}/${style.replace(/\s+/g, '-').toLowerCase()}.png" alt="${style}" class="img-fluid img-thumbnail">
-                            <div>${style}</div>
+                            <div>${customName}</div>
                         </label>
                     `;
                     styleOptionsContainer.appendChild(styleOption);
