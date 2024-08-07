@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stripe Payment</title>
     <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="{{ asset('css/payment1.css') }}">
 </head>
 
 <body>

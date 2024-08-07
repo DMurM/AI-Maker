@@ -19,13 +19,12 @@ Route::get('/', function () {
 //     return view('admin.admin_dashboard');
 // });
 
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/user_dashboard', [DashboardController::class, 'index'])->name('user_dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     //Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
-    //Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payment');
     Route::get('/payment', [PaymentController2::class, 'showPaymentForm'])->name('payment.form');
     Route::post('/process-payment', [PaymentController2::class, 'processPayment'])->name('process.payment');
 
@@ -57,6 +56,5 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate_image', [ImageGenerationController::class, 'generateImage'])->name('generate_image');
-
 
 Route::resource('users', UserController::class);
