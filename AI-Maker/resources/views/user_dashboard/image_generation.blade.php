@@ -33,7 +33,7 @@
                                 <div class="col-md-7 col-lg-8" id="prompt-container">
                                     <div class="form-group">
                                         <label for="prompt">Describe an image you want to create:</label>
-                                        <textarea class="form-control" id="prompt" name="prompt" rows="2" placeholder="For example: Huge, frothy waves crashing against a small, lush green island with tall palm trees, under a dramatic stormy sky."></textarea>
+                                        <textarea class="form-control" id="prompt" name="prompt" rows="2" placeholder="For example: Futuristic city skyline at sunset with flying cars."></textarea>
                                     </div>
                                     <div class="d-flex justify-content-center mb-2">
                                         <div class="spinner-border" role="status" id="spinner">
@@ -273,10 +273,13 @@
                 const generatedImagesContainer = document.getElementById('generated-images-container');
                 generatedImagesContainer.innerHTML = ''; 
                 if (response.ok && result.image_urls) {
+                    const imagesCount = result.image_urls.length;
+                    const colClass = imagesCount > 1 ? `col-${Math.floor(12 / imagesCount)}` : 'col-12';
+
                     result.image_urls.forEach(url => {
                         const col = document.createElement('div');
-                        col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mb-3'; 
-                        col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail">`;
+                        col.className = `${colClass} mb-3 generated-image-container`; 
+                        col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail generated-image">`;
                         generatedImagesContainer.appendChild(col);
                     });
                 } else {
@@ -289,4 +292,5 @@
         });
     </script>
 </body>
+
 </html>

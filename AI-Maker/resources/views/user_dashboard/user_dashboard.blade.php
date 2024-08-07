@@ -30,46 +30,53 @@
                         <div class="row">
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
-                                    <div class="border border-secondary rounded" style="height: 150px;">
+                                    <div class="border border-secondary rounded d-flex align-items-center justify-content-center" style="height: 150px;">
+                                        <i class="fas fa-image fa-2x text-secondary"></i>
                                     </div>
                                 </div>
                             @endfor
                         </div>
                     </div>
                 </div>
+                <!-- Image Editing Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Image Editing</h2>
                     <div class="container">
                         <div class="row">
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
-                                    <div class="border border-secondary rounded" style="height: 150px;">
+                                    <div class="border border-secondary rounded d-flex align-items-center justify-content-center" style="height: 150px;">
+                                        <i class="fas fa-edit fa-2x text-secondary"></i>
                                     </div>
                                 </div>
                             @endfor
                         </div>
                     </div>
                 </div>
+                <!-- Video Tools Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Video Tools</h2>
                     <div class="container">
                         <div class="row">
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
-                                    <div class="border border-secondary rounded" style="height: 150px;">
+                                    <div class="border border-secondary rounded d-flex align-items-center justify-content-center" style="height: 150px;">
+                                        <i class="fas fa-video fa-2x text-secondary"></i>
                                     </div>
                                 </div>
                             @endfor
                         </div>
                     </div>
                 </div>
+                <!-- Audio Tools Section -->
                 <div class="section mb-4">
                     <h2 class="section-title">Audio Tools</h2>
                     <div class="container">
                         <div class="row">
                             @for ($i = 0; $i < 4; $i++)
                                 <div class="col-md-3 mb-3">
-                                    <div class="border border-secondary rounded" style="height: 150px;">
+                                    <div class="border border-secondary rounded d-flex align-items-center justify-content-center" style="height: 150px;">
+                                        <i class="fas fa-music fa-2x text-secondary"></i>
                                     </div>
                                 </div>
                             @endfor
