@@ -4,20 +4,48 @@
     min-height: 100vh;
     padding-top: 50px;
     border-right: 2px solid #ddd;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 #sidebar .nav-item {
     margin-bottom: 15px;
 }
 
+#sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#sidebar .nav-link .title {
+    margin-left: 10px;
+    flex-grow: 1;
+    text-align: left;
+}
+
 #sidebar .nav-link:hover {
     background-color: #575757;
+    transform: translateX(5px);
+}
+
+#sidebar .badge-coming-soon {
+    background-color: #666;
+    color: #ccc;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    margin-left: 8px;
+    font-weight: normal;
 }
 
 #sidebar .profile-info {
     background-color: #333;
     color: #fff;
     padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar .profile-info p {
@@ -34,6 +62,8 @@
     font-size: 14px;
     text-align: center;
     width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 #sidebar .profile-info .btn:hover {
