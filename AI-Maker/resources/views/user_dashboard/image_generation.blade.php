@@ -158,6 +158,16 @@
             let currentPage = 0;
             const stylesPerPage = 6;
             const allStyles = [];
+            const imageCache = {};
+
+            // Preload Images
+            function preloadImage(src) {
+                if (!imageCache[src]) {
+                    const img = new Image();
+                    img.src = src;
+                    imageCache[src] = img;
+                }
+            }
 
             // Add popular styles first
             popularStyles.forEach(style => {
@@ -183,16 +193,26 @@
 
                 currentStyles.forEach(({ style }) => {
                     const customName = customStyles[style.replace(/\s+/g, '_').toLowerCase()] || style;
+                    const styleId = style.replace(/\s+/g, '-').toLowerCase();
+                    const imgSrc = `{{ asset('images/styles') }}/${styleId}.png`;
+
+                    preloadImage(imgSrc);
+
                     const styleOption = document.createElement('div');
                     styleOption.className = 'form-check style-option';
                     styleOption.innerHTML = `
-                        <input class="form-check-input" type="radio" name="style" id="style-${style.replace(/\s+/g, '-').toLowerCase()}" value="${style}" ${start === 0 ? 'checked' : ''}>
-                        <label class="form-check-label" for="style-${style.replace(/\s+/g, '-').toLowerCase()}">
-                            <img src="{{ asset('images/styles') }}/${style.replace(/\s+/g, '-').toLowerCase()}.png" alt="${style}" class="img-fluid img-thumbnail">
+                        <input class="form-check-input" type="radio" name="style" id="style-${styleId}" value="${style}" ${start === 0 ? 'checked' : ''}>
+                        <label class="form-check-label" for="style-${styleId}">
+                            <img src="${imgSrc}" alt="${style}" class="img-fluid img-thumbnail">
                             <div>${customName}</div>
                         </label>
                     `;
                     styleOptionsContainer.appendChild(styleOption);
+
+                    const imgElement = styleOption.querySelector('img');
+                    imgElement.addEventListener('load', () => {
+                        imgElement.classList.add('loaded');
+                    });
                 });
 
                 prevPageButton.disabled = currentPage === 0;

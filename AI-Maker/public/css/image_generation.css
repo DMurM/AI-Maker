@@ -200,7 +200,12 @@ header .btn-group {
     width: 100%;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, opacity 0.3s ease-in-out;
+    opacity: 0; /* Start hidden */
+}
+
+.style-option img.loaded {
+    opacity: 1; /* Show when loaded */
 }
 
 .style-option img:hover {
@@ -231,4 +236,13 @@ header .btn-group {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+img.loaded {
+    opacity: 1;
 }
