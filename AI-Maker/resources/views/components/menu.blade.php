@@ -9,7 +9,7 @@
                 <li><a href="#" data-section="ai-tools">AI Tools</a></li>
                 <li><a href="#" data-section="recent-creations">Recent Creations</a></li>
                 <li><a href="#" data-section="feature">Feature</a></li>
-                <li><a href="#" data-section="join">Join</a></li>
+                {{-- <li><a href="#" data-section="join">Join</a></li> --}}
                 <li><a href="#" data-section="pricing">Pricing</a></li>
                 <li><a href="#" data-section="faqs">FAQs</a></li>
             </ul>

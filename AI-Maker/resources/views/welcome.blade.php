@@ -82,9 +82,9 @@
         <div id="feature" class="section hidden">
             @include('partials.feature')
         </div>
-        <div id="join" class="section hidden">
+        {{-- <div id="join" class="section hidden">
             @include('partials.join')
-        </div>
+        </div> --}}
         <div id="pricing" class="section hidden">
             <div class="hero-background">
                 <div class="shape shape1"></div>
@@ -121,11 +121,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script src="{{ asset('js/home/changeSectionandAnimationTools.js') }}" defer></script>
     <script src="{{ asset('js/home/aitools.js') }}" defer></script>
     <script src="{{ asset('js/home/pricing.js') }}" defer></script>
     <script src="{{ asset('js/home/menu.js') }}" defer></script>
     <script src="{{ asset('js/home/loginRedirect.js') }}" defer></script>
+    <script src="{{ asset('js/home/changeSectionandAnimationTools.js') }}" defer></script>
 </body>
 
 </html>
