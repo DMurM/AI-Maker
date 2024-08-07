@@ -203,16 +203,11 @@
                     styleOption.innerHTML = `
                         <input class="form-check-input" type="radio" name="style" id="style-${styleId}" value="${style}" ${start === 0 ? 'checked' : ''}>
                         <label class="form-check-label" for="style-${styleId}">
-                            <img src="${imgSrc}" alt="${style}" class="img-fluid img-thumbnail">
+                            <img src="${imgSrc}" alt="${style}" class="img-fluid img-thumbnail loaded">
                             <div>${customName}</div>
                         </label>
                     `;
                     styleOptionsContainer.appendChild(styleOption);
-
-                    const imgElement = styleOption.querySelector('img');
-                    imgElement.addEventListener('load', () => {
-                        imgElement.classList.add('loaded');
-                    });
                 });
 
                 prevPageButton.disabled = currentPage === 0;
@@ -280,7 +275,7 @@
                 if (response.ok && result.image_urls) {
                     result.image_urls.forEach(url => {
                         const col = document.createElement('div');
-                        col.className = 'generated-image-container'; 
+                        col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mb-3'; 
                         col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail">`;
                         generatedImagesContainer.appendChild(col);
                     });
@@ -294,5 +289,4 @@
         });
     </script>
 </body>
-
 </html>
