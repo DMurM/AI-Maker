@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     //Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
-    //Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payments', [PaymentController::class, 'index'])->name('payment');
     Route::get('/payment', [PaymentController2::class, 'showPaymentForm'])->name('payment.form');
     Route::post('/process-payment', [PaymentController2::class, 'processPayment'])->name('process.payment');
 
