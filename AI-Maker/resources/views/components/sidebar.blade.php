@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('user_dashboard') }}">
+                <a class="nav-link text-white" href="{{ route('profile') }}">
                     <i class="fas fa-user"></i> My Profile
                 </a>
             </li>
