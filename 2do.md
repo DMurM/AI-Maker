@@ -12,7 +12,7 @@
    
 2. **Prompt (Done)**
    - Ensure the prompt does not disappear but is reduced.
-   - Make the prompt disappear when the image is loaded and display it within the image in a small size.
+   - Make the prompt disappear when the image is loaded and display it within the   image in a small size.
    
 3. **Mostrar resultados (Done)**
    - Limit the display to 4 images.
@@ -21,9 +21,9 @@
 4. **Aspect Ratio (Done)**
    - Instead of showing aspect ratios (1:1, 3:4, 4:3, 16:9), display an image of how the result would look. It can simply be a frame.
    
-5. **Estilos**
+5. **Estilos (DONE)**
    - Show styles for each photo (presets) to visually see how each prompt would look.
-
+      
 ## Home: Alfred
 
 1. **Scroll**
