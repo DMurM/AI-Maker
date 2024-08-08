@@ -26,7 +26,7 @@
                     </div>
                 </header>
                 <div class="row mb-4">
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-md-7 d-flex justify-content-center">
                         <form id="upload-form" action="#" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="upload-area text-center p-5" style="border: 1px dashed #ccc;" onclick="document.getElementById('image-input').click()">
@@ -36,10 +36,17 @@
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-5">
                         <h3>Config</h3>
+                        <!-- Aquí pueden ir las configuraciones adicionales -->
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12 d-flex justify-content-center">
+                        <img id="uploaded-image" src="" alt="Uploaded Image" style="display: none; max-width: 100%; height: auto; border-radius: 10px; border: 1px solid #ccc;">
+                        <div id="loading-spinner" class="spinner-border text-primary" role="status" style="display: none;">
+                            <span class="sr-only">Loading...</span>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -52,6 +59,17 @@
         async function handleFileUpload(event) {
             const file = event.target.files[0];
             if (file) {
+                // Mostrar la imagen cargada
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('uploaded-image').src = e.target.result;
+                    document.getElementById('uploaded-image').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+
+                // Mostrar el spinner de carga
+                document.getElementById('loading-spinner').style.display = 'block';
+
                 const formData = new FormData();
                 formData.append('file', file);
 
@@ -76,6 +94,9 @@
                     URL.revokeObjectURL(url);
                 } catch (error) {
                     console.error('There was a problem with your fetch operation:', error);
+                } finally {
+                    // Ocultar el spinner de carga
+                    document.getElementById('loading-spinner').style.display = 'none';
                 }
             }
         }
