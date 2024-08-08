@@ -22,7 +22,7 @@
                         <p>Automatically remove the background and generate an ideal background based on templates or text.</p>
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credits }}</button>
+                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credit }}</button>
                     </div>
                 </header>
                 <div class="row mb-4">

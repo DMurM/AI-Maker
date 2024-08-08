@@ -22,7 +22,7 @@
                         <p>Easily create an image from scratch with our AI image generator by entering descriptive text.</p>
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credits }}</button>
+                        <button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credit }}</button>
                     </div>
                 </header>
                 <div class="section mb-4">
