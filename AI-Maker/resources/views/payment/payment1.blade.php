@@ -10,20 +10,37 @@
 </head>
 
 <body>
-    <form action="{{ route('process.payment') }}" method="POST" id="payment-form">
-        @csrf
-        <div class="form-row">
+    <div class="container">
+        <form action="{{ route('process.payment') }}" method="POST" id="payment-form">
+            @csrf
+            <div class="form-row">
             <label for="card-element">
-                Tarjeta de crédito o débito
-            </label>
-            <div id="card-element">
-                <!-- Un Stripe Element será insertado aquí -->
+                    Tarjeta de crédito o débito
+                </label>
+                <div id="card-element">
+                    <!-- Un Stripe Element será insertado aquí -->
+                </div>
+                <!-- Muestra errores de validación de la tarjeta -->
+                <div id="card-errors" role="alert"></div>
             </div>
-            <!-- Muestra errores de validación de la tarjeta -->
-            <div id="card-errors" role="alert"></div>
+            <div class="form-row">
+            <label for="credits">
+                    Cantidad de créditos
+                </label>
+                <input type="number" id="credits" name="credits" min="1" required>
+                <span id="euros">0.00 EUR</span>
+            </div>
+            <button type="submit">Pagar</button>
+        </form>
+    </div>
+
+    <!-- Success/Failure Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
         </div>
-        <button type="submit">Pagar</button>
-    </form>
+    </div>
 
     <script>
         // Your publishable key
@@ -87,9 +104,55 @@
             hiddenInput.setAttribute('value', token.id);
             form.appendChild(hiddenInput);
 
-            // Envía el formulario
-            form.submit();
+            // Envía el formulario usando fetch API
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                },
+                body: JSON.stringify({
+                    stripeToken: token.id,
+                    credits: document.getElementById('credits').value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showModal('Pago exitoso!');
+                } else {
+                    showModal('Pago fallido: ' + data.message);
+                }
+            })
+            .catch(error => {
+                showModal('Error: ' + error.message);
+            });
         }
+
+        function showModal(message) {
+            var modal = document.getElementById("paymentModal");
+            var span = document.getElementsByClassName("close")[0];
+            var modalMessage = document.getElementById("modal-message");
+
+            modalMessage.textContent = message;
+            modal.style.display = "block";
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+
+        document.getElementById('credits').addEventListener('input', function() {
+            var credits = this.value;
+            var euros = (credits * 0.10).toFixed(2);
+            document.getElementById('euros').textContent = euros + ' EUR';
+        });
     </script>
 </body>
 

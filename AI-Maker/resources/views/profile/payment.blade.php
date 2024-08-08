@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Profile</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
 </head>
 
@@ -103,12 +102,12 @@
                         <h2>Current coins</h2>
                         <div class="coin-info">
                             <div class="coin-count">
-                                <h3>{{ Auth::user()->credit }}</h3>
+                                <h3>0</h3>
                                 <p>Monthly Coins</p>
                             </div>
                             <div class="coin-divider">+</div>
                             <div class="coin-count">
-                                <h3>0</h3>
+                                <h3>{{ Auth::user()->credit }}</h3>
                                 <p>Lifetime Coins</p>
                             </div>
                         </div>
@@ -119,6 +118,11 @@
                             <button
                                 onclick="window.open('https://billing.stripe.com/p/login/test_00g9B3eoZ5dNewU5kk', '_blank')">View
                                 More</button>
+                        </div>
+                        <div class="header">
+                            <h2>Buy Credits</h2>
+                            <button
+                                onclick="window.open('{{ route('payment.form') }}', '_blank')">Buy</button>
                         </div>
                     </div>
                 </div>
@@ -142,99 +146,10 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <form action="{{ route('process.payment') }}" method="POST" id="payment-form">
-                        @csrf
-                        <div class="form-row">
-                            <label for="card-element">
-                                Tarjeta de crédito o débito
-                            </label>
-                            <div id="card-element">
-                                <!-- Un Stripe Element será insertado aquí -->
-                            </div>
-                            <!-- Muestra errores de validación de la tarjeta -->
-                            <div id="card-errors" role="alert"></div>
-                        </div>
-                        <div class="form-row">
-                            <label for="credits">
-                                Cantidad de créditos
-                            </label>
-                            <input type="number" id="credits" name="credits" min="1" value="1" required>
-                            <span id="euros">0.10 €</span>
-                        </div>
-                        <button type="submit">Pagar</button>
-                    </form>
-                </div>
             </main>
         </div>
     </div>
 
-    <script>
-        var stripe = Stripe('{{ env("STRIPE_KEY") }}');
-        var elements = stripe.elements();
-
-        var style = {
-            base: {
-                color: '#32325d',
-                lineHeight: '18px',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
-            },
-            invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
-            }
-        };
-
-        var card = elements.create('card', { style: style });
-        card.mount('#card-element');
-
-        card.on('change', function (event) {
-            var displayError = document.getElementById('card-errors');
-            if (event.error) {
-                displayError.textContent = event.error.message;
-            } else {
-                displayError.textContent = '';
-            }
-        });
-
-        var form = document.getElementById('payment-form');
-        var creditsInput = document.getElementById('credits');
-        var eurosDisplay = document.getElementById('euros');
-
-        creditsInput.addEventListener('input', function (event) {
-            var credits = event.target.value;
-            var euros = (credits * 0.10).toFixed(2);
-            eurosDisplay.textContent = euros + ' €';
-        });
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            stripe.createToken(card).then(function (result) {
-                if (result.error) {
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    stripeTokenHandler(result.token);
-                }
-            });
-        });
-
-        function stripeTokenHandler(token) {
-            var form = document.getElementById('payment-form');
-            var hiddenInput = document.createElement('input');
-            hiddenInput.setAttribute('type', 'hidden');
-            hiddenInput.setAttribute('name', 'stripeToken');
-            hiddenInput.setAttribute('value', token.id);
-            form.appendChild(hiddenInput);
-            form.submit();
-        }
-    </script>
     <!-- Include Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
