@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Factura extends Model
+class Facturas extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'fecha', 'price'];
+    protected $fillable = ['user_id', 'price', 'description', 'date', 'creditos'];
 
     public function user()
     {

@@ -257,6 +257,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 12px;
 }
 
 .recent-transactions .header button {
@@ -406,76 +407,3 @@ section {
     font-family: 'Plus Jakarta Sans';
 }
 
-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    margin: 50px auto;
-    box-sizing: border-box;
-}
-
-.form-row {
-    margin-bottom: 20px;
-}
-
-.form-row {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-}
-
-#card-element, #credits {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    background: #fafafa;
-    width: calc(100% - 22px); /* Adjust width for padding and border */
-}
-
-#card-errors {
-    color: #fa755a;
-    margin-top: 12px;
-}
-
-#euros {
-    display: inline-block;
-    margin-left: 10px;
-    font-weight: bold;
-    color: #333;
-}
-
-button {
-    background-color: #6772e5;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #5469d4;
-}
-
-.container {
-    padding: 20px;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}

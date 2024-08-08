@@ -13,7 +13,16 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory;
 
     protected $fillable = [
-        'email', 'password', 'name', 'lastname', 'credit', 'plan_id'
+        'name', 'lastname', 'email', 'password', 'plan_id', 'profile_picture', 'credit'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     public function plan()

@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Credit;
 
 class ImageGenerationController extends Controller
 {
-    protected $imageGenerationCost = 0; // Costo de generación de imágenes configurado en 0
+    protected $imageGenerationCost = 0;
 
     public function showForm()
     {
