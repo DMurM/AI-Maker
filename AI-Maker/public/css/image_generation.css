@@ -157,8 +157,8 @@ header .btn-group {
 
 #generated-images-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+    gap: 2px;
     justify-content: center;
     margin-top: 10px;
 }
@@ -249,4 +249,11 @@ img {
 
 img.loaded {
     opacity: 1;
+}
+
+.generated-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block; 
 }

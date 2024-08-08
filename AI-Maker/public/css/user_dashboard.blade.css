@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans';
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
@@ -89,7 +89,7 @@ main {
     height: 100vh;
     overflow-y: auto;
     transition: margin-left 0.3s;
-	color: #fff;
+    color: #fff;
 }
 
 header {
@@ -110,17 +110,25 @@ header h1 {
 
 header .btn-group {
     display: flex;
-    align-items:center;
+    align-items: center;
 }
 
-section {
+.section {
     margin-bottom: 30px;
 }
 
 .section-title {
     font-size: 20px;
     margin-bottom: 10px;
-    position:relative;
+    position: relative;
     padding-bottom: 10px;
     border-bottom: 2px solid #41409f;
+}
+
+.border-secondary {
+    border-color: #ddd !important;
+}
+
+.text-secondary {
+    color: #ddd !important;
 }
