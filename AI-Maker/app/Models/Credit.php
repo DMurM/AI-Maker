@@ -9,7 +9,9 @@ class Credit extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['credit', 'total_spend', 'user_id', 'fecha_hora', 'caducidad'];
+    protected $fillable = ['credits', 'total_spend', 'user_id', 'fecha_hora', 'caducidad'];
+
+    public $timestamps = false;
 
     public function user()
     {

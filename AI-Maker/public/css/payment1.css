@@ -2,12 +2,13 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    padding: 20px;
 }
 
 form {
@@ -16,6 +17,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 400px;
+    margin: 50px auto;
     box-sizing: border-box;
 }
 
@@ -27,18 +29,28 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
+    color: #333;
 }
 
-#card-element {
+#card-element, #credits {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 4px;
     background: #fafafa;
+    width: calc(100% - 22px); /* Adjust width for padding and border */
 }
 
 #card-errors {
     color: #fa755a;
     margin-top: 12px;
+}
+
+#euros {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: bold;
+    color: #333;
+    padding-top: 5px;
 }
 
 button {
@@ -54,4 +66,42 @@ button {
 
 button:hover {
     background-color: #5469d4;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

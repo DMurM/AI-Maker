@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
-        'name', 'lastname', 'email', 'password', 'plan_id', 'profile_picture'
+        'name', 'lastname', 'email', 'password', 'plan_id', 'profile_picture', 'credit'
     ];
 
     protected $hidden = [
@@ -28,11 +28,6 @@ class User extends Authenticatable
     public function plan()
     {
         return $this->belongsTo(Plan::class);
-    }
-
-    public function credits()
-    {
-        return $this->hasMany(Credit::class);
     }
 
     public function activeCredit()

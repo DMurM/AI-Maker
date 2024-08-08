@@ -15,7 +15,7 @@ class DashboardController extends Controller
             'name' => $user->name,
             'lastname' => $user->lastname,
             'email' => $user->email,
-            'credits' => $user->credits->sum('amount') ?? 0
+            'credit' => $user->credit ?? 0
         ]);
     }
 
