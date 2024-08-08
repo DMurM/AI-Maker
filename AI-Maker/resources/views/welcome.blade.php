@@ -127,9 +127,12 @@
     <script src="{{ asset('js/home/loginRedirect.js') }}" defer></script>
     <script src="{{ asset('js/home/refreshGallery.js') }}" defer></script>
     <script src="{{ asset('js/home/changeSectionandAnimationTools.js') }}" defer></script>
+    <script src="{{ asset('js/home/coinsCalculator.js') }}" defer></script>
+
     <script>
         var recentImagesUrl = "{{ route('recent-images') }}";
         var initialImagesUrl = "{{ route('initial-images') }}";
+        window.COIN_RATE = {{ env('COIN_RATE', 0.05) }};
     </script>
 
 </body>
