@@ -28,31 +28,6 @@ main {
     color: #fff;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #000;
-    color: #fff;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
-}
-
-header h1 {
-    font-size: 28px;
-    margin: 0;
-}
-
-header p {
-    font-size: 16px;
-}
-
-header .btn-group {
-    display: flex;
-    align-items: center;
-}
-
 .img-thumbnail {
     margin-bottom: 15px;
     border-radius: 8px;
