@@ -66,17 +66,30 @@ document.addEventListener('DOMContentLoaded', () => {
         aiToolsBackground.classList.add('hidden');
     };
 
+    const showPricingSection = () => {
+        hideAllSections();
+        const pricingSection = document.getElementById('pricing');
+        pricingSection.classList.remove('hidden');
+        
+        // Load monthly pricing by default
+        window.loadPartial('monthly');  // <-- Llama a la función global
+    };
+
     menuLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             const sectionId = event.target.getAttribute('data-section');
             if (sectionId) {
                 event.preventDefault();
-                hideAllSections();
-                document.getElementById(sectionId).classList.remove('hidden');
-                if (sectionId === 'ai-tools') {
-                    showAIToolsSection();
+                if (sectionId === 'pricing') {
+                    showPricingSection();
                 } else {
-                    aiToolsBackground.classList.add('hidden');
+                    hideAllSections();
+                    document.getElementById(sectionId).classList.remove('hidden');
+                    if (sectionId === 'ai-tools') {
+                        showAIToolsSection();
+                    } else {
+                        aiToolsBackground.classList.add('hidden');
+                    }
                 }
             }
         });

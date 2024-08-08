@@ -4,16 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AiToolsController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PaymentController2;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImageGenerationController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
 // Route::get('/', function () {
 //     return view('admin.admin_dashboard');
@@ -56,5 +56,8 @@ Route::post('/password/email', [AuthController::class, 'sendPasswordResetLink'])
 
 Route::get('/image-generation', [DashboardController::class, 'showImageGeneration'])->name('image_generation.form');
 Route::post('/generate_image', [ImageGenerationController::class, 'generateImage'])->name('generate_image');
+
+Route::get('/initial-images', [GalleryController::class, 'getInitialImages'])->name('initial-images');
+Route::get('/recent-images', [GalleryController::class, 'getRecentImages'])->name('recent-images');
 
 Route::resource('users', UserController::class);

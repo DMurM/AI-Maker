@@ -22,8 +22,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="{{ route('pricing.team') }}" onclick="return navigate(event, 'pricing.team')">
-                    <i class="fas fa-users"></i> <span class="title">Team</span>
+                <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
+                    <i class="fas fa-users"></i> <span class="title">Team</span> <span class="badge badge-coming-soon">Coming Soon</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -32,8 +32,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
-                    <i class="fas fa-sliders"></i> <span class="title">Image Editing</span> <span class="badge badge-coming-soon">Coming Soon</span>
+            <a class="nav-link text-white" href="#" onclick="return showComingSoon(event)">
+                    <i class="fas fa-sliders"></i> <span class="title">Remove Background</span> <span class="badge badge-coming-soon">Coming Soon</span>
                 </a>
             </li>
             <li class="nav-item">

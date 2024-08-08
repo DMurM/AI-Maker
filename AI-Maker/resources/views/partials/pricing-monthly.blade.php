@@ -6,6 +6,7 @@
                 <h3>Free</h3>
                 <p>Try AiTools for free</p>
                 <h4>€0</h4>
+                <p class="billing-info">per month billed monthly</p>
                 <button class="btn primary">Get started now</button>
                 <p>10 Coins/month</p>
                 <ul>
@@ -34,7 +35,7 @@
             <!-- Plan Standard -->
             <div class="plan popular">
                 <h3>Standard</h3>
-                <p>Make an impact with your visuals</p>
+                <p>Enhance your visual impact</p>
                 <h4>€39</h4>
                 <p class="billing-info">per month billed monthly</p>
                 <button class="btn">Subscribe</button>
@@ -52,7 +53,7 @@
             <!-- Plan Pro -->
             <div class="plan">
                 <h3>Pro</h3>
-                <p>Maximize your creative potential</p>
+                <p>Unleash your creative power</p>
                 <h4>€79</h4>
                 <p class="billing-info">per month billed monthly</p>
                 <button class="btn">Subscribe</button>

@@ -6,8 +6,9 @@
                 <h3>Free</h3>
                 <p>Try AiTools for free</p>
                 <h4>€0</h4>
+                <p class="billing-info">per month billed monthly</p>
                 <button class="btn primary">Get started now</button>
-                <p class="billing-info">120 Coins/year</p>
+                <p>120 Coins/year</p>
                 <ul>
                     <li>Relaxed generations</li>
                     <li>Use history available</li>
@@ -21,7 +22,7 @@
                 <h4>€16</h4>
                 <p class="billing-info">per month billed annually</p>
                 <button class="btn">Subscribe</button>
-                <p class="billing-info">6000 Coins/year</p>
+                <p>6000 Coins/year</p>
                 <ul>
                     <li>Everything in Free, plus:</li>
                     <li>Fast generation access</li>
@@ -34,11 +35,11 @@
             <!-- Plan Standard -->
             <div class="plan popular">
                 <h3>Standard</h3>
-                <p>Make an impact with your visuals</p>
+                <p>Enhance your visual impact</p>
                 <h4>€29</h4>
                 <p class="billing-info">per month billed annually</p>
                 <button class="btn">Subscribe</button>
-                <p class="billing-info">24000 Coins/year</p>
+                <p>24000 Coins/year</p=>
                 <ul>
                     <li>Everything in Base, plus:</li>
                     <li>Video generation access</li>
@@ -52,11 +53,11 @@
             <!-- Plan Pro -->
             <div class="plan">
                 <h3>Pro</h3>
-                <p>Maximize your creative potential</p>
+                <p>Unleash your creative power</p>
                 <h4>€59</h4>
                 <p class="billing-info">per month billed annually</p>
                 <button class="btn">Subscribe</button>
-                <p class="billing-info">72000 Coins/year</p>
+                <p>72000 Coins/year</p>
                 <ul>
                     <li>Everything in Standard, plus:</li>
                     <li>Buy coins at 80% discount ($100 = 12000 coins)</li>

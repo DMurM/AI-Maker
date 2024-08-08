@@ -156,23 +156,27 @@ header .btn-group {
 }
 
 #generated-images-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+    gap: 2px;
     justify-content: center;
     margin-top: 10px;
 }
 
 .generated-image-container {
-    flex: 1 1 40%;
-    max-width: 45%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .generated-image-container img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
+    display: block; 
 }
 
 #prompt-container,
@@ -201,11 +205,11 @@ header .btn-group {
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s, opacity 0.3s ease-in-out;
-    opacity: 0; /* Start hidden */
+    opacity: 1; /* Mostrar la imagen completamente */
 }
 
 .style-option img.loaded {
-    opacity: 1; /* Show when loaded */
+    opacity: 1; /* Mostrar la imagen completamente */
 }
 
 .style-option img:hover {
@@ -239,10 +243,17 @@ header .btn-group {
 }
 
 img {
-    opacity: 0;
+    opacity: 1; /* Mostrar la imagen completamente */
     transition: opacity 0.5s ease-in-out;
 }
 
 img.loaded {
     opacity: 1;
+}
+
+.generated-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block; 
 }
