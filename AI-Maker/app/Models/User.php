@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -26,6 +28,26 @@ class User extends Authenticatable
     public function plan()
     {
         return $this->belongsTo(Plan::class);
+    }
+
+    public function credits()
+    {
+        return $this->hasMany(UserCredit::class);
+    }
+
+    public function getTotalCreditsAttribute()
+    {
+        return $this->credits->where('expires_at', '>', Carbon::now())->sum('credits');
+    }
+
+    public function getTotalSpendAttribute()
+    {
+        return $this->credits->where('expires_at', '>', Carbon::now())->sum('total_spend');
+    }
+
+    public function getAvailableCreditsAttribute()
+    {
+        return $this->total_credits - $this->total_spend;
     }
 
     public function activeCredit()

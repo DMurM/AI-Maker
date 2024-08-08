@@ -52,3 +52,11 @@ main {
     font-size: 18px;
     margin: 10px 0 0;
 }
+
+#uploaded-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: none;
+}
