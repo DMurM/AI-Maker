@@ -1,0 +1,54 @@
+body {
+    font-family: 'Plus Jakarta Sans';
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.text-white {
+    color: white;
+}
+
+main {
+    margin-left: 100px;
+    padding: 10px;
+    background-color: #000;
+    height: 100vh;
+    overflow-y: auto;
+    color: #fff;
+}
+
+.upload-area {
+    background-color: #333;
+    color: #fff;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.upload-area i {
+    color: #ccc;
+}
+
+.upload-area p {
+    font-size: 18px;
+    margin: 10px 0 0;
+}
