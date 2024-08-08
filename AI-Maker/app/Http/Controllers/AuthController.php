@@ -23,7 +23,7 @@ class AuthController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return back()->withErrors([
-                'email' => 'The provided credentials do not match our records.',
+                'login_error' => 'The provided email or password is incorrect.',
             ]);
         }
 
@@ -33,6 +33,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
         return redirect()->route('user_dashboard')->with('token', $token);
     }
+
 
     public function showSignupForm()
     {

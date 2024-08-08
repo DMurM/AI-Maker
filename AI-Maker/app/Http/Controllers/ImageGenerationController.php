@@ -42,31 +42,22 @@ class ImageGenerationController extends Controller
         }
 
         try {
-            $apiResponse = Http::withHeaders([
-                'Authorization' => 'Bearer ' . env('RUNPOD_API_KEY'),
-                'Content-Type' => 'application/json'
-            ])
-            ->withOptions(['verify' => false])
-            ->post('https://api.runpod.ai/v2/7q281nl08638ve/run', [
-                'input' => $this->getRequestPayload($request)
-            ]);
+            $apiResponse = Http::withHeaders(['Accept' => 'application/json'])
+                ->timeout(120)
+                ->connectTimeout(60)
+                ->post('http://192.168.50.101:8888/v2/generation/text-to-image-with-ip', $this->getRequestPayload($request));
 
             Log::info('API Response', ['status' => $apiResponse->status(), 'response' => $apiResponse->body()]);
 
             if ($apiResponse->successful()) {
                 $data = $apiResponse->json();
-                $jobId = $data['id'];
+                $imageUrls = $this->getImageUrls($data);
 
-                // Poll the status endpoint until the job is complete
-                $jobStatus = $this->pollJobStatus($jobId);
-                
-                if ($jobStatus['status'] === 'COMPLETED') {
-                    $imageBase64 = $jobStatus['output'][0]['base64'];
-                    $response = ['image_base64' => $imageBase64];
-                } else {
-                    $response = ['error' => 'Image generation failed', 'response_data' => $jobStatus];
-                    $statusCode = 500;
+                foreach ($imageUrls as $url) {
+                    $user->addImage($url);
                 }
+
+                $response = ['image_urls' => $imageUrls, 'response_data' => $data];
             } else {
                 $response = ['error' => 'Image generation failed', 'response_data' => $apiResponse->json()];
                 $statusCode = $apiResponse->status();
@@ -79,6 +70,7 @@ class ImageGenerationController extends Controller
 
         return response()->json($response, $statusCode);
     }
+
 
     private function getRequestPayload(Request $request)
     {
@@ -99,7 +91,6 @@ class ImageGenerationController extends Controller
         }, []);
 
         return [
-            'api_name' => 'txt2img',
             'prompt' => $request->input('prompt'),
             'negative_prompt' => '',
             'style_selections' => ['Fooocus V2', 'Fooocus Enhance', 'Fooocus Sharp'],
@@ -165,36 +156,20 @@ class ImageGenerationController extends Controller
             'save_extension' => 'png',
             'save_name' => '',
             'read_wildcards_in_order' => false,
-            'require_base64' => true,
+            'require_base64' => false,
             'async_process' => false,
             'webhook_url' => '',
             'image_prompts' => []
         ];
     }
 
-    private function pollJobStatus($jobId)
+    private function getImageUrls($data)
     {
-        $maxRetries = 10;
-        $retryDelay = 5; // seconds
-
-        for ($i = 0; $i < $maxRetries; $i++) {
-            sleep($retryDelay);
-
-            $statusResponse = Http::withHeaders([
-                'Authorization' => 'Bearer ' . env('RUNPOD_API_KEY')
-            ])
-            ->withOptions(['verify' => false])
-            ->get("https://api.runpod.ai/v2/7q281nl08638ve/status/{$jobId}");
-
-            $statusData = $statusResponse->json();
-
-            if ($statusResponse->successful() && $statusData['status'] === 'COMPLETED') {
-                return $statusData;
-            } elseif ($statusData['status'] === 'FAILED') {
-                return $statusData;
-            }
+        $urls = [];
+        foreach ($data as $image) {
+            $imageURL = str_replace('127.0.0.1', '192.168.50.101', $image['url'] ?? '');
+            $urls[] = $imageURL;
         }
-
-        return ['status' => 'TIMEOUT'];
+        return $urls;
     }
 }
