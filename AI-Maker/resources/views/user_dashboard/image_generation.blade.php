@@ -272,16 +272,13 @@
 
                 const generatedImagesContainer = document.getElementById('generated-images-container');
                 generatedImagesContainer.innerHTML = ''; 
-                if (response.ok && result.image_urls) {
-                    const imagesCount = result.image_urls.length;
-                    const colClass = imagesCount > 1 ? `col-${Math.floor(12 / imagesCount)}` : 'col-12';
-
-                    result.image_urls.forEach(url => {
-                        const col = document.createElement('div');
-                        col.className = `${colClass} mb-3 generated-image-container`; 
-                        col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail generated-image">`;
-                        generatedImagesContainer.appendChild(col);
-                    });
+                if (response.ok && result.image_base64) {
+                    const imageUrl = `data:image/png;base64,${result.image_base64}`;
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.alt = 'Generated Image';
+                    img.className = 'img-fluid img-thumbnail generated-image';
+                    generatedImagesContainer.appendChild(img);
                 } else {
                     errorMessage.textContent = result.error || 'An error occurred while generating the image.';
                     errorMessage.style.display = 'block';
