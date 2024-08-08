@@ -1,8 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans';
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #000;
 }
 
 .container-fluid {
@@ -23,74 +23,19 @@ body {
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;
-    margin-left: -10px;
 }
 
 .text-white {
     color: white;
 }
 
-#sidebar {
-    background-color: #333;
-    color: #fff;
-    min-height: 100vh;
-    position: relative;
-    padding-top: 60px;
-    border-right: 2px solid #ddd;
-    padding-left: 10px;
-    padding-right: 10px;
-    box-sizing: border-box;
-}
-
-#sidebar .nav-item {
-    margin-bottom: 15px;
-}
-
-#sidebar .nav-link:hover {
-    background-color: #575757;
-}
-
-#sidebar .nav-link img {
-    margin-right: 8px;
-}
-
-#sidebar .profile-info {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-#sidebar .profile-info p {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-}
-
-#sidebar .profile-info .btn {
-    background-color: #41409f;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100%;
-    text-align: center;
-}
-
-#sidebar .profile-info .btn:hover {
-    background-color: #0056b3;
-}
-
 main {
     margin-left: 250px;
-    padding: 20px;
-    background-color: #16151a;
+    padding: 10px;
+    background-color: #000;
     height: 100vh;
     overflow-y: auto;
-    transition: margin-left 0.3s;
+    overflow-y: auto;
     color: #fff;
 }
 
@@ -99,7 +44,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #41409f;
+    background-color: #000;
     color: #fff;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;

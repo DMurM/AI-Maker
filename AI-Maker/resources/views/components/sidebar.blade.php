@@ -50,7 +50,7 @@
     </div>
     <div class="profile-info p-3 bg-dark">
         <div class="d-flex flex-column align-items-start">
-            <p class="mb-1">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
+            <p class="mb-1">{{ Auth::user()->full_name }}</p>
             <p class="mb-2">{{ Auth::user()->email }}</p>
             <a href="#" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 Logout
