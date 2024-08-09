@@ -8,6 +8,7 @@ class CreateTriggerUpdateSpent extends Migration
     public function up()
     {
         DB::unprepared('
+         DELIMITER $$
             CREATE TRIGGER update_spent_trigger AFTER UPDATE ON credits
             FOR EACH ROW
             BEGIN
@@ -37,7 +38,9 @@ class CreateTriggerUpdateSpent extends Migration
                     SET credit = remaining_credits
                     WHERE id = (SELECT user_id FROM user_credits WHERE credit_id = NEW.id LIMIT 1);
                 END IF;
-            END
+            END$$
+
+            DELIMITER ;
         ');
     }
 

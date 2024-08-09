@@ -8,6 +8,8 @@ class CreateTriggerInsertInitialCredits extends Migration
     public function up()
     {
         DB::unprepared('
+        DELIMITER $$
+
             CREATE TRIGGER insert_initial_credits AFTER INSERT ON users
             FOR EACH ROW
             BEGIN
@@ -28,7 +30,9 @@ class CreateTriggerInsertInitialCredits extends Migration
                 UPDATE users
                 SET credit = 10
                 WHERE id = NEW.id;
-            END
+            END$$
+
+            DELIMITER ;
         ');
     }
 
