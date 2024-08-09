@@ -14,7 +14,7 @@
         <form action="{{ route('process.payment') }}" method="POST" id="payment-form">
             @csrf
             <div class="form-row">
-            <label for="card-element">
+                <label for="card-element">
                     Tarjeta de crédito o débito
                 </label>
                 <div id="card-element">
@@ -24,7 +24,7 @@
                 <div id="card-errors" role="alert"></div>
             </div>
             <div class="form-row">
-            <label for="credits">
+                <label for="credits">
                     Cantidad de créditos
                 </label>
                 <input type="number" id="credits" name="credits" min="1" required>
@@ -63,6 +63,10 @@
                 iconColor: '#fa755a'
             }
         };
+
+        // Pasar el valor de PHP a JavaScript
+        var coinRate = {{ $coinRate }};
+
         // Crear un elemento de tarjeta (esto incluye el número de tarjeta, fecha de caducidad y CVC)
         var card = elements.create('card', { style: style });
 
@@ -96,37 +100,27 @@
 
         // Envía el token de Stripe al servidor
         function stripeTokenHandler(token) {
-            // Inserta el token en el formulario
-            var form = document.getElementById('payment-form');
-            var hiddenInput = document.createElement('input');
-            hiddenInput.setAttribute('type', 'hidden');
-            hiddenInput.setAttribute('name', 'stripeToken');
-            hiddenInput.setAttribute('value', token.id);
-            form.appendChild(hiddenInput);
+            var credits = document.getElementById('credits').value;
 
-            // Envía el formulario usando fetch API
-            fetch(form.action, {
+            fetch('{{ route("process.payment") }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 body: JSON.stringify({
                     stripeToken: token.id,
-                    credits: document.getElementById('credits').value
+                    credits: credits
                 })
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showModal('Pago exitoso!');
-                } else {
-                    showModal('Pago fallido: ' + data.message);
-                }
-            })
-            .catch(error => {
-                showModal('Error: ' + error.message);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    showModal(data.success ? 'Pago exitoso!' : 'Pago fallido: ' + data.message);
+                })
+                .catch(error => {
+                    showModal('Error: ' + error.message);
+                });
         }
 
         function showModal(message) {
@@ -137,20 +131,20 @@
             modalMessage.textContent = message;
             modal.style.display = "block";
 
-            span.onclick = function() {
+            span.onclick = function () {
                 modal.style.display = "none";
             }
 
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
             }
         }
 
-        document.getElementById('credits').addEventListener('input', function() {
+        document.getElementById('credits').addEventListener('input', function () {
             var credits = this.value;
-            var euros = (credits * 0.10).toFixed(2);
+            var euros = (credits * coinRate).toFixed(2);
             document.getElementById('euros').textContent = euros + ' EUR';
         });
     </script>

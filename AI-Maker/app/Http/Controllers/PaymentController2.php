@@ -2,73 +2,80 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Facturas;
+use App\Models\Factura;
+use App\Models\Credit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Illuminate\Support\Facades\Config;
-use App\Models\Credit;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController2 extends Controller
 {
     public function showPaymentForm()
     {
-        return view('payment.payment1');
+        $coinRate = (float) env('COIN_RATE');
+        return view('payment.payment1', compact('coinRate'));
     }
 
     public function processPayment(Request $request)
     {
-        //lo he dejado por aqui, tengo que adaptar esto 
-
+        $coinRate = (float) env('COIN_RATE');
         $stripeApiSecret = Config::get('services.stripe.secret');
         Stripe::setApiKey($stripeApiSecret);
 
-        $stripeToken = $request->input('stripeToken');
-        $credits = $request->input('credit');
-        $amount = $credits * 10; // Calculate amount in cents (1 credit = 5 cents)
+        $data = $request->json()->all();
+        $stripeToken = $data['stripeToken'];
+        $credits = $data['credits'];
+        $amount = $credits * $coinRate; // Calcula el monto en centavos (1 crédito = 0.05 EUR)
 
         try {
-            Charge::create([
-                'amount' => $amount, // amount in cents
-                'currency' => 'usd', //hay que tener en cuenta la moneda de pago
+            $userId = Auth::id();
+
+            // Crea o actualiza el cliente en Stripe
+            $customer = \Stripe\Customer::create([
+                'email' => Auth::user()->email,
                 'source' => $stripeToken,
+            ]);
+
+            // Crea el cargo
+            $charge = Charge::create([
+                'customer' => $customer->id,
+                'amount' => $amount,
+                'currency' => 'eur',
                 'description' => 'Purchase of ' . $credits . ' credits',
             ]);
 
-            // Update user's credits and total spend
-            $userId = auth()->id();
-            $creditRecord = Credit::firstOrNew(['user_id' => $userId]);
-            $creditRecord->credit += $credits;
-            $creditRecord->total_spend += $amount / 100; // Convert cents to dollars
-            $creditRecord->save();
+            if ($charge->status === 'succeeded') {
+                // Encuentra o crea un registro de crédito para el usuario
+                $creditRecord = Credit::firstOrCreate(
+                    ['credits' => 0, 'total_spend' => 0]
+                );
+                $creditRecord->increment('credits', $credits);
+                //$creditRecord->increment('total_spend', $amount / 100); // Convertir centavos a euros
 
-            // Record the transaction in facturas
-            Facturas::create([
-                'user_id' => $userId,
-                'price' => $amount / 100, // Convert cents to dollars
-                'creditos' => $credits,
-                'description' => 'Purchase of ' . $credits . ' credits',
-                'date' => Carbon::now()
-                // Add other necessary fields
-            ]);
+                // Registra la transacción en Facturas
+                Factura::create([
+                    'user_id' => $userId,
+                    'price' => $amount / 100,
+                    'description' => 'Purchase of ' . $credits . ' credits',
+                    'date' => Carbon::now(),
+                    'creditos' => $credits,
+                ]);
 
-            //$request->session()->flash('success', 'Payment successful!');
-
-            //return redirect()->route('payment.success');
-
-            // Payment successful; store a success message in the session
-            return response()->json(['success' => true]);
-
+                // Pago exitoso; devuelve una respuesta de éxito
+                return response()->json(['success' => true, 'message' => 'Payment successful!']);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Payment failed: ' . $charge->failure_message]);
+            }
         } catch (\Exception $e) {
-            //$request->session()->flash('error', $e->getMessage());
+            // Registra el error para depuración
+            Log::error('Stripe Payment Error: ' . $e->getMessage());
 
-            //return redirect()->route('payment.failure');
-
-            // Payment failed; store an error message in the session
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
-
-
+            // Devuelve el mensaje de error
+            return response()->json(['success' => false, 'message' => 'Payment failed: ' . $e->getMessage()]);
         }
     }
 }

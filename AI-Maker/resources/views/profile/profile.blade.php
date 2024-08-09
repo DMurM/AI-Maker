@@ -8,7 +8,8 @@
 	<title>Profile</title>
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('css/profile.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -16,10 +17,11 @@
 		<div class="row">
 			<x-sidebar/>	
 			<main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-				<header
-					class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">{{ Auth::user()->full_name }}</h1>
+				<header class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<div class="btn-group">
+						<h1 class="h2">{{ Auth::user()->full_name }}</h1>
+					</div>
+					<div>
 						<button type="button" class="btn btn-primary">Credits: {{ Auth::user()->credit }}</button>
 					</div>
 				</header>

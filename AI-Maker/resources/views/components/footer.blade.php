@@ -29,15 +29,10 @@
                 <h2 class="section-title">AI Tools</h2>
                 <ul class="link-list">
                     <li><a href="#">Image Generation</a></li>
-                    <li><a href="#">Sketch Rendering</a></li>
-                    <li><a href="#">Creative Fusion</a></li>
-                    <li><a href="#">Photo to Sketch</a></li>
                     <li><a href="#">AI Supermodel</a></li>
-                    <li><a href="#">AI Headshot Generator</a></li>
                     <li><a href="#">AI Image Generator</a></li>
                     <li><a href="#">Image Variation</a></li>
                     <li><a href="#">Background Diffusion</a></li>
-                    <li><a href="#">Text Effects</a></li>
                     <li><a href="#">AI PNG Generator</a></li>
                 </ul>
             </div>
@@ -45,9 +40,6 @@
                 <h2 class="section-title">Image Editing</h2>
                 <ul class="link-list">
                     <li><a href="#">HD Upscaler</a></li>
-                    <li><a href="#">Outpainting</a></li>
-                    <li><a href="#">Relight</a></li>
-                    <li><a href="#">Erase & Replace</a></li>
                     <li><a href="#">Background Remover</a></li>
                 </ul>
             </div>
@@ -60,8 +52,6 @@
                 <h2 class="section-title">Audio</h2>
                 <ul class="link-list">
                     <li><a href="#">AI Text to Speech</a></li>
-                    <li><a href="#">Song Generation</a></li>
-                    <li><a href="#">Podcast Maker</a></li>
                 </ul>
             </div>
             <div class="link-group">
