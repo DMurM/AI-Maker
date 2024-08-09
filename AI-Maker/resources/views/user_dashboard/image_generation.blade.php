@@ -47,60 +47,42 @@
                                     <div class="form-group">
                                         <label for="aspect-ratio">Aspect ratio</label>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
-                                            <div class="form-check">
-                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect1" value="1:1" checked>
-                                                <label class="form-check-label aspect-label" for="aspect1">
-                                                    <div class="aspect-display aspect-1-1">1:1</div>
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect2" value="3:4">
-                                                <label class="form-check-label aspect-label" for="aspect2">
-                                                    <div class="aspect-display aspect-3-4">3:4</div>
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect3" value="4:3">
-                                                <label class="form-check-label aspect-label" for="aspect3">
-                                                    <div class="aspect-display aspect-4-3">4:3</div>
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect4" value="16:9">
-                                                <label class="form-check-label aspect-label" for="aspect4">
-                                                    <div class="aspect-display aspect-16-9">16:9</div>
-                                                </label>
-                                            </div>
+                                            <!-- Aspect Ratio Options -->
+                                            @foreach(['1:1', '3:4', '4:3', '16:9'] as $ratio)
+                                                <div class="form-check">
+                                                    <input class="form-check-input aspect-radio" type="radio" name="aspect-ratio" id="aspect{{ $loop->index + 1 }}" value="{{ $ratio }}" {{ $loop->first ? 'checked' : '' }}>
+                                                    <label class="form-check-label aspect-label" for="aspect{{ $loop->index + 1 }}">
+                                                        <div class="aspect-display aspect-{{ str_replace(':', '-', $ratio) }}">{{ $ratio }}</div>
+                                                    </label>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="form-group d-flex justify-content-between align-items-center">
-                                        <label for="style">Style</label>
+                                    <div class="form-group">
+                                        <label for="style">Select your style</label>
                                         <input type="text" class="form-control ml-2" id="style-search" placeholder="Search styles..." style="max-width: 400px;">
-                                    </div>
-                                    <div class="d-flex flex-wrap mt-2" id="style-options"></div>
-                                    <div class="d-flex justify-content-between mt-2">
-                                        <button type="button" class="btn btn-secondary arrow-btn" id="prev-page"><i class="fas fa-arrow-left"></i></button>
-                                        <button type="button" class="btn btn-secondary arrow-btn" id="next-page"><i class="fas fa-arrow-right"></i></button>
+                                        <div id="styleCarousel" class="carousel slide mt-2" data-ride="carousel" data-interval="false">
+                                            <div class="carousel-inner" id="style-options">
+                                            </div>
+                                            <a class="carousel-control-prev" href="#styleCarousel" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#styleCarousel" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="outputs">Number of outputs</label>
                                         <div class="d-flex flex-row align-items-center justify-content-between">
-                                            <div class="form-check">
-                                                <input class="form-check-input output-circle" type="radio" name="outputs" id="output1" value="1">
-                                                <label class="form-check-label output-label" for="output1">1</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input output-circle" type="radio" name="outputs" id="output2" value="2" checked>
-                                                <label class="form-check-label output-label" for="output2">2</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input output-circle" type="radio" name="outputs" id="output3" value="3">
-                                                <label class="form-check-label output-label" for="output3">3</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input output-circle" type="radio" name="outputs" id="output4" value="4">
-                                                <label class="form-check-label output-label" for="output4">4</label>
-                                            </div>
+                                            @foreach(range(1, 4) as $output)
+                                                <div class="form-check">
+                                                    <input class="form-check-input output-circle" type="radio" name="outputs" id="output{{ $output }}" value="{{ $output }}" {{ $output == 2 ? 'checked' : '' }}>
+                                                    <label class="form-check-label output-label" for="output{{ $output }}">{{ $output }}</label>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -125,73 +107,79 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const popularStyles = [
-                'Fooocus Masterpiece',
-                'Fooocus Photograph',
-                'SAI Anime',
-                'SAI Cinematic',
-                'MRE Cinematic Dynamic',
-                'MRE Heroic Fantasy',
-                'Ads Automotive',
-                'Ads Luxury',
-                'Artstyle Hyperrealism',
-                'Futuristic Cyberpunk Cityscape',
-                'Game Cyberpunk Game',
-                'Misc Fairy Tale',
-                'Papercraft Papercut Collage',
-                'Photo Glamour',
-                'Cinematic Diva',
-                'Adorable 3D Character',
-                'Doodle Art',
-                'Flat 2d Art',
-                'Glitchcore',
-                'Harlem Renaissance Art'
-            ];
-            const styles = @json(config('styles'));
-            const customStyles = @json(config('custom_styles'));
-            const styleOptionsContainer = document.getElementById('style-options');
-            const styleSearchInput = document.getElementById('style-search');
-            const prevPageButton = document.getElementById('prev-page');
-            const nextPageButton = document.getElementById('next-page');
+    document.addEventListener('DOMContentLoaded', function() {
+        const maxStyles = 3;
+        const popularStyles = [
+            'Fooocus Masterpiece',
+            'Fooocus Photograph',
+            'SAI Anime',
+            'SAI Cinematic',
+            'MRE Cinematic Dynamic',
+            'MRE Heroic Fantasy',
+            'Ads Automotive',
+            'Ads Luxury',
+            'Artstyle Hyperrealism',
+            'Futuristic Cyberpunk Cityscape',
+            'Game Cyberpunk Game',
+            'Misc Fairy Tale',
+            'Papercraft Papercut Collage',
+            'Photo Glamour',
+            'Cinematic Diva',
+            'Adorable 3D Character',
+            'Doodle Art',
+            'Flat 2d Art',
+            'Glitchcore',
+            'Harlem Renaissance Art'
+        ];
+        const styles = @json(config('styles'));
+        const customStyles = @json(config('custom_styles'));
+        const styleOptionsContainer = document.getElementById('style-options');
+        const styleSearchInput = document.getElementById('style-search');
 
-            let currentPage = 0;
-            const stylesPerPage = 6;
-            const allStyles = [];
-            const imageCache = {};
+        let currentPage = 0;
+        const stylesPerPage = 6;
+        const allStyles = [];
+        const imageCache = {};
+        let selectedStyle = null;
 
-            // Preload Images
-            function preloadImage(src) {
-                if (!imageCache[src]) {
-                    const img = new Image();
-                    img.src = src;
-                    imageCache[src] = img;
+        function preloadImage(src) {
+            if (!imageCache[src]) {
+                const img = new Image();
+                img.src = src;
+                imageCache[src] = img;
+            }
+        }
+
+        popularStyles.forEach(style => {
+            allStyles.push({ style });
+        });
+
+        Object.keys(styles).forEach(category => {
+            styles[category].forEach(style => {
+                if (!popularStyles.includes(style)) {
+                    allStyles.push({ category, style });
                 }
+            });
+        });
+
+        let filteredStyles = allStyles;
+
+        const renderStyles = () => {
+            styleOptionsContainer.innerHTML = '';
+            const chunks = [];
+
+            for (let i = 0; i < filteredStyles.length; i += stylesPerPage) {
+                chunks.push(filteredStyles.slice(i, i + stylesPerPage));
             }
 
-            // Add popular styles first
-            popularStyles.forEach(style => {
-                allStyles.push({ style });
-            });
+            chunks.forEach((chunk, index) => {
+                const isActive = index === 0 ? 'active' : '';
+                const carouselItem = document.createElement('div');
+                carouselItem.className = `carousel-item ${isActive}`;
+                const row = document.createElement('div');
+                row.className = 'row justify-content-center';
 
-            // Flatten styles into a single array and add non-popular styles
-            Object.keys(styles).forEach(category => {
-                styles[category].forEach(style => {
-                    if (!popularStyles.includes(style)) {
-                        allStyles.push({ category, style });
-                    }
-                });
-            });
-
-            let filteredStyles = allStyles;
-
-            const renderStyles = () => {
-                styleOptionsContainer.innerHTML = '';
-                const start = currentPage * stylesPerPage;
-                const end = start + stylesPerPage;
-                const currentStyles = filteredStyles.slice(start, end);
-
-                currentStyles.forEach(({ style }) => {
+                chunk.forEach(({ style }) => {
                     const customName = customStyles[style.replace(/\s+/g, '_').toLowerCase()] || style;
                     const styleId = style.replace(/\s+/g, '-').toLowerCase();
                     const imgSrc = `{{ asset('images/styles') }}/${styleId}.png`;
@@ -199,98 +187,93 @@
                     preloadImage(imgSrc);
 
                     const styleOption = document.createElement('div');
-                    styleOption.className = 'form-check style-option';
+                    styleOption.className = 'col-md-4 style-option';
                     styleOption.innerHTML = `
-                        <input class="form-check-input" type="radio" name="style" id="style-${styleId}" value="${style}" ${start === 0 ? 'checked' : ''}>
+                        <input class="form-check-input" type="radio" name="style" id="style-${styleId}" value="${style}">
                         <label class="form-check-label" for="style-${styleId}">
                             <img src="${imgSrc}" alt="${style}" class="img-fluid img-thumbnail loaded">
                             <div>${customName}</div>
                         </label>
                     `;
-                    styleOptionsContainer.appendChild(styleOption);
-                });
+                    row.appendChild(styleOption);
 
-                prevPageButton.disabled = currentPage === 0;
-                nextPageButton.disabled = end >= filteredStyles.length;
-            };
-
-            styleSearchInput.addEventListener('input', () => {
-                const searchText = styleSearchInput.value.toLowerCase();
-                filteredStyles = allStyles.filter(({ style }) => style.toLowerCase().includes(searchText));
-                currentPage = 0;
-                renderStyles();
-            });
-
-            prevPageButton.addEventListener('click', () => {
-                if (currentPage > 0) {
-                    currentPage--;
-                    renderStyles();
-                }
-            });
-
-            nextPageButton.addEventListener('click', () => {
-                if ((currentPage + 1) * stylesPerPage < filteredStyles.length) {
-                    currentPage++;
-                    renderStyles();
-                }
-            });
-
-            renderStyles();
-
-            const form = document.getElementById('image-generation-form');
-            const spinner = document.getElementById('spinner');
-            const errorMessage = document.getElementById('error-message');
-            const generateButton = document.getElementById('generate-button');
-
-            form.addEventListener('submit', async function(event) {
-                event.preventDefault();
-
-                if (generateButton.disabled) {
-                    return;
-                }
-
-                generateButton.disabled = true;
-
-                errorMessage.style.display = 'none';
-                errorMessage.textContent = '';
-
-                spinner.style.display = 'block';
-
-                const formData = new FormData(form);
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': formData.get('_token')
-                    },
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                spinner.style.display = 'none';
-
-                const generatedImagesContainer = document.getElementById('generated-images-container');
-                generatedImagesContainer.innerHTML = ''; 
-                if (response.ok && result.image_urls) {
-                    const imagesCount = result.image_urls.length;
-                    const colClass = imagesCount > 1 ? `col-${Math.floor(12 / imagesCount)}` : 'col-12';
-
-                    result.image_urls.forEach(url => {
-                        const col = document.createElement('div');
-                        col.className = `${colClass} mb-3 generated-image-container`; 
-                        col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail generated-image">`;
-                        generatedImagesContainer.appendChild(col);
+                    const radio = styleOption.querySelector('input[type="radio"]');
+                    radio.addEventListener('change', function() {
+                        selectedStyle = this.value;
                     });
-                } else {
-                    errorMessage.textContent = result.error || 'An error occurred while generating the image.';
-                    errorMessage.style.display = 'block';
-                }
+                });
 
-                generateButton.disabled = false;
+                carouselItem.appendChild(row);
+                styleOptionsContainer.appendChild(carouselItem);
             });
+        };
+
+        styleSearchInput.addEventListener('input', () => {
+            const searchText = styleSearchInput.value.toLowerCase();
+            filteredStyles = allStyles.filter(({ style }) => style.toLowerCase().includes(searchText));
+            currentPage = 0;
+            renderStyles();
         });
+
+        renderStyles();
+
+        const form = document.getElementById('image-generation-form');
+        const spinner = document.getElementById('spinner');
+        const errorMessage = document.getElementById('error-message');
+        const generateButton = document.getElementById('generate-button');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            if (generateButton.disabled) {
+                return;
+            }
+
+            generateButton.disabled = true;
+
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+
+            spinner.style.display = 'block';
+
+            const formData = new FormData(form);
+            formData.append('style', selectedStyle); 
+
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': formData.get('_token')
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+
+            spinner.style.display = 'none';
+
+            const generatedImagesContainer = document.getElementById('generated-images-container');
+            generatedImagesContainer.innerHTML = ''; 
+            if (response.ok && result.image_urls) {
+                const imagesCount = result.image_urls.length;
+                const colClass = imagesCount > 1 ? `col-${Math.floor(12 / imagesCount)}` : 'col-12';
+
+                result.image_urls.forEach(url => {
+                    const col = document.createElement('div');
+                    col.className = `${colClass} mb-3 generated-image-container`; 
+                    col.innerHTML = `<img src="${url}" alt="Generated Image" class="img-fluid img-thumbnail generated-image">`;
+                    generatedImagesContainer.appendChild(col);
+                });
+            } else {
+                errorMessage.textContent = result.error || 'An error occurred while generating the image.';
+                errorMessage.style.display = 'block';
+            }
+
+            generateButton.disabled = false;
+        });
+    });
     </script>
+
 </body>
 
 </html>
