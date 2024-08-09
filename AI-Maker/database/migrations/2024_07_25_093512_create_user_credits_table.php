@@ -23,3 +23,4 @@ class CreateUserCreditsTable extends Migration
         Schema::dropIfExists('user_credits');
     }
 }
+

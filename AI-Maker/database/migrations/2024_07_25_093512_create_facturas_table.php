@@ -12,9 +12,9 @@ class CreateFacturasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->timestamp('date')->useCurrent(); // Usa la fecha actual por defecto
-            $table->double('price');
+            $table->decimal('price',8,2);
             $table->string('description')->nullable(); // Se agrega la columna description como string
-            $table->integer('creditos')->unsigned(); // Campo para almacenar los créditos comprados
+            $table->decimal('creditos',8,2)->unsigned(); // Campo para almacenar los créditos comprados
             $table->timestamps();
             
             // Foreign key constraints

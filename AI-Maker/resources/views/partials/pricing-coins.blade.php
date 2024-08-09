@@ -14,6 +14,6 @@
                 </div>
             </div>
         </div>
-        <button class="coin-buy-button">Buy</button>
+        <button class="coin-buy-button" onclick="window.open('{{ route('payment.form') }}', '_blank')">Buy</button>
     </div>
 </section>
