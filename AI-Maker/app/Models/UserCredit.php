@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Factura extends Model
+class UserCredit extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'price',
-        'description',
-        'date',
-        'creditos'
+        'credit_id'
     ];
 
     // Relación con el modelo User
@@ -22,4 +19,12 @@ class Factura extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Relación con el modelo Credit
+    public function credit()
+    {
+        return $this->belongsTo(Credit::class);
+    }
 }
+
+

@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateCreditsTable extends Migration
 {
@@ -10,11 +11,10 @@ class CreateCreditsTable extends Migration
     {
         Schema::create('credits', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->integer('amount');
+            $table->decimal('credits', 8,2);
+            $table->integer('total_spend')->default(0);
+            $table->timestamp('expires_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

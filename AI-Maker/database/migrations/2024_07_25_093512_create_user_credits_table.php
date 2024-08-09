@@ -11,12 +11,10 @@ class CreateUserCreditsTable extends Migration
         Schema::create('user_credits', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->integer('credits');
-            $table->integer('total_spend')->default(0);
-            $table->timestamp('expires_at');
+            $table->unsignedInteger('credit_id');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('credit_id')->references('id')->on('credits')->onDelete('cascade');
         });
     }
 

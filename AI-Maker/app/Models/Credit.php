@@ -3,19 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\UserCredit;
 use Illuminate\Database\Eloquent\Model;
 
 class Credit extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['credits', 'total_spend', 'user_id', 'fecha_hora', 'caducidad'];
+    protected $fillable = [
+        'credits',
+        'total_spend',
+        'expires_at'
+    ];
 
-    public $timestamps = false;
-
-    public function user()
+    // Relación con el modelo User (many-to-many a través de user_credits)
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class, 'user_credits')
+            ->withTimestamps();
+    }
+
+    // Relación con el modelo UserCredit (one-to-many)
+    public function userCredits()
+    {
+        return $this->hasMany(UserCredit::class);
     }
 
     public function hasEnoughCredits($cost)
