@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let isLoading = false;
 
-    window.loadPartial = (type) => {  // <-- Asegúrate de que esté en el ámbito global
+    window.loadPartial = (type) => {
         if (isLoading) return;
         isLoading = true;
 
@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 document.getElementById('pricing-container').innerHTML = data;
                 updateActiveButton(type);
-                addEventListeners();
+
+                if (type === 'coins') {
+                    window.initCoinCalculator();
+                }
             })
             .finally(() => {
                 isLoading = false;
@@ -38,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('btn-coins').addEventListener('click', () => loadPartial('coins'));
     };
 
-    // Initialize with monthly by default
     document.querySelectorAll('.toggle-button').forEach(button => {
         button.addEventListener('click', (event) => {
             const type = event.target.id.split('-')[1];
@@ -46,6 +48,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load monthly by default
     loadPartial('monthly');
 });

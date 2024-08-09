@@ -168,3 +168,7 @@
     background-color: #ff3344;
     border-color: #ff3344;
 }
+
+div#pricing {
+    margin-bottom: 10%;
+}

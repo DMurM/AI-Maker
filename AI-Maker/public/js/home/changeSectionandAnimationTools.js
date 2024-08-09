@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heading = document.getElementById('ai-tools-heading');
     const description = document.getElementById('ai-tools-description');
     const tools = document.getElementById('tools');
+    const footer = document.querySelector('footer');
     let hasLoaded = false;
 
     const sections = document.querySelectorAll('.section');
@@ -33,15 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
         hideAllSections();
         aiToolsSection.classList.remove('hidden');
         aiToolsBackground.classList.remove('hidden');
+        footer.classList.add('hidden');
 
         if (!hasLoaded) {
             hasLoaded = true;
             heading.classList.remove('hidden');
             description.classList.remove('hidden');
 
-            typeWriter(heading, 'Where imagination meets innovation.', 100)
-                .then(() => typeWriter(description, 'Unlock your creative potential and transform your ideas into stunning realities with the power of AI.', 100))
-                .then(() => new Promise(resolve => setTimeout(resolve, 3000)))
+            typeWriter(heading, 'Where imagination meets innovation.', 50)
+                .then(() => typeWriter(description, 'Unlock your creative potential and transform your ideas into stunning realities with the power of AI.', 50))
+                .then(() => new Promise(resolve => setTimeout(resolve, 1000)))
                 .then(() => {
                     heading.style.opacity = 0;
                     description.style.opacity = 0;
@@ -51,11 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         tools.classList.remove('hidden');
                         tools.classList.add('fade-in');
+                        footer.classList.remove('hidden');
                     }, 1000);
                 });
         } else {
             tools.classList.remove('hidden');
             tools.classList.add('fade-in');
+            footer.classList.remove('hidden');
         }
     };
 
@@ -64,15 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
             section.classList.add('hidden');
         });
         aiToolsBackground.classList.add('hidden');
+        footer.classList.remove('hidden');
     };
 
     const showPricingSection = () => {
         hideAllSections();
         const pricingSection = document.getElementById('pricing');
         pricingSection.classList.remove('hidden');
-        
-        // Load monthly pricing by default
-        window.loadPartial('monthly');  // <-- Llama a la función global
+
+        window.loadPartial('monthly');
     };
 
     menuLinks.forEach(link => {

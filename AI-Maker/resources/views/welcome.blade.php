@@ -115,7 +115,7 @@
         </div>
     </main>
 
-    {{-- <x-footer /> --}}
+    <x-footer />
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
@@ -127,9 +127,12 @@
     <script src="{{ asset('js/home/loginRedirect.js') }}" defer></script>
     <script src="{{ asset('js/home/refreshGallery.js') }}" defer></script>
     <script src="{{ asset('js/home/changeSectionandAnimationTools.js') }}" defer></script>
+    <script src="{{ asset('js/home/coinsCalculator.js') }}" defer></script>
+
     <script>
         var recentImagesUrl = "{{ route('recent-images') }}";
         var initialImagesUrl = "{{ route('initial-images') }}";
+        window.COIN_RATE = {{ env('COIN_RATE', 0.05) }};
     </script>
 
 </body>
