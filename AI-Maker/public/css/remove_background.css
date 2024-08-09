@@ -20,7 +20,7 @@ body {
 }
 
 main {
-    margin-left: 100px;
+    margin-left: 250px;
     padding: 10px;
     background-color: #000;
     height: 100vh;
@@ -34,7 +34,6 @@ main {
     border: 2px dashed #ccc;
     border-radius: 10px;
     width: 100%;
-    max-width: 800px;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -53,10 +52,21 @@ main {
     margin: 10px 0 0;
 }
 
-#uploaded-image {
+.image {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
     display: none;
+    background-color: transparent; /* Hace el fondo transparente */
+}
+
+#loading-spinner {
+    margin-top: 20px;
+}
+
+.config-panel {
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
 }

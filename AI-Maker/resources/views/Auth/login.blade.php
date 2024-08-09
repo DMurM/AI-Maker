@@ -18,39 +18,59 @@
                 <div class="form-container d-flex flex-column align-items-center mt-5">
                     <h2 class="mb-4 mt-4">Welcome to AI-Maker</h2>
                     <p class="mb-4">Don't have an account? <a href="signup">Signup</a></p>
-                    <button class="btn btn-primary mb-2 mt-2">
+                    <button class="btn btn-primary mb-4 mt-2">
                         <i class="fab fa-google"></i> Sign in with Google
                     </button>
-                    <button class="btn btn-primary mb-2">
-                        <i class="fab fa-facebook-f"></i> Sign in with Facebook
-                    </button>
-                    <button class="btn btn-primary mb-4">
-                        <i class="fab fa-apple"></i> Sign in with Apple
-                    </button>
-                    <div class="divider">
+                    <div class="divider mb-4">
                         <span class="divider-text">OR</span>
                     </div>
                     <form class="w-100" method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control mb-3"
-                                placeholder="Enter your email" required>
-                            <input type="password" name="password" class="form-control mb-4"
-                                placeholder="Enter your password" required>
+                        <div class="form-group mb-4">
+                            <input type="email" name="email" class="form-control mb-3" placeholder="Enter your email" required>
+                            <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
                         </div>
-                        <button type="submit" class="btn btn-create-account mb-2">Login</button>
+                        <button type="submit" class="btn btn-create-account mb-4">Login</button>
                     </form>
-                    <p class="small mt-2">Forgot password? <a href="#">Reset here</a></p>
-                    <a href="{{ url('/') }}" class="btn btn-create-account mt-3">Go back</a>
+                    <a href="{{ url('/') }}" class="btn btn-create-account mt-4">Go back</a>
+                    <p class="small mt-4">Forgot password? <a href="#">Reset here</a></p>
                 </div>
             </div>
             <div class="right-side"></div>
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Login Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    The provided email or password is incorrect.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            @if ($errors->has('login_error'))
+                $('#errorModal').modal('show');
+            @endif
+        });
+    </script>
 </body>
 
 </html>

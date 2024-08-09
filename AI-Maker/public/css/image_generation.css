@@ -180,11 +180,11 @@ main {
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s, opacity 0.3s ease-in-out;
-    opacity: 1; /* Mostrar la imagen completamente */
+    opacity: 1;
 }
 
 .style-option img.loaded {
-    opacity: 1; /* Mostrar la imagen completamente */
+    opacity: 1;
 }
 
 .style-option img:hover {

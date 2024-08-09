@@ -1,0 +1,7 @@
+
+
+URL /run runpod = https://api.runpod.ai/v2/7q281nl08638ve/run
+
+    Auth = YQAGQLJDTTB2DQE4VHQXKSL7HUJ9V17HX07O3AKH
+
+runsync https://api.runpod.ai/v2/7q281nl08638ve/runsync
